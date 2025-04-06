@@ -12,11 +12,23 @@ public class BookParser {
             for (var item : jsonObject.getAsJsonArray("items")) {
                 JsonObject volumeInfo = item.getAsJsonObject().getAsJsonObject("volumeInfo");
                 String title = volumeInfo.has("title") ? volumeInfo.get("title").getAsString() : "Unknown";
-                String author = volumeInfo.has("authors") ? volumeInfo.getAsJsonArray("authors").get(0).getAsString() : "Unknown";
-                String category = volumeInfo.has("categories") ? volumeInfo.getAsJsonArray("categories").get(0).getAsString() : "Unknown";
-                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description";
-
-                bookList.add(new Book(title, author, category, description));
+                List<String> authors = new ArrayList<>();
+                if( volumeInfo.has("authors")) {
+                    for (var author : volumeInfo.getAsJsonArray("authors")) {
+                        authors.add(author.getAsString());
+                    }
+                }
+                String isbn = "";
+                if (volumeInfo.has("industryIdentifiers")) {
+                    for (var identifier : volumeInfo.getAsJsonArray("industryIdentifiers")) {
+                        JsonObject idObj = identifier.getAsJsonObject();
+                        if (idObj.has("type") && idObj.get("type").getAsString().equals("ISBN_13")) {
+                            isbn = idObj.get("identifier").getAsString();
+                            break;
+                        }
+                    }
+                }
+                bookList.add(new Book(title, authors,new ArrayList<>(), ""));
             }
         }
         return bookList;

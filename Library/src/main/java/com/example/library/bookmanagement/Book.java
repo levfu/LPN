@@ -1,15 +1,18 @@
 package com.example.library.bookmanagement;
 
+import java.util.List;
+
 public class Book {
     private String title;
-    private String author;
-    private String category;
+    private List<String> authors;
+    private List<String> categories;
     private String description;
+    private String isbn;
 
-    public Book (String title, String author, String category, String description) {
+    public Book (String title, List<String> authors, List<String> categories, String description) {
         this.title = title;
-        this.author = author;
-        this.category = category;
+        this.authors = authors;
+        this.categories = categories;
         this.description = description;
     }
 
@@ -21,20 +24,20 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
+    public List<String> getAuthor() {
+        return authors;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthor(List<String> authors) {
+        this.authors = authors;
     }
 
-    public String getCategory() {
-        return category;
+    public List<String> getCategory() {
+        return categories;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategory(List<String> categories) {
+        this.categories = categories;
     }
 
     public String getDescription() {
@@ -45,7 +48,15 @@ public class Book {
         this.description = description;
     }
 
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
     public String toString() {
-        return title + "-" + author + "(" + category + ")" + description;
+        return title + " - " + String.join(", ", authors) + "(" + String.join(", ",categories) + ")" + description + " - " + isbn;
     }
 }
