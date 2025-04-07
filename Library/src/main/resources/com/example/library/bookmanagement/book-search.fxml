@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="626.0" prefWidth="905.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.bookmanagement.BookManagementController">
+<AnchorPane prefHeight="641.0" prefWidth="905.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.library.bookmanagement.BookManagementController">
    <children>
       <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="285.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane layoutX="69.0" layoutY="169.0" prefHeight="423.0" prefWidth="266.0" style="-fx-background-color: #bae8e4; -fx-background-radius: 15;">
@@ -45,5 +45,6 @@
             <TableColumn fx:id="authorColumn" prefWidth="184.79998779296875" text="Author" />
          </columns>
       </TableView>
+      <Button fx:id="returnButton" layoutX="590.0" layoutY="595.0" mnemonicParsing="false" onAction="#returnBook" text="Return" />
    </children>
 </AnchorPane>

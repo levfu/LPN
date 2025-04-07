@@ -37,6 +37,8 @@ public class BookManagementController {
      @FXML
      private Button searchButton;
      @FXML
+     private Button returnButton;
+     @FXML
      private ListView<String> bookListView;
      private final ObservableList<String> bookItems = FXCollections.observableArrayList();
      private final ObservableList<BookData> borrowedBooks = FXCollections.observableArrayList();
@@ -122,21 +124,46 @@ public class BookManagementController {
                     String author = parts[1].trim();
                     Book selectedBook = getBookFromtList(title,author);
                     if (selectedBook != null) {
+                         String authorNames = String.join(", ", selectedBook.getAuthor());
                          if (borrowedBooks.size() >= MAX_BOOKS){
                               borrowedBooks.remove(0);
                          }
-                         borrowedBooks.add(new BookData(selectedBook.getTitle(), String.join(", ", selectedBook.getAuthor()), selectedBook.getIsbn()));
+                         borrowedBooks.add(new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn()));
                     }
                }
           }
      }
       private Book getBookFromtList(String title, String author) {
           for (Book book : books) {
-               if (book.getTitle().equals(title) && book.getAuthor().contains(author)) {
-                    return book;
-               }
+              if (book.getTitle().equals(title)) {
+                   for (String bookAuthor : book.getAuthor()) {
+                        if (bookAuthor.contains(author)) {
+                             return book;
+                        }
+                   }
+              }
           }
           return null;
+      }
+      @FXML
+     private void returnBook() {
+          BookData selectedRow = borrowBookTable.getSelectionModel().getSelectedItem();
+          if (selectedRow != null) {
+               Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+               confirmAlert.setTitle("Xác nhận trả sách");
+               confirmAlert.setHeaderText("Bạn có chắc chắn muốn trả sách này");
+               confirmAlert.setContentText("Sách: " + selectedRow.getTitle() + " - " + selectedRow.getAuthor());
+               ButtonType result = confirmAlert.showAndWait().orElse(ButtonType.CANCEL);
+               if (result == ButtonType.OK) {
+                    borrowedBooks.remove(selectedRow);
+               }
+          } else {
+               Alert alert = new Alert(Alert.AlertType.WARNING);
+               alert.setTitle("Cảnh báo");
+               alert.setHeaderText(null);
+               alert.setContentText("Vui lòng chọn một sách để trả!");
+               alert.showAndWait();
+          }
       }
 
 }

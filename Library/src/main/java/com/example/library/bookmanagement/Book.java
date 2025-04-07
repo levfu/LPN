@@ -9,11 +9,12 @@ public class Book {
     private String description;
     private String isbn;
 
-    public Book (String title, List<String> authors, List<String> categories, String description) {
+    public Book (String title, List<String> authors, List<String> categories, String description, String isbn) {
         this.title = title;
         this.authors = authors;
         this.categories = categories;
         this.description = description;
+        this.isbn = isbn;
     }
 
     public String getTitle() {

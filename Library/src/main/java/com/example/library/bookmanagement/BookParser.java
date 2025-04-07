@@ -28,7 +28,7 @@ public class BookParser {
                         }
                     }
                 }
-                bookList.add(new Book(title, authors,new ArrayList<>(), ""));
+                bookList.add(new Book(title, authors,new ArrayList<>(), "", isbn));
             }
         }
         return bookList;
