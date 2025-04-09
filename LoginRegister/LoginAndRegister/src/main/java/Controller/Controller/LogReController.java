@@ -1,5 +1,5 @@
 package Controller;
-import Database.Database;
+import Database.LogReDatabase;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class LoginController implements Initializable {
+public class LogReController implements Initializable {
     @FXML
     private TextField txtUsername;
     @FXML
@@ -28,7 +28,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void handleLogin() {
-        String username = txtUsername.getText().trim();
+        String email = txtUsername.getText().trim();
         String password = txtPassword.getText().trim();
         String role = roleComboBox.getValue();
 
@@ -39,20 +39,20 @@ public class LoginController implements Initializable {
         }
 
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.WARNING, "Vui lòng nhập đủ thông tin!");
             return;
         }
 
 
-        if (!isValidEmail(username)) {
+        if (!isValidEmail(email)) {
             showAlert(Alert.AlertType.ERROR, "Email không hợp lệ! Vui lòng nhập đúng định dạng.");
             return;
         }
 
         System.out.println("Role selected: " + role);
 
-        if (Database.checkLogin(username, password)) {
+        if (LogReDatabase.checkLogin(email, password, role)) {
             showAlert(Alert.AlertType.INFORMATION, "Đăng nhập thành công với vai trò: " + role + "!");
         } else {
             showAlert(Alert.AlertType.ERROR, "Sai Email hoặc mật khẩu!");
@@ -61,7 +61,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void handleRegister() {
-        String username = txtUsername.getText().trim();
+        String email = txtUsername.getText().trim();
         String password = txtPassword.getText().trim();
         String role = roleComboBox.getValue();
 
@@ -72,20 +72,20 @@ public class LoginController implements Initializable {
         }
 
 
-        System.out.println("Email: '" + username + "', Password: '" + password + "', Role: '" + role + "'");
+        System.out.println("Email: '" + email + "', Password: '" + password + "', Role: '" + role + "'");
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (email.isEmpty() || password.isEmpty()) {
             showAlert(Alert.AlertType.WARNING, "Vui lòng nhập đủ thông tin!");
             return;
         }
 
 
-        if (!isValidEmail(username)) {
+        if (!isValidEmail(email)) {
             showAlert(Alert.AlertType.ERROR, "Email không hợp lệ! Vui lòng nhập đúng định dạng.");
             return;
         }
 
-        if (Database.registerUser(username, password)) {
+        if (LogReDatabase.registerUser(email, password, role)) {
             showAlert(Alert.AlertType.INFORMATION, "Đăng ký thành công với vai trò: " + role + "!");
         } else {
             showAlert(Alert.AlertType.ERROR, "Email đã được sử dụng");
@@ -107,6 +107,8 @@ public class LoginController implements Initializable {
         alert.setContentText(message);
         alert.show();
     }
+
+
 
 
 

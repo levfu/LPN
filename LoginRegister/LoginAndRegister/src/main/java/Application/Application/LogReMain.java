@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class LogReMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
