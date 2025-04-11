@@ -17,7 +17,7 @@ public class BookManagement extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("book-search.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),1000,700);
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
         primaryStage.setTitle("Search Books");
         primaryStage.setScene(scene);
         primaryStage.show();

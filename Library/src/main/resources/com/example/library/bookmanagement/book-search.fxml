@@ -38,13 +38,19 @@
             <Button fx:id="borrowButton" layoutX="190.0" layoutY="194.0" mnemonicParsing="false" onAction="#borrowBook" prefHeight="34.0" prefWidth="74.0" text="Borrow" />
          </children>
       </AnchorPane>
-      <TableView fx:id="borrowBookTable" layoutX="359.0" layoutY="169.0" prefHeight="423.0" prefWidth="531.0">
+      <TableView fx:id="borrowBookTable" layoutX="344.0" layoutY="169.0" prefHeight="423.0" prefWidth="557.0" style="-fx-background-color: #e0f7fa;">
          <columns>
-            <TableColumn fx:id="isbnColumn" prefWidth="144.79998779296875" text="ID" />
-            <TableColumn fx:id="titleColumn" prefWidth="199.20001220703125" text="Title" />
-            <TableColumn fx:id="authorColumn" prefWidth="184.79998779296875" text="Author" />
+            <TableColumn fx:id="isbnColumn" prefWidth="121.5999755859375" text="ID" />
+            <TableColumn fx:id="titleColumn" prefWidth="172.0" text="Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="148.7999267578125" text="Author" />
+            <TableColumn fx:id="dueDateColumn" prefWidth="111.9998779296875" text="DueDate" />
          </columns>
       </TableView>
       <Button fx:id="returnButton" layoutX="590.0" layoutY="595.0" mnemonicParsing="false" onAction="#returnBook" text="Return" />
+      <ImageView fitHeight="95.0" fitWidth="102.0" layoutX="359.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
+         <image>
+            <Image url="@../../../../icons/hinhcute.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -1,9 +1,12 @@
 package com.example.library.bookmanagement;
+
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+
 import java.util.List;
 import java.util.ArrayList;
+
 public class BookParser {
     public static List<Book> parseBooks(String jsonResponse) {
         List<Book> bookList = new ArrayList<>();
@@ -13,7 +16,7 @@ public class BookParser {
                 JsonObject volumeInfo = item.getAsJsonObject().getAsJsonObject("volumeInfo");
                 String title = volumeInfo.has("title") ? volumeInfo.get("title").getAsString() : "Unknown";
                 List<String> authors = new ArrayList<>();
-                if( volumeInfo.has("authors")) {
+                if (volumeInfo.has("authors")) {
                     for (var author : volumeInfo.getAsJsonArray("authors")) {
                         authors.add(author.getAsString());
                     }
@@ -28,7 +31,7 @@ public class BookParser {
                         }
                     }
                 }
-                bookList.add(new Book(title, authors,new ArrayList<>(), "", isbn));
+                bookList.add(new Book(title, authors, new ArrayList<>(), "", isbn));
             }
         }
         return bookList;

@@ -9,7 +9,7 @@ public class Book {
     private String description;
     private String isbn;
 
-    public Book (String title, List<String> authors, List<String> categories, String description, String isbn) {
+    public Book(String title, List<String> authors, List<String> categories, String description, String isbn) {
         this.title = title;
         this.authors = authors;
         this.categories = categories;
@@ -58,6 +58,6 @@ public class Book {
     }
 
     public String toString() {
-        return title + " - " + String.join(", ", authors) + "(" + String.join(", ",categories) + ")" + description + " - " + isbn;
+        return title + " - " + String.join(", ", authors) + "(" + String.join(", ", categories) + ")" + description + " - " + isbn;
     }
 }

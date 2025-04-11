@@ -51,3 +51,36 @@
 .button:pressed {
     -fx-background-color: #2ED9D9;
 }
+.table-view .column-header-background {
+    -fx-background-color: #4fc3f7;
+}
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35px;
+    -fx-border-color: transparent;
+    -fx-background-color: #4fc3f7;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.table-view .column-header .label {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+.table-row-cell:hover {
+    -fx-background-color: #c8e6c9;
+}
+.table-row-cell:hover .table-cell {
+    -fx-text-fill: black;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #81c784;
+}
+.table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: black;
+}
+.table-row-cell:odd {
+    -fx-background-color: #f1f8e9;
+}
+.table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
