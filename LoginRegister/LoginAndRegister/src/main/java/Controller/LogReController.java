@@ -14,6 +14,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 
 public class LogReController implements Initializable {
     @FXML
@@ -52,9 +57,11 @@ public class LogReController implements Initializable {
 
         if (LogReDatabase.checkLogin(email, password, role)) {
             showCustomAlert(Alert.AlertType.INFORMATION, "Thành công", "Đăng nhập thành công với vai trò " + role + "!", "/View/images/TickLogo.png");
+            switchToHome(); // chuyển sang trang home ngay sau khi đăng nhập thành công
         } else {
             showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Sai Email hoặc mật khẩu!", "/View/images/ErrorLogo.png");
         }
+
     }
 
     @FXML
@@ -127,5 +134,21 @@ public class LogReController implements Initializable {
 
         alert.showAndWait();
     }
+
+    private void switchToHome() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/home.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) txtUsername.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Trang Chính");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Không thể mở trang chính!", "/View/images/ErrorLogo.png");
+        }
+    }
+
 }
 

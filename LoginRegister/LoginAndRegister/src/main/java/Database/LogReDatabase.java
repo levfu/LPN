@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:library.db";
+    private static final String URL = "jdbc:sqlite:D:\\OOP\\LPN\\LoginRegister\\library.db";
 
 
     public static Connection connect() {
