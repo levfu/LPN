@@ -67,7 +67,7 @@ public class LogReDatabase {
             return false;
         }
 
-        String sql = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (email, password, role, name, phone, birthday, address, avatarPath) VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL)";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, email);
@@ -94,15 +94,17 @@ public class LogReDatabase {
             if (rs.next()) {
                 User user = new User();
                 user.setId(rs.getInt("id"));
-                user.setName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
+                user.setPassword(rs.getString("password"));
+                user.setRole(rs.getString("role"));
+
+                user.setName(rs.getString("name"));
                 user.setPhone(rs.getString("phone"));
                 String birthStr = rs.getString("birthday");
                 user.setBirthday(birthStr != null ? LocalDate.parse(birthStr) : null);
-                user.setPassword(rs.getString("password"));
                 user.setAddress(rs.getString("address"));
                 user.setAvatarPath(rs.getString("avatarPath"));
-                user.setRole(rs.getString("role"));
+
                 return user;
             }
         } catch (Exception e) {

@@ -134,14 +134,14 @@ public class MyAccountController {
             return;
         }
 
-        // KHÔNG gọi setEmail nếu bạn vẫn dùng WHERE email trong SQL!
         currentUser.setName(Fullname.getText());
         currentUser.setPhone(fullsdt.getText());
+        currentUser.setEmail(email.getText());
         currentUser.setPassword(password.getText());
         currentUser.setAddress(fulladdress.getText());
 
         if (fullbirthday.getValue() != null) {
-            currentUser.setBirthday(fullbirthday.getValue());
+            currentUser.setBirthday(fullbirthday.getValue());  // kiểu LocalDate
         }
 
         if (avatarFile != null) {

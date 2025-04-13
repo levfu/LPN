@@ -139,7 +139,7 @@ public class LogReController implements Initializable {
             Parent root;
             String email = txtUsername.getText().trim();
             String password = txtPassword.getText().trim();
-            User user = LogReDatabase.getUser(email, password , role);
+            User user = LogReDatabase.getUser(email, password ,role);
             if (user == null) {
                 showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Không tìm thấy thông tin người dùng!", "/View/images/ErrorLogo.png");
                 return;

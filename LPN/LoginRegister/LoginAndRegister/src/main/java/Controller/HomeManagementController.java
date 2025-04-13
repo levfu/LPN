@@ -159,19 +159,11 @@ public class HomeManagementController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MyAccount.fxml"));
             Parent root = loader.load();
-
-            // Truyền user
             MyAccountController controller = loader.getController();
             controller.setUser(currentUser);
-
-            // Lấy Stage hiện tại từ nút đang nhấn
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set scene mới (chuyển trang)
             stage.setScene(new Scene(root));
-            stage.setTitle("MyAccount-Manager");
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
