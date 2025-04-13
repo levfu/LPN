@@ -21,6 +21,14 @@ public class BookParser {
                         authors.add(author.getAsString());
                     }
                 }
+
+                String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description";
+
+                String thumbnail = "";
+                if (volumeInfo.has("imageLinks") && volumeInfo.getAsJsonObject("imageLinks").has("thumbnail")) {
+                    thumbnail = volumeInfo.getAsJsonObject("imageLinks").get("thumbnail").getAsString();
+                }
+
                 String isbn = "";
                 if (volumeInfo.has("industryIdentifiers")) {
                     for (var identifier : volumeInfo.getAsJsonArray("industryIdentifiers")) {
@@ -31,7 +39,7 @@ public class BookParser {
                         }
                     }
                 }
-                bookList.add(new Book(title, authors, new ArrayList<>(), "", isbn));
+                bookList.add(new Book(title, authors, new ArrayList<>(), description, isbn, thumbnail));
             }
         }
         return bookList;

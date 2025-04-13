@@ -1,6 +1,5 @@
 package com.example.library.bookmanagement;
 import javafx.scene.control.Label;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

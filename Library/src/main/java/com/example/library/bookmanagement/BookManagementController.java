@@ -7,10 +7,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
+import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -87,6 +93,27 @@ public class BookManagementController {
                 selectedBookTextField.setText(selectedBook);
             }
         });
+        borrowBookTable.setOnMouseClicked(mouseEvent -> {
+            if (mouseEvent.getClickCount() == 2) {
+                BookData selected = borrowBookTable.getSelectionModel().getSelectedItem();
+                if (selected != null) {
+                    System.out.println("Đã chọn sách");
+                    String isbn = selected.getIsbn();
+                    try {
+                        String jsonResponse = GoogleBookAPI.searchBooks("", "", "", isbn);
+                        List<Book> books = BookParser.parseBooks(jsonResponse);
+                        if (!books.isEmpty()) {
+                            showBookDetail(books.get(0));
+                        } else {
+                            showAlert("Không tìm thấy sách", "Không tìm thấy thông tin sách trên Google Books.");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        showAlert("Lỗi API", "Không thể lấy dữ liệu từ Google Book API.");
+                    }
+                }
+            }
+        });
         borrowedBooks.addAll(DatabaseHelper.getAllBooks());
     }
 
@@ -105,6 +132,7 @@ public class BookManagementController {
         try {
             String jsonResponse = GoogleBookAPI.searchBooks(title, author, "", isbn);
             List<Book> bookList = BookParser.parseBooks(jsonResponse);
+            books.clear();
             if (bookList.isEmpty()) {
                 bookItems.add("Khong tim thay sach");
             } else {
@@ -126,34 +154,51 @@ public class BookManagementController {
     private void borrowBook() {
         String selectedText = selectedBookTextField.getText();
 
-        if (selectedText != null && selectedText.contains(" - ")) {
-            String[] parts = selectedText.split(" - ");
-            if (parts.length == 2) {
-                String title = parts[0].trim();
-                String author = parts[1].trim();
-                Book selectedBook = getBookFromtList(title, author);
-                if (selectedBook != null) {
-                    String authorNames = String.join(", ", selectedBook.getAuthor());
-                    String dueDate = LocalDate.now().plusDays(15).toString();
-                    if (borrowedBooks.size() >= MAX_BOOKS) {
-                        borrowedBooks.remove(0);
-                    }
-                    borrowedBooks.add(new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate));
-                    DatabaseHelper.saveToDatabase(new BookData(selectedBook.getTitle(),authorNames,selectedBook.getIsbn(),dueDate));
+        if (selectedText != null && !selectedText.isEmpty()) {
+            Book selectedBook = getBookFromText(selectedText); // từ ListView dòng text → tìm Book gốc
+
+            if (selectedBook != null) {
+                String authorNames = String.join(", ", selectedBook.getAuthor());
+                String dueDate = LocalDate.now().plusDays(15).toString();
+
+                if (borrowedBooks.size() >= MAX_BOOKS) {
+                    borrowedBooks.remove(0);
                 }
+
+                BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate);
+                borrowedBooks.add(data);
+                DatabaseHelper.saveToDatabase(data);
+            } else {
+                showAlert("Không tìm thấy sách!", "Không thể mượn vì không tìm thấy sách tương ứng.");
             }
         }
     }
 
-    private Book getBookFromtList(String title, String author) {
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    private Book getBookFromText(String displayText) {
         for (Book book : books) {
-            if (book.getTitle().equals(title)) {
+            String display = book.getTitle() + " - " + String.join(", ", book.getAuthor());
+            if (display.equals(displayText)) {
+                return book;
+            }
+        }
+            return null;
+    }
+    private Book getBookByIsbn(String isbn) {
+        for (Book book : books) {
+            if (book.getIsbn().equals(isbn)) {
                 return book;
             }
         }
         return null;
     }
-
     @FXML
     private void returnBook() {
         BookData selectedRow = borrowBookTable.getSelectionModel().getSelectedItem();
@@ -173,6 +218,25 @@ public class BookManagementController {
             alert.setHeaderText(null);
             alert.setContentText("Vui lòng chọn một sách để trả!");
             alert.showAndWait();
+        }
+    }
+    private void showBookDetail(Book book) {
+        try {
+            URL fxmlurl = getClass().getResource("/com/example/library/bookmanagement/rating-book.fxml");
+            if (fxmlurl == null) {
+                throw new IOException("Không tìm thấy file");
+            }
+            FXMLLoader loader = new FXMLLoader(fxmlurl);
+            Parent root = loader.load();
+            RatingBookController ratingBookController = loader.getController();
+            ratingBookController.setBookInfo(book);
+
+            Stage detailStage = new Stage();
+            detailStage.setTitle("Chi tiết sách");
+            detailStage.setScene(new Scene(root));
+            detailStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

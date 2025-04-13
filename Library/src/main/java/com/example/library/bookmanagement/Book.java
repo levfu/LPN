@@ -8,13 +8,15 @@ public class Book {
     private List<String> categories;
     private String description;
     private String isbn;
+    private String thumbnail;
 
-    public Book(String title, List<String> authors, List<String> categories, String description, String isbn) {
+    public Book(String title, List<String> authors, List<String> categories, String description, String isbn, String thumbnail) {
         this.title = title;
         this.authors = authors;
         this.categories = categories;
         this.description = description;
         this.isbn = isbn;
+        this.thumbnail = thumbnail;
     }
 
     public String getTitle() {
@@ -55,6 +57,14 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 
     public String toString() {
