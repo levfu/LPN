@@ -3,7 +3,6 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -159,19 +158,10 @@ public class HomeManagementController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MyAccount.fxml"));
             Parent root = loader.load();
-
-            // Truyền user
             MyAccountController controller = loader.getController();
             controller.setUser(currentUser);
-
-            // Lấy Stage hiện tại từ nút đang nhấn
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set scene mới (chuyển trang)
             stage.setScene(new Scene(root));
-            stage.setTitle("MyAccount-Manager");
             stage.show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }

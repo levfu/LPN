@@ -3,7 +3,6 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -61,24 +60,16 @@ public class MyAccountController {
     @FXML
     void backHome(ActionEvent event) {
         try {
-            FXMLLoader loader;
+            Stage stage = (Stage) backhome.getScene().getWindow();
+            Parent root;
 
             if ("Manager".equalsIgnoreCase(currentUser.getRole())) {
-                loader = new FXMLLoader(getClass().getResource("/View/HomeManager.fxml"));
-                Parent root = loader.load();
-                HomeManagementController controller = loader.getController();
-                controller.setUser(currentUser);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
+                root = FXMLLoader.load(getClass().getResource("/View/HomeManager.fxml"));
             } else {
-                loader = new FXMLLoader(getClass().getResource("/View/HomeUser.fxml"));
-                Parent root = loader.load();
-                HomeUserController controller = loader.getController();
-                controller.setUser(currentUser);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
+                root = FXMLLoader.load(getClass().getResource("/View/HomeUser.fxml"));
             }
 
+            stage.setScene(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Không thể quay lại trang chủ.");
@@ -134,14 +125,15 @@ public class MyAccountController {
             return;
         }
 
-        // KHÔNG gọi setEmail nếu bạn vẫn dùng WHERE email trong SQL!
+        // Cập nhật lại thông tin từ form
         currentUser.setName(Fullname.getText());
         currentUser.setPhone(fullsdt.getText());
+        currentUser.setEmail(email.getText());
         currentUser.setPassword(password.getText());
         currentUser.setAddress(fulladdress.getText());
 
         if (fullbirthday.getValue() != null) {
-            currentUser.setBirthday(fullbirthday.getValue());
+            currentUser.setBirthday(fullbirthday.getValue());  // kiểu LocalDate
         }
 
         if (avatarFile != null) {
