@@ -3,6 +3,7 @@ package Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -60,16 +61,26 @@ public class MyAccountController {
     @FXML
     void backHome(ActionEvent event) {
         try {
-            Stage stage = (Stage) backhome.getScene().getWindow();
-            Parent root;
+            FXMLLoader loader;
 
             if ("Manager".equalsIgnoreCase(currentUser.getRole())) {
-                root = FXMLLoader.load(getClass().getResource("/View/HomeManager.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/View/HomeManager.fxml"));
+                Parent root = loader.load();
+                HomeManagementController controller = loader.getController();
+                controller.setUser(currentUser);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Home-Manager");
             } else {
-                root = FXMLLoader.load(getClass().getResource("/View/HomeUser.fxml"));
+                loader = new FXMLLoader(getClass().getResource("/View/HomeUser.fxml"));
+                Parent root = loader.load();
+                HomeUserController controller = loader.getController();
+                controller.setUser(currentUser);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Home-User");
             }
 
-            stage.setScene(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Không thể quay lại trang chủ.");

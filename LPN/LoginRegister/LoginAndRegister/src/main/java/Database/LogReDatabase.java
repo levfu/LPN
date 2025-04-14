@@ -67,7 +67,8 @@ public class LogReDatabase {
             return false;
         }
 
-        String sql = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO users (email, password, role, name, phone, birthday, address, avatarPath) " +
+                "VALUES (?, ?, ?, NULL, NULL, NULL, NULL, NULL)";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, email);
