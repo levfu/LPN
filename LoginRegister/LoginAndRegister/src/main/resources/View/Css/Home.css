@@ -1,0 +1,106 @@
+.pane1{
+    -fx-background-color:rgb(115, 193, 222);
+}
+.pane2{
+    -fx-background-color:rgb(196, 191, 190);
+}
+.button1{
+    -fx-background-color:rgb(237, 247, 119);
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(235, 12, 0);
+}
+.button2{
+    -fx-background-color:rgb(9, 133, 131);
+    -fx-font-weight: bold;
+}
+.button3{
+    -fx-background-color:rgb(9, 133, 131);
+    -fx-font-weight: bold;
+}
+.button4{
+    -fx-background-color:rgb(9, 133, 131);
+    -fx-font-weight: bold;
+}
+
+.button5{
+    -fx-background-color:rgb(9, 133, 131);
+    -fx-font-weight: bold;
+}
+.label2{
+    -fx-background-color:rgb(90, 209, 193);
+}
+.buttonother{
+    -fx-background-color:rgb(227, 77, 85);
+    -fx-font-weight: bold;
+}
+.labelhot{
+    -fx-background-color:rgb(163, 230, 230);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: "Serif";
+    -fx-background-color: #2ecc71;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
+}
+.list-view {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #adb5bd;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+}
+
+
+.list-cell {
+    -fx-text-fill: #343a40;
+    -fx-padding: 10px;
+    -fx-background-color: transparent;
+}
+
+.list-cell:hover {
+    -fx-background-color: #dee2e6;
+    -fx-cursor: hand;
+}
+
+
+.list-cell:selected {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.labelharry {
+    -fx-background-color:rgb(116, 219, 219);
+    -fx-border-color: #4CAF50;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-padding: 10;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+.buttonHarry {
+    -fx-background-color: rgb(48, 230, 184);
+    -fx-text-fill: white; /* Màu chữ */
+    -fx-font-weight: bold; /* Chữ đậm */
+    -fx-border-color: white; /* Màu viền nút */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
+    -fx-cursor: hand;
+}
+
+.buttonHarry:hover {
+    -fx-background-color: rgb(227, 68, 32);
+}
+
+.buttonHarry:pressed {
+    -fx-background-color: #388e3c;
+    -fx-border-color: #2c6e2b;
+}
+
+.vboxhot{
+    -fx-background-color: #b3e0f2;
+    -fx-border-color: red;
+    -fx-border-width: 2px;
+}
