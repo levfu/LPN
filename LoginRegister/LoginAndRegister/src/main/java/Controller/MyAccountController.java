@@ -21,7 +21,7 @@ import java.io.IOException;
 public class MyAccountController {
 
     @FXML
-    private TextField Fullname;
+    private TextField fullname;
 
     @FXML
     private ImageView avatar;
@@ -91,7 +91,7 @@ public class MyAccountController {
 
     public void setUser(User user) {
         this.currentUser = user;
-        Fullname.setText(user.getName());
+        fullname.setText(user.getName());
         fullsdt.setText(user.getPhone());
         email.setText(user.getEmail());
         password.setText(user.getPassword());
@@ -126,7 +126,7 @@ public class MyAccountController {
 
     @FXML
     void savecharge(ActionEvent event) {
-        if (Fullname.getText().isEmpty() || fullsdt.getText().isEmpty() || email.getText().isEmpty()) {
+        if (fullname.getText().isEmpty()|| fullsdt.getText().isEmpty() || fullsdt.getText().isEmpty() || email.getText().isEmpty()) {
             showAlert("Vui lòng nhập đầy đủ thông tin!");
             return;
         }
@@ -137,7 +137,7 @@ public class MyAccountController {
         }
 
         // Cập nhật lại thông tin từ form
-        currentUser.setName(Fullname.getText());
+        currentUser.setName(fullname.getText());
         currentUser.setPhone(fullsdt.getText());
         currentUser.setEmail(email.getText());
         currentUser.setPassword(password.getText());

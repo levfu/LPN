@@ -22,6 +22,13 @@ public class BookParser {
                     }
                 }
 
+                List<String> categories = new ArrayList<>();
+                if(volumeInfo.has("categories")) {
+                    for (var category : volumeInfo.getAsJsonArray("categories")) {
+                        categories.add(category.getAsString());
+                    }
+                }
+
                 String description = volumeInfo.has("description") ? volumeInfo.get("description").getAsString() : "No description";
 
                 String thumbnail = "";
@@ -39,7 +46,7 @@ public class BookParser {
                         }
                     }
                 }
-                bookList.add(new Book(title, authors, new ArrayList<>(), description, isbn, thumbnail));
+                bookList.add(new Book(title, authors, categories, description, isbn, thumbnail));
             }
         }
         return bookList;

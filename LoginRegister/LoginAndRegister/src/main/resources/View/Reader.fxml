@@ -1,16 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Reader">
+<AnchorPane stylesheets="@Css/Reader.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReaderController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="237.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/3592172.png" />
-         </image>
-      </ImageView>
+      <TableView fx:id="userTable" layoutY="81.0" prefHeight="632.0" prefWidth="920.0" stylesheets="@Css/Reader.css">
+         <columns>
+            <TableColumn fx:id="ID" prefWidth="63.999998569488525" text="ID" />
+            <TableColumn fx:id="Name" prefWidth="124.00003814697266" text="Name" />
+            <TableColumn fx:id="BirthDay" prefWidth="121.60000610351562" text="BirthDay" />
+            <TableColumn fx:id="Phone" prefWidth="131.20001220703125" text="Phone" />
+            <TableColumn fx:id="Email" prefWidth="132.79995727539062" text="Email" />
+            <TableColumn fx:id="Address" minWidth="0.0" prefWidth="99.20001220703125" text="Address" />
+            <TableColumn fx:id="Role" maxWidth="178.39984130859375" prefWidth="76.79998779296875" text="Role" />
+            <TableColumn fx:id="Action" maxWidth="173.5999755859375" prefWidth="173.5999755859375" text="Action" />
+         </columns>
+      </TableView>
+      <Button fx:id="backhome" layoutX="149.0" layoutY="23.0" mnemonicParsing="false" onAction="#backHome" prefHeight="41.0" prefWidth="99.0" styleClass="backhome" stylesheets="@Css/Reader.css" text="&lt;Back&gt;" />
+      <Label layoutX="286.0" layoutY="1.0" prefHeight="74.0" prefWidth="370.0" styleClass="LabelReader" stylesheets="@Css/Reader.css" text="Reader manager">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

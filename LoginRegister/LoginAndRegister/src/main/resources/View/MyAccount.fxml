@@ -23,7 +23,7 @@
       <Button fx:id="savecharge" layoutX="589.0" layoutY="431.0" mnemonicParsing="false" onAction="#savecharge" text="Lưu thay đổi" />
       <VBox layoutX="298.0" layoutY="77.0" prefHeight="189.0" prefWidth="262.0">
          <children>
-            <TextField fx:id="Fullname" prefHeight="33.0" prefWidth="262.0" promptText="Họ và Tên" />
+            <TextField fx:id="fullname" prefHeight="33.0" prefWidth="262.0" promptText="Họ và Tên" />
             <TextField fx:id="fullsdt" prefHeight="31.0" prefWidth="166.0" promptText="Số điện thoại" />
             <DatePicker fx:id="fullbirthday" prefHeight="34.0" prefWidth="267.0" promptText="Ngày/Tháng/Năm" />
             <TextField fx:id="fulladdress" prefHeight="34.0" prefWidth="262.0" promptText="Địa chỉ" />

@@ -14,39 +14,90 @@ public class DatabaseHelper {
     public static void createTable() {
         String sql = "CREATE TABLE IF NOT EXISTS borrowed_books ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "userId TEXT, "
                 + "isbn TEXT, "
                 + "title TEXT, "
                 + "author TEXT, "
                 + "dueDate TEXT"
                 + ");";
+        String ratingsql = "CREATE TABLE IF NOT EXISTS book_ratings ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "userId INTEGER NOT NULL, "
+                + "isbn TEXT NOT NULL, "
+                + "rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5), "
+                + "comment TEXT, "
+                + "FOREIGN KEY (isbn) REFERENCES borrowed_books(isbn)"
+                + ")";
         try (Connection connection = connect();
              Statement stmt = connection.createStatement()) {
             stmt.execute(sql);
+            stmt.execute(ratingsql);
         } catch (SQLException e) {
             System.out.println("Lỗi khi tạo bảng: " + e.getMessage());
         }
     }
 
-    public static void saveToDatabase(BookData book) {
-        String sql = "INSERT INTO borrowed_books(title, author, isbn, dueDate) VALUES (?, ?, ?, ?)";
+
+    public static void saveToDatabase(int userId, BookData book) {
+        String sql = "INSERT INTO borrowed_books(userId, title, author, isbn, dueDate) VALUES (?, ?, ?, ?, ?)";
         try (Connection connection = connect();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
-            pstmt.setString(1, book.getTitle());
-            pstmt.setString(2, book.getAuthor());
-            pstmt.setString(3, book.getIsbn());
-            pstmt.setString(4, book.getDueDate());
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, book.getTitle());
+            pstmt.setString(3, book.getAuthor());
+            pstmt.setString(4, book.getIsbn());
+            pstmt.setString(5, book.getDueDate());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Lỗi khi lưu dữ liệu: ");
             e.printStackTrace();
         }
     }
-    public static List<BookData> getAllBooks() {
-        List<BookData> books = new ArrayList<>();
-        String sql = "SELECT * FROM borrowed_books";
+
+    public static void saveRating(int userId, String isbn, int rating, String comment) {
+        String checkRatingSql = "SELECT COUNT(*) FROM book_ratings WHERE userId = ? AND isbn = ?";
+
+        // Kiểm tra xem người dùng đã đánh giá sách này chưa
         try (Connection connection = connect();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement pstmt = connection.prepareStatement(checkRatingSql)) {
+            pstmt.setInt(1, userId);
+            pstmt.setString(2, isbn);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next() && rs.getInt(1) > 0) {
+                // Người dùng đã đánh giá sách, tiến hành cập nhật đánh giá
+                String updateRatingSql = "UPDATE book_ratings SET rating = ?, comment = ? WHERE userId = ? AND isbn = ?";
+                try (PreparedStatement updatePstmt = connection.prepareStatement(updateRatingSql)) {
+                    updatePstmt.setInt(1, rating);
+                    updatePstmt.setString(2, comment);
+                    updatePstmt.setInt(3, userId);
+                    updatePstmt.setString(4, isbn);
+                    updatePstmt.executeUpdate();
+                }
+            } else {
+                // Người dùng chưa đánh giá sách, lưu đánh giá mới
+                String ratingsql = "INSERT INTO book_ratings(userId, isbn, rating, comment) VALUES (?, ?, ?, ?)";
+                try (PreparedStatement insertPstmt = connection.prepareStatement(ratingsql)) {
+                    insertPstmt.setInt(1, userId);
+                    insertPstmt.setString(2, isbn);
+                    insertPstmt.setInt(3, rating);
+                    insertPstmt.setString(4, comment);
+                    insertPstmt.executeUpdate();
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Lỗi khi lưu đánh giá: ");
+            e.printStackTrace();
+        }
+    }
+
+    public static List<BookData> getAllBooks(int userId) {
+        List<BookData> books = new ArrayList<>();
+        String sql = "SELECT * FROM borrowed_books WHERE userId = ?";
+        try (Connection connection = connect();
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 String isbn = rs.getString("isbn");
                 String title = rs.getString("title");
@@ -79,4 +130,27 @@ public class DatabaseHelper {
             System.out.println("Loi khi xoa toan bo du lieu: " + e.getMessage());
         }
     }
-}
+
+    public static double getAverageRating(String isbn) {
+        double averageRating = 0;
+        int totalRatings = 0;
+        String sql = "SELECT rating FROM book_ratings WHERE isbn = ?";
+        try (Connection connection = connect();
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+            pstmt.setString(1, isbn);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                int sumRatings = 0;
+                while (rs.next()) {
+                    sumRatings += rs.getInt("rating");
+                    totalRatings++;
+                }
+                if (totalRatings > 0) {
+                    averageRating = (double) sumRatings / totalRatings;
+                }
+            }
+        }catch (SQLException e) {
+            System.out.println("Lỗi khi tính toán rating: " + e.getMessage());
+        }
+        return averageRating;
+    }
+}  

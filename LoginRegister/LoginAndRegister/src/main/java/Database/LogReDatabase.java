@@ -4,11 +4,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
-
+import java.util.List;
+import java.util.ArrayList;
 import Controller.User;
 
 public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:D:\\WS\\LPN\\LoginRegister\\library.db";
+    private static final String URL = "jdbc:sqlite:D:\\OOP\\BTL OOP\\LoginRegister\\library.db";
 
 
     public static Connection connect() {
@@ -137,6 +138,52 @@ public class LogReDatabase {
 
             int affectedRows = pstmt.executeUpdate();
             return affectedRows > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static List<User> getAllUsers() {
+        List<User> userList = new ArrayList<>();
+        String sql = "SELECT * FROM users";
+
+        try (Connection conn = connect();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setName(rs.getString("name"));
+                user.setEmail(rs.getString("email"));
+                user.setPhone(rs.getString("phone"));
+                user.setRole(rs.getString("role"));
+                user.setAddress(rs.getString("address"));
+                user.setAvatarPath(rs.getString("avatarPath"));
+                user.setPassword(rs.getString("password"));
+
+                String birthStr = rs.getString("birthday");
+                if (birthStr != null && !birthStr.isBlank()) {
+                    user.setBirthday(LocalDate.parse(birthStr));
+                } else {
+                    user.setBirthday(null); // hoặc LocalDate.now()
+                }
+
+                userList.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return userList;
+    }
+    public static boolean deleteUserById(int id) {
+        String sql = "DELETE FROM users WHERE id = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, id);
+            int affected = pstmt.executeUpdate();
+            return affected > 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
