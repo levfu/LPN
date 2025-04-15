@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeUserController">
+   <left>
+      <Pane id="pane2" prefHeight="654.0" prefWidth="114.0" styleClass="pane2" stylesheets="@Css/Home.css" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="323.0" prefWidth="115.0">
+               <children>
+                  <Button id="Home" fx:id="buttonhomeuser" mnemonicParsing="false" onAction="#Homeuser" prefHeight="54.0" prefWidth="204.0" styleClass="button1" stylesheets="@Css/Home.css" text="Home" textFill="#fffcfc">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button id="Books" fx:id="buttonbooksuser" mnemonicParsing="false" onAction="#Booksuser" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@Css/Home.css" text="Books" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button id="Issue" fx:id="buttoncomMUuser" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@Css/Home.css" text="ComMU" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button id="Analytic" fx:id="buttonAnalyticsuser" mnemonicParsing="false" onAction="#Analytics" prefHeight="54.0" prefWidth="204.0" styleClass="button5" stylesheets="@Css/Home.css" text="Analytics" textFill="#f7f5f5">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button id="buttonother" fx:id="buttonOthersuser" mnemonicParsing="false" prefHeight="54.0" prefWidth="113.0" styleClass="buttonother" stylesheets="@Css/Home.css" text="Others" textFill="#ebe6e6">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Setting" mnemonicParsing="false" onAction="#Settings" prefHeight="46.0" prefWidth="114.0" text=" Settings">
+                     <graphic>
+                        <ImageView fitHeight="45.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/imageSetting.jpg" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox fx:id="menuBox" layoutX="-1.0" layoutY="322.0" prefHeight="142.0" prefWidth="117.0" visible="false">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="104.0" text="General setting" />
+                  <Button fx:id="myaccount" mnemonicParsing="false" onAction="#myaccount" prefHeight="37.0" prefWidth="103.0" text="Account" />
+                  <Button fx:id="buttonlogout" mnemonicParsing="false" onAction="#logout" prefHeight="42.0" prefWidth="104.0" text="Logout" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
+   <top>
+      <Pane id="pane1" prefHeight="45.0" prefWidth="904.0" styleClass="pane1" stylesheets="@Css/Home.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="228.0" layoutY="1.0" prefHeight="41.0" prefWidth="155.0" text="Manager Library" textFill="#38191f">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="58.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/imageUEt2.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="searchinguser" layoutX="552.0" layoutY="11.0" prefHeight="32.0" prefWidth="323.0" promptText="Search:">
+               <font>
+                  <Font size="14.0" />
+               </font></TextField>
+            <ImageView fitHeight="29.0" fitWidth="37.0" layoutX="838.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/imagesearching(2).jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="715.0" prefWidth="703.0" BorderPane.alignment="CENTER">
+         <children>
+            <ListView id="listView" fx:id="listViewuser" editable="true" layoutX="401.0" prefHeight="81.0" prefWidth="274.0" styleClass="list-View" stylesheets="@Css/Home.css" visible="false" />
+            <HBox fx:id="ramdomhotuser" layoutX="2.0" layoutY="65.0" prefHeight="170.0" prefWidth="900.0" styleClass="vboxhot" stylesheets="@Css/Home.css" />
+            <Label id="labelhot" layoutX="392.0" layoutY="17.0" prefHeight="48.0" prefWidth="116.0" styleClass="labelhot" stylesheets="@Css/Home.css" text="Đề xuất" textAlignment="CENTER" textFill="#4e2f2f">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="52.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/3592172.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
