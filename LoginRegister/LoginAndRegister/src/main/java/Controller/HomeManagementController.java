@@ -15,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+
 public class HomeManagementController {
 
     @FXML
@@ -82,7 +84,18 @@ public class HomeManagementController {
 
     @FXML
     void Readers(ActionEvent event) {
-
+        try {
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/View/Reader.fxml"));
+            Parent root = loader.load();
+            ReaderController controller = loader.getController();
+            controller.setUser(currentUser);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Readers");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
