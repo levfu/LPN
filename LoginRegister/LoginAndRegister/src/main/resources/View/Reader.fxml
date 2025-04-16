@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReaderController">
+<AnchorPane prefHeight="715.0" prefWidth="912.0" stylesheets="@Css/Reader.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReaderController">
    <children>
-      <TableView fx:id="userTable" layoutX="-6.0" layoutY="27.0" prefHeight="672.0" prefWidth="907.0">
+      <TableView fx:id="userTable" layoutY="81.0" prefHeight="632.0" prefWidth="920.0" stylesheets="@Css/Reader.css">
          <columns>
             <TableColumn fx:id="ID" prefWidth="88.80002117156982" text="ID" />
             <TableColumn fx:id="Name" prefWidth="159.20004272460938" text="Name" />
@@ -15,10 +17,15 @@
             <TableColumn fx:id="Phone" prefWidth="120.79998779296875" text="Phone" />
             <TableColumn fx:id="Email" prefWidth="98.4000244140625" text="Email" />
             <TableColumn fx:id="Address" minWidth="0.0" prefWidth="136.00006103515625" text="Address" />
-            <TableColumn fx:id="Role" maxWidth="178.39984130859375" prefWidth="96.800048828125" text="Role" />
-            <TableColumn fx:id="Action" maxWidth="88.8000366210938" prefWidth="84.7999267578125" text="Action" />
+            <TableColumn fx:id="Role" maxWidth="178.39984130859375" prefWidth="76.8001708984375" text="Role" />
+            <TableColumn fx:id="Action" maxWidth="124.0" prefWidth="118.39990234375" text="Action" />
          </columns>
       </TableView>
-      <Button fx:id="backhome" layoutY="1.0" mnemonicParsing="false" onAction="#backHome" text="&lt;Back&gt;" />
+      <Button fx:id="backhome" layoutX="149.0" layoutY="23.0" mnemonicParsing="false" onAction="#backHome" prefHeight="41.0" prefWidth="99.0" styleClass="backhome" stylesheets="@Css/Reader.css" text="&lt;Back&gt;" />
+      <Label layoutX="286.0" layoutY="1.0" prefHeight="74.0" prefWidth="370.0" styleClass="LabelReader" stylesheets="@Css/Reader.css" text="Reader manager">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

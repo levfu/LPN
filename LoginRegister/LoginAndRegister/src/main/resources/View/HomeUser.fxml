@@ -90,7 +90,7 @@
       </Pane>
    </top>
    <center>
-      <Pane prefHeight="715.0" prefWidth="703.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="PaneContent" prefHeight="715.0" prefWidth="703.0" BorderPane.alignment="CENTER">
          <children>
             <ListView id="listView" fx:id="listViewuser" editable="true" layoutX="401.0" prefHeight="81.0" prefWidth="274.0" styleClass="list-View" stylesheets="@Css/Home.css" visible="false" />
             <HBox fx:id="ramdomhotuser" layoutX="2.0" layoutY="65.0" prefHeight="170.0" prefWidth="900.0" styleClass="vboxhot" stylesheets="@Css/Home.css" />
