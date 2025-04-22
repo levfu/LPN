@@ -11,7 +11,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
 public class ChatDatabase {
-    private static final String URL = "jdbc:sqlite:D:\\OOP\\BTL OOP\\LoginRegister\\library.db";
+    private static final String URL = "jdbc:sqlite:D:\\WS\\BTL OOP\\LoginRegister\\library.db";
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(URL);
