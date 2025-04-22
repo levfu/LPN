@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeUserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeUserController">
    <left>
       <Pane id="pane2" prefHeight="654.0" prefWidth="114.0" styleClass="pane2" stylesheets="@Css/Home.css" BorderPane.alignment="CENTER">
          <children>
@@ -29,11 +29,6 @@
                      </font>
                   </Button>
                   <Button id="Issue" fx:id="buttoncomMUuser" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@Css/Home.css" text="ComMU" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-                  <Button id="Analytic" fx:id="buttonAnalyticsuser" mnemonicParsing="false" onAction="#Analytics" prefHeight="54.0" prefWidth="204.0" styleClass="button5" stylesheets="@Css/Home.css" text="Analytics" textFill="#f7f5f5">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -90,7 +85,7 @@
       </Pane>
    </top>
    <center>
-      <Pane prefHeight="715.0" prefWidth="703.0" BorderPane.alignment="CENTER">
+      <Pane fx:id="PaneContent" prefHeight="715.0" prefWidth="703.0" BorderPane.alignment="CENTER">
          <children>
             <ListView id="listView" fx:id="listViewuser" editable="true" layoutX="401.0" prefHeight="81.0" prefWidth="274.0" styleClass="list-View" stylesheets="@Css/Home.css" visible="false" />
             <HBox fx:id="ramdomhotuser" layoutX="2.0" layoutY="65.0" prefHeight="170.0" prefWidth="900.0" styleClass="vboxhot" stylesheets="@Css/Home.css" />

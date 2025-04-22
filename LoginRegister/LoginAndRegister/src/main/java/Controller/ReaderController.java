@@ -1,11 +1,14 @@
 package Controller;
 
+import Books.BookManagementController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,12 +18,19 @@ import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import javafx.event.ActionEvent;
+import Database.LogReDatabase;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
 public class ReaderController {
+
+    private Pane PaneContent;
+
+    public void setpaneContent(Pane PaneContent) {
+        this.PaneContent = PaneContent;
+    }
 
     @FXML
     private TableColumn<User, String> Address;
@@ -46,8 +56,6 @@ public class ReaderController {
     @FXML
     private TableColumn<User, Void> Action;
 
-    @FXML
-    private Button backhome;
 
     @FXML
     private TableView<User> userTable;
@@ -102,20 +110,21 @@ public class ReaderController {
             public TableCell<User, Void> call(final TableColumn<User, Void> param) {
                 return new TableCell<>() {
 
-                    private final Button btnEdit = new Button("Sửa");
                     private final Button btnDelete = new Button("Xoá");
-                    private final HBox pane = new HBox(5, btnEdit, btnDelete);
+                    private final Button btnBorrow = new Button("Mượn sách");
+                    private final HBox pane = new HBox(5, btnDelete, btnBorrow);
 
                     {
-                        btnEdit.setOnAction((ActionEvent event) -> {
-                            User user = getTableView().getItems().get(getIndex());
-                        });
-
                         btnDelete.setOnAction((ActionEvent event) -> {
                             User user = getTableView().getItems().get(getIndex());
                             if (LogReDatabase.deleteUserById(user.getId())) {
                                 getTableView().getItems().remove(user);
                             }
+                        });
+
+                        btnBorrow.setOnAction((ActionEvent event) -> {
+                            User user = getTableView().getItems().get(getIndex());
+                            openBookSearch(user);
                         });
                     }
 
@@ -132,6 +141,21 @@ public class ReaderController {
             }
         };
     }
+
+
+    private void openBookSearch(User user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/BookSearch.fxml"));
+            Parent BookSearch = loader.load();
+
+            BookManagementController controller = loader.getController();
+            controller.setUser(user);
+            PaneContent.getChildren().setAll(BookSearch);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private User currentUser;
 

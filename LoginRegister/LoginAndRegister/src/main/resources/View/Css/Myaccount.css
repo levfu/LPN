@@ -1,6 +1,115 @@
-.imageacount{
-    border: 2px solid #00BFFF;
-    border-radius: 8px;
-    padding: 16px;
-    background-color: #F0F8FF;
+/* Nền chung cho AnchorPane */
+.AnchorPane {
+    -fx-background-color: #f4f7fc; /* Màu nền sáng nhẹ */
+    -fx-padding: 20px;
+}
+
+/* Định dạng cho Avatar ImageView */
+#avatar {
+    -fx-background-radius: 50%; /* Bo tròn hình ảnh */
+    -fx-border-radius: 50%; /* Bo tròn viền hình ảnh */
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-shadow: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+/* Button 'Thay đổi' */
+#chooseimage {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-radius: 30px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+    -fx-transition: background-color 0.3s ease-in-out;
+}
+
+/* Hiệu ứng hover cho Button */
+#chooseimage:hover {
+    -fx-background-color: #357ab7;
+    -fx-opacity: 0.9;
+}
+
+/* Button 'Lưu thay đổi' */
+#savecharge {
+    -fx-background-color: #28a745; /* Màu xanh lá */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-radius: 30px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+}
+
+/* Hiệu ứng hover cho Button 'Lưu thay đổi' */
+#savecharge:hover {
+    -fx-background-color: #218838;
+    -fx-opacity: 0.9;
+}
+
+/* Button 'Back' */
+#backhome {
+    -fx-background-color: #dcdcdc;
+    -fx-text-fill: #333333;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-radius: 30px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+
+/* Hiệu ứng hover cho Button 'Back' */
+#backhome:hover {
+    -fx-background-color: #b1b1b1;
+}
+
+/* VBox cho các trường thông tin người dùng */
+#fullname, #fullsdt, #fulladdress, #email, #password {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 15px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+}
+
+/* TextField khi được focus */
+#fullname:focused, #fullsdt:focused, #fulladdress:focused, #email:focused, #password:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #f0f8ff;
+}
+
+/* DatePicker */
+#fullbirthday {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 15px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* DatePicker khi focus */
+#fullbirthday:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #f0f8ff;
+}
+
+/* Thay đổi màu sắc của TextField khi có lỗi (vì khi nhập không hợp lệ) */
+.text-field.invalid {
+    -fx-border-color: #e74c3c;
+    -fx-background-color: #ffcccc;
+}
+
+/* Các hiệu ứng transition */
+.Button, .TextField, .DatePicker {
+    -fx-transition: all 0.3s ease-in-out;
 }

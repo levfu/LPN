@@ -1,0 +1,87 @@
+.AnchorPane {
+    -fx-background-color: #f7f8fc; /* Màu nền sáng nhẹ */
+    -fx-padding: 20px;
+}
+
+/* TextField tìm kiếm với kiểu dáng mềm mại và hiện đại */
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px; /* Bo tròn mạnh cho các ô input */
+    -fx-border-radius: 30px;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 20px; /* Khoảng cách trong ô tìm kiếm */
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5); /* Hiệu ứng bóng đổ */
+}
+
+/* Hiệu ứng khi TextField được chọn (focus) */
+.text-field:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #f0f8ff;
+}
+
+/* Hiệu ứng hover khi di chuột vào nút */
+.button:hover {
+    -fx-background-color: #357ab7;
+    -fx-opacity: 0.9; /* Giảm độ trong suốt một chút khi hover */
+}
+
+/* TableView: thiết kế sạch đẹp với các cột bo tròn */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 8px; /* Bo tròn TableView */
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+/* Style cho header của TableView */
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #4a90e2, #357ab7);
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Style cho các cell trong TableView */
+.table-cell {
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-padding: 10px;
+    -fx-alignment: center-left;
+}
+
+.table-row-cell:filled:hover {
+    -fx-background-color: rgba(74, 144, 226, 0.1); /* Màu nền nhẹ khi hover */
+}
+
+/* Style cho dòng đã chọn trong TableView */
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #e1effa;
+    -fx-text-fill: #333;
+}
+
+/* ScrollBar với thiết kế tinh tế */
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #a8bcd1;
+    -fx-background-radius: 15px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-row-cell:filled:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}

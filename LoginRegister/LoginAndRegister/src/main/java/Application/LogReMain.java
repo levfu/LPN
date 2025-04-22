@@ -6,15 +6,13 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class LogReMain extends Application {
+public class  LogReMain extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
             AnchorPane root = loader.load();
             Scene scene = new Scene(root);
-
-
 
             primaryStage.getIcons().add(new Image("View/images/UETLogo.png"));
 

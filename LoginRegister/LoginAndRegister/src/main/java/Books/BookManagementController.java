@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import Controller.User;
 
 public class BookManagementController {
      @FXML
@@ -55,8 +56,22 @@ public class BookManagementController {
      private final List<String> bookList = List.of("Book1", "Book2", "Book3");
      private final int MAX_BOOKS = 20;
 
+     private User currentUser;
+
+     public void setUser(User user) {
+          this.currentUser = user;
+
+          if (borrowedBooks != null) {
+               borrowedBooks.clear();
+               borrowedBooks.addAll(DatabaseHelper.getAllBooks(currentUser.getId()));
+          }
+     }
+
+
      @FXML
      public void initialize() {
+
+          DatabaseHelper.createTable();
           DatabaseHelper.createTable();
           bookListView.setItems(bookItems);
           bookListView.setVisible(false);
@@ -114,7 +129,6 @@ public class BookManagementController {
                     }
                }
           });
-          borrowedBooks.addAll(DatabaseHelper.getAllBooks());
      }
 
      @FXML
@@ -167,7 +181,7 @@ public class BookManagementController {
 
                     BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate);
                     borrowedBooks.add(data);
-                    DatabaseHelper.saveToDatabase(data);
+                    DatabaseHelper.saveToDatabase( currentUser.getId() ,data);
                } else {
                     showAlert("Không tìm thấy sách!", "Không thể mượn vì không tìm thấy sách tương ứng.");
                }
@@ -230,9 +244,10 @@ public class BookManagementController {
                Parent root = loader.load();
                RatingBookController ratingBookController = loader.getController();
                ratingBookController.setBookInfo(book);
+               ratingBookController.setUser(currentUser);
 
                Stage detailStage = new Stage();
-               detailStage.setTitle("Chi tiết sách");
+               detailStage.setTitle("Đánh giá sách");
                detailStage.setScene(new Scene(root));
                detailStage.show();
           } catch (IOException e) {

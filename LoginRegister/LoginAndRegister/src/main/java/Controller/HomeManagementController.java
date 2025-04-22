@@ -1,5 +1,7 @@
 package Controller;
 
+import Books.BookManagementController;
+import Books.BookSearchManagerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,9 +19,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import javafx.fxml.FXMLLoader;
 
 public class HomeManagementController {
+
+    @FXML
+    private Pane PaneContent;
 
     @FXML
     private Button Setting;
@@ -32,13 +38,11 @@ public class HomeManagementController {
     private Button button2;
 
     @FXML
-    private Button button21;
+    private Button buttonhome;
 
     @FXML
     private Button button4;
 
-    @FXML
-    private Button button5;
 
     @FXML
     private Button buttonbooks;
@@ -56,21 +60,30 @@ public class HomeManagementController {
     private TextField searching;
 
     @FXML
-    void Analytics(ActionEvent event) {
-
+    void Homemanger(ActionEvent event) {
+        try {
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/View/HomeManager.fxml"));
+            Parent root = loader.load();
+            HomeManagementController controller = loader.getController();
+            controller.setUser(currentUser);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Trang chính - Manager");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void Books(ActionEvent event) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/View/BookSearch.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("Book Search");
-            stage.setScene(new Scene(root));
-            stage.show();
-
-
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/View/BookSearchManager.fxml"));
+            Parent BookView = loader.load();
+            BookSearchManagerController controller = loader.getController();
+            controller.setUser(currentUser);
+            PaneContent.getChildren().setAll(BookView);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,12 +100,12 @@ public class HomeManagementController {
         try {
             FXMLLoader loader;
             loader = new FXMLLoader(getClass().getResource("/View/Reader.fxml"));
-            Parent root = loader.load();
+            Parent readerView = loader.load();
             ReaderController controller = loader.getController();
             controller.setUser(currentUser);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Readers");
+            controller.setUser(currentUser);
+            controller.setpaneContent(PaneContent);
+            PaneContent.getChildren().setAll(readerView);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,7 +162,7 @@ public class HomeManagementController {
             Stage stage = (Stage) logout.getScene().getWindow();
             Scene scene = new Scene(loginRoot);
             stage.setScene(scene);
-            stage.setTitle("Login");
+            stage.setTitle("Login & Register for Library Management System");
             stage.show();
 
         } catch (IOException e) {
@@ -171,13 +184,24 @@ public class HomeManagementController {
         }
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MyAccount.fxml"));
-            Parent root = loader.load();
+            Parent MyAccount = loader.load();
             MyAccountController controller = loader.getController();
             controller.setUser(currentUser);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("MyAccount-Manager");
-            stage.show();
+            PaneContent.getChildren().setAll(MyAccount);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void ComMU(ActionEvent event) {
+        try {
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/View/ComMu.fxml"));
+            Parent readerView = loader.load();
+            CommunityChatController controller = loader.getController();
+            controller.setUser(currentUser);
+            PaneContent.getChildren().setAll(readerView);
         } catch (IOException e) {
             e.printStackTrace();
         }

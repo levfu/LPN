@@ -21,13 +21,10 @@ import java.io.IOException;
 public class MyAccountController {
 
     @FXML
-    private TextField Fullname;
+    private TextField fullname;
 
     @FXML
     private ImageView avatar;
-
-    @FXML
-    private Button backhome;
 
     @FXML
     private Button chooseimage;
@@ -58,40 +55,12 @@ public class MyAccountController {
         alert.showAndWait();
     }
 
-    @FXML
-    void backHome(ActionEvent event) {
-        try {
-            FXMLLoader loader;
-
-            if ("Manager".equalsIgnoreCase(currentUser.getRole())) {
-                loader = new FXMLLoader(getClass().getResource("/View/HomeManager.fxml"));
-                Parent root = loader.load();
-                HomeManagementController controller = loader.getController();
-                controller.setUser(currentUser);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.setTitle("Home-Manager");
-            } else {
-                loader = new FXMLLoader(getClass().getResource("/View/HomeUser.fxml"));
-                Parent root = loader.load();
-                HomeUserController controller = loader.getController();
-                controller.setUser(currentUser);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(root));
-                stage.setTitle("Home-User");
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            showAlert("Không thể quay lại trang chủ.");
-        }
-    }
 
     private User currentUser;
 
     public void setUser(User user) {
         this.currentUser = user;
-        Fullname.setText(user.getName());
+        fullname.setText(user.getName());
         fullsdt.setText(user.getPhone());
         email.setText(user.getEmail());
         password.setText(user.getPassword());
@@ -126,7 +95,7 @@ public class MyAccountController {
 
     @FXML
     void savecharge(ActionEvent event) {
-        if (Fullname.getText().isEmpty() || fullsdt.getText().isEmpty() || email.getText().isEmpty()) {
+        if (fullname.getText().isEmpty()|| fullsdt.getText().isEmpty() || fullsdt.getText().isEmpty() || email.getText().isEmpty()) {
             showAlert("Vui lòng nhập đầy đủ thông tin!");
             return;
         }
@@ -137,7 +106,7 @@ public class MyAccountController {
         }
 
         // Cập nhật lại thông tin từ form
-        currentUser.setName(Fullname.getText());
+        currentUser.setName(fullname.getText());
         currentUser.setPhone(fullsdt.getText());
         currentUser.setEmail(email.getText());
         currentUser.setPassword(password.getText());
