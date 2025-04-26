@@ -63,13 +63,12 @@ public class Message {
         this.timestamp = timestamp;
     }
 
-    // Optional: định dạng timestamp cho hiển thị
     public String getFormattedTimestamp() {
-        // Chuyển timestamp sang ZonedDateTime và chuyển về múi giờ Hà Nội (UTC+7)
+
         ZonedDateTime zonedDateTime = timestamp.toInstant()
-                .atZone(ZoneId.of("Asia/Ho_Chi_Minh"));  // Múi giờ Hà Nội (GMT+7)
+                .atZone(ZoneId.of("Asia/Ho_Chi_Minh"));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm dd/MM/yyyy");
-        return zonedDateTime.format(formatter);  // Định dạng thời gian theo kiểu HH:mm dd/MM/yyyy
+        return zonedDateTime.format(formatter);
     }
 
     @Override

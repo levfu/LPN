@@ -17,7 +17,6 @@ public class ChatDatabase {
         return DriverManager.getConnection(URL);
     }
 
-
     public void sendMessage(int senderId, String content) {
         // Lấy giờ hệ thống theo múi giờ Việt Nam
         ZonedDateTime vietnamTime = ZonedDateTime.now(ZoneId.of("Asia/Ho_Chi_Minh"));
@@ -34,7 +33,6 @@ public class ChatDatabase {
             e.printStackTrace();
         }
     }
-
 
     public List<Message> getAllMessages () {
         List<Message> messages = new ArrayList<>();
@@ -100,7 +98,4 @@ public class ChatDatabase {
 
         return null;
     }
-
-
-
 }
