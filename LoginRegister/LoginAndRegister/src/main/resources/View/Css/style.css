@@ -84,3 +84,10 @@
 .table-row-cell:even {
     -fx-background-color: #ffffff;
 }
+.book-title {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to right, #3b82f6, #10b981);
+    -fx-font-family: "Comic Sans MS", "Nunito", "Segoe UI";
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0.3, 2, 2);
+}

@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import Controller.User;
 
 public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:D:\\WS\\LPN\\LoginRegister\\library.db";
-
+    private static final String URL = "jdbc:sqlite:D:\\WS\\BTL OOP\\LoginRegister\\library.db";
 
     public static Connection connect() {
         try {
@@ -29,7 +28,6 @@ public class LogReDatabase {
 
     }
 
-
     public static boolean checkLogin(String email, String password, String role) {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND role = ?";
         try (Connection conn = connect();
@@ -45,7 +43,6 @@ public class LogReDatabase {
         }
     }
 
-
     public static boolean emailExists(String email, String role) {
         String sql = "SELECT * FROM users WHERE email = ? AND role = ?";
         try (Connection conn = connect();
@@ -59,8 +56,6 @@ public class LogReDatabase {
             return false;
         }
     }
-
-
 
     public static boolean registerUser(String email, String password, String role) {
         if (emailExists(email, role)) {

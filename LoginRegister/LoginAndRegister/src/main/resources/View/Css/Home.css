@@ -1,36 +1,35 @@
 .pane1{
-    -fx-background-color:rgb(115, 193, 222);
+    -fx-background-image:url("../images/panekhung1.jpg");
 }
 .pane2{
-    -fx-background-color:rgb(196, 191, 190);
+    -fx-background-image:url("../images/khunghome2.gif");
 }
 .button1{
-    -fx-background-color:rgb(237, 247, 119);
+    -fx-background-color: transparent;
     -fx-font-weight: bold;
-    -fx-text-fill: rgb(235, 12, 0);
 }
 .button2{
-    -fx-background-color:rgb(9, 133, 131);
+    -fx-background-color: transparent;
     -fx-font-weight: bold;
 }
 .button3{
-    -fx-background-color:rgb(9, 133, 131);
+    -fx-background-color: transparent;
     -fx-font-weight: bold;
 }
 .button4{
-    -fx-background-color:rgb(9, 133, 131);
+    -fx-background-color: transparent;
     -fx-font-weight: bold;
 }
 
 .button5{
-    -fx-background-color:rgb(9, 133, 131);
+    -fx-background-color: transparent;
     -fx-font-weight: bold;
 }
 .label2{
     -fx-background-color:rgb(90, 209, 193);
 }
 .buttonother{
-    -fx-background-color:rgb(227, 77, 85);
+    -fx-background-color: transparent;
     -fx-font-weight: bold;
 }
 .labelhot{
@@ -71,36 +70,12 @@
     -fx-font-weight: bold;
 }
 
-.labelharry {
-    -fx-background-color:rgb(116, 219, 219);
-    -fx-border-color: #4CAF50;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
-    -fx-padding: 10;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
+.panecontent{
+    -fx-background-image: url("../images/panecontent.jpg");
 }
 
-.buttonHarry {
-    -fx-background-color: rgb(48, 230, 184);
-    -fx-text-fill: white; /* Màu chữ */
-    -fx-font-weight: bold; /* Chữ đậm */
-    -fx-border-color: white; /* Màu viền nút */
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0, 0, 2);
-    -fx-cursor: hand;
-}
-
-.buttonHarry:hover {
-    -fx-background-color: rgb(227, 68, 32);
-}
-
-.buttonHarry:pressed {
-    -fx-background-color: #388e3c;
-    -fx-border-color: #2c6e2b;
-}
-
-.vboxhot{
-    -fx-background-color: #b3e0f2;
-    -fx-border-color: red;
-    -fx-border-width: 2px;
+.Hbox1{
+    -fx-background-color: transparent;
+    -fx-border-color: rgb(171, 148, 235);
+    -fx-border-width: 6px;
 }

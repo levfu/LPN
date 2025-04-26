@@ -1,0 +1,88 @@
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #007bff;
+    -fx-border-width: 6px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 10px;
+    -fx-table-cell-border-color: transparent;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 0 0 1 0;
+}
+.table-view .column-header .label {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(1, 0, 8);
+    -fx-alignment: center;;
+}
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 0 1 0;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+}
+.table-cell {
+    -fx-padding: 10px;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(11, 3, 97);
+    -fx-alignment: center;
+    -fx-background-color: transparent;
+}
+.table-row-cell:hover {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-alignment: center;
+}
+
+
+.table-cell {
+    -fx-alignment: center;
+}
+
+
+.table-row-cell {
+    -fx-alignment: center;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, rgb(148, 143, 207), rgb(42, 2, 59));
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 6px 12px;
+    -fx-background-radius: 8px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #00a2e8, #008acb);
+}
+
+.LabelReader {
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to right, #007bff, #00c6ff);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 4, 0.5, 0, 1);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-padding: 10 0 20 0;
+}
+.panecontentreader{
+    -fx-background-image:url("../images/R.jpg");
+}
+#panecontentreader {
+    -fx-background-color: rgba(255, 255, 255, 0.4);
+}
+

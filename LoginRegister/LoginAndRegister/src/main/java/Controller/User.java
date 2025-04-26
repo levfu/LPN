@@ -1,6 +1,9 @@
 package Controller;
 
+import Books.Book;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class User {
     private int id;
@@ -13,7 +16,6 @@ public class User {
     private String address;
     private String avatarPath;
 
-    // Constructor mặc định
     public User() {
     }
 
@@ -25,7 +27,6 @@ public class User {
         this.id = id;
     }
 
-    // Getter + Setter
     public String getName() {
         return name;
     }
@@ -88,5 +89,15 @@ public class User {
 
     public void setAvatarPath(String avatarPath) {
         this.avatarPath = avatarPath;
+    }
+
+    private List<Book> borrowedBooks = new ArrayList<>();
+
+    public List<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(List<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
     }
 }

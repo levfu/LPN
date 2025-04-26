@@ -2,6 +2,9 @@ package Books;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javafx.animation.Animation;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
@@ -21,8 +26,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import Controller.User;
+import javafx.util.Duration;
+
 
 public class BookManagementController {
+     @FXML
+     private Label khosachLabel;
      @FXML
      private TableView<BookData> borrowBookTable;
      @FXML
@@ -55,8 +65,22 @@ public class BookManagementController {
      private final List<String> bookList = List.of("Book1", "Book2", "Book3");
      private final int MAX_BOOKS = 20;
 
+     private User currentUser;
+
+     public void setUser(User user) {
+          this.currentUser = user;
+
+          if (borrowedBooks != null) {
+               borrowedBooks.clear();
+               borrowedBooks.addAll(DatabaseHelper.getAllBooks(currentUser.getId()));
+          }
+     }
+
+
      @FXML
      public void initialize() {
+
+          DatabaseHelper.createTable();
           DatabaseHelper.createTable();
           bookListView.setItems(bookItems);
           bookListView.setVisible(false);
@@ -114,7 +138,6 @@ public class BookManagementController {
                     }
                }
           });
-          borrowedBooks.addAll(DatabaseHelper.getAllBooks());
      }
 
      @FXML
@@ -151,7 +174,7 @@ public class BookManagementController {
      }
 
      @FXML
-     private void borrowBook() {
+     public void borrowBook() {
           String selectedText = selectedBookTextField.getText();
 
           if (selectedText != null && !selectedText.isEmpty()) {
@@ -160,14 +183,14 @@ public class BookManagementController {
                if (selectedBook != null) {
                     String authorNames = String.join(", ", selectedBook.getAuthor());
                     String dueDate = LocalDate.now().plusDays(15).toString();
-
+                    String thumbnail = selectedBook.getThumbnail();
                     if (borrowedBooks.size() >= MAX_BOOKS) {
                          borrowedBooks.remove(0);
                     }
+                    BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate, thumbnail);
 
-                    BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate);
                     borrowedBooks.add(data);
-                    DatabaseHelper.saveToDatabase(data);
+                    DatabaseHelper.saveToDatabase( currentUser.getId() ,data);
                } else {
                     showAlert("Không tìm thấy sách!", "Không thể mượn vì không tìm thấy sách tương ứng.");
                }
@@ -230,9 +253,10 @@ public class BookManagementController {
                Parent root = loader.load();
                RatingBookController ratingBookController = loader.getController();
                ratingBookController.setBookInfo(book);
+               ratingBookController.setUser(currentUser);
 
                Stage detailStage = new Stage();
-               detailStage.setTitle("Chi tiết sách");
+               detailStage.setTitle("Đánh giá sách");
                detailStage.setScene(new Scene(root));
                detailStage.show();
           } catch (IOException e) {
