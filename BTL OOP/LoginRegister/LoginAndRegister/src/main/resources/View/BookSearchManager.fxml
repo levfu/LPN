@@ -16,7 +16,7 @@
         </columns>
       </TableView>
       <AnchorPane fx:id="Apanecontent" layoutX="496.0" layoutY="1.0" prefHeight="1018.0" prefWidth="780.0" />
-      <TextField fx:id="searchField" layoutX="14.0" layoutY="1.0" prefHeight="33.0" prefWidth="383.0" promptText="searchinggg" styleClass="labelsearch" text="Search" />
+      <TextField fx:id="searchField" layoutX="14.0" layoutY="1.0" prefHeight="33.0" prefWidth="383.0" promptText="searchinggg" styleClass="labelsearch" />
       <Button fx:id="searchButton" layoutX="397.0" layoutY="2.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="84.0" styleClass="buttonsearch" text="Search" />
    </children>
 </AnchorPane>

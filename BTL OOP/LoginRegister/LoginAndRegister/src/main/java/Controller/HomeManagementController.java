@@ -1,7 +1,7 @@
 package Controller;
 
 import Books.*;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +20,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
@@ -106,11 +108,6 @@ public class HomeManagementController {
     }
 
     @FXML
-    void Issue(ActionEvent event) {
-
-    }
-
-    @FXML
     void Readers(ActionEvent event) {
         try {
             FXMLLoader loader;
@@ -152,6 +149,36 @@ public class HomeManagementController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void createSnowEffect() {
+        double snowWidth = 1200;
+        double snowHeight = 700;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), e -> {
+            Circle snowflake = new Circle(2 + Math.random() * 3, Color.WHITE);
+            snowflake.setOpacity(Math.random());
+            snowflake.setLayoutX(Math.random() * snowWidth);
+            snowflake.setLayoutY(-100);
+            PaneContent.getChildren().add(snowflake);
+            TranslateTransition fall = new TranslateTransition();
+            fall.setNode(snowflake);
+            fall.setDuration(Duration.seconds(10 + Math.random() * 10));
+            fall.setFromY(-100);
+            fall.setToY(snowHeight + 100);
+            fall.setCycleCount(TranslateTransition.INDEFINITE);
+            fall.setInterpolator(Interpolator.LINEAR);
+            TranslateTransition sway = new TranslateTransition();
+            sway.setNode(snowflake);
+            sway.setDuration(Duration.seconds(2 + Math.random() * 2));
+            sway.setFromX(0);
+            sway.setByX(30 - Math.random() * 60);
+            sway.setCycleCount(TranslateTransition.INDEFINITE);
+            sway.setAutoReverse(true);
+            ParallelTransition animation = new ParallelTransition(fall, sway);
+            animation.play();
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     @FXML
@@ -196,6 +223,8 @@ public class HomeManagementController {
 
         img12.setOnMouseEntered(event -> scaleImage(img12, 1.1));
         img12.setOnMouseExited(event -> scaleImage(img12, 1));
+
+        createSnowEffect();
     }
 
 

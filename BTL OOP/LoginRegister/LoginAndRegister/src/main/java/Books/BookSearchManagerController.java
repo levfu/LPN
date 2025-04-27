@@ -49,18 +49,12 @@ public class BookSearchManagerController {
 
     @FXML
     public void initialize() {
-        // Cài đặt các cột cho TableView
         isbnBook.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         titleBook.setCellValueFactory(new PropertyValueFactory<>("title"));
         authorsBook.setCellValueFactory(new PropertyValueFactory<>("author"));
-
-        // Mặc định load sách ban đầu
         loadBooks("book");
-
-        // Xử lý khi nhấn nút tìm kiếm
         searchButton.setOnAction(event -> handleSearch());
-
-        // Xử lý khi double click vào 1 dòng trong bảng
+        searchField.setOnAction(event -> handleSearch());
         BookTable.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount() == 2) {
                 Book selectedBook = BookTable.getSelectionModel().getSelectedItem();
@@ -98,21 +92,14 @@ public class BookSearchManagerController {
 
     private void openRatingView(Book book) {
         try {
-            // Load file FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/RatingBook.fxml"));
             Parent ratingView = loader.load();
-
-            // Lấy controller và truyền dữ liệu
             RatingBookController ratingCtrl = loader.getController();
             ratingCtrl.setBookInfo(book);
             if (currentUser != null) {
                 ratingCtrl.setUser(currentUser);
             }
-
-            // Thay thế toàn bộ nội dung của Apanecontent
             Apanecontent.getChildren().setAll(ratingView);
-
-            // Ép view chiếm toàn bộ kích thước pane
             AnchorPane.setTopAnchor(ratingView, 0.0);
             AnchorPane.setBottomAnchor(ratingView, 0.0);
             AnchorPane.setLeftAnchor(ratingView, 0.0);

@@ -53,7 +53,7 @@ public class CommunityChatController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        inputField.setOnAction(e -> sendMessage());
         sendButton.setOnAction(e -> sendMessage());
         startAutoRefresh();
     }
