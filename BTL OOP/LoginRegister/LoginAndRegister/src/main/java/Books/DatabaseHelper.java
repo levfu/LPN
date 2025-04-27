@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper {
+<<<<<<< HEAD
     private static final String DB_URL = "jdbc:sqlite:D:\\LPN\\BTL OOP\\borrowed_books.db";
+=======
+    private static final String DB_URL = "jdbc:sqlite:D:\\BTL OOP\\borrowed_books.db";
+>>>>>>> a3d4952d216a0b11c3847a432740706ed8f0f52e
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(DB_URL);
