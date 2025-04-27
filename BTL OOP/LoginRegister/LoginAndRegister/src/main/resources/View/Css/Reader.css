@@ -80,7 +80,7 @@
     -fx-padding: 10 0 20 0;
 }
 .panecontentreader{
-    -fx-background-image:url("../images/R.jpg");
+    -fx-background-image:url("../images/ReaderPane1.jpg");
 }
 #panecontentreader {
     -fx-background-color: rgba(255, 255, 255, 0.4);

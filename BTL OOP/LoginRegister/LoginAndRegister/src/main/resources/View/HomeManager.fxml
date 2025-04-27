@@ -42,21 +42,21 @@
     <top>
         <Pane id="pane1" prefHeight="45.0" prefWidth="904.0" styleClass="pane1" stylesheets="@Css/Home.css" BorderPane.alignment="CENTER">
             <children>
-                <Label layoutX="328.0" prefHeight="41.0" prefWidth="179.0" text="Manager Library" textFill="#e1e1e1">
+                <Label layoutX="236.0" layoutY="1.0" prefHeight="41.0" prefWidth="377.0" text="Manager - Library Management System " textFill="#e1e1e1">
                     <font>
                         <Font name="System Bold Italic" size="20.0" />
                     </font>
                 </Label>
                 <ImageView fitHeight="58.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/imageUEt2.jpg" />
+                        <Image url="@images/UETLogo2.jpg" />
                     </image>
                 </ImageView>
-                <TextField fx:id="searching" layoutX="922.0" layoutY="7.0" prefHeight="32.0" prefWidth="323.0" promptText="Search:">
+                <TextField fx:id="searching" layoutX="938.0" layoutY="7.0" prefHeight="32.0" prefWidth="323.0" promptText="Search:">
                     <font>
                         <Font size="14.0" />
                     </font></TextField>
-                <ImageView fitHeight="29.0" fitWidth="37.0" layoutX="1200.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="29.0" fitWidth="37.0" layoutX="1219.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@images/imagesearching(2).jpg" />
                     </image>
@@ -68,56 +68,106 @@
         <Pane fx:id="PaneContent" styleClass="panecontent" stylesheets="@Css/Home.css" BorderPane.alignment="CENTER">
             <children>
                 <ListView id="listView" fx:id="listView" editable="true" layoutX="401.0" prefHeight="81.0" prefWidth="274.0" styleClass="list-View" stylesheets="@Css/Home.css" visible="false" />
-                <HBox fx:id="ramdomhot" layoutY="81.0" prefHeight="260.0" prefWidth="1194.0" styleClass="Hbox1" stylesheets="@Css/Home.css">
+                <HBox fx:id="ramdomhot" layoutY="57.0" prefHeight="260.0" prefWidth="1201.0" styleClass="Hbox1" stylesheets="@Css/Home.css">
                <children>
                   <VBox fx:id="vbox1" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
-                        <ImageView fx:id="img1" fitHeight="219.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img1" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
                         <Label />
                         <Label fx:id="lb1" alignment="CENTER" prefHeight="18.0" prefWidth="234.0" style="-fx-font-weight: bold;" />
                      </children>
                   </VBox>
                   <VBox fx:id="vbox2" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
-                        <ImageView fx:id="img2" fitHeight="216.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img2" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
                         <Label />
                         <Label fx:id="lb2" alignment="CENTER" prefHeight="18.0" prefWidth="214.0" style="-fx-font-weight: bold;" />
                      </children>
                   </VBox>
                   <VBox fx:id="vbox3" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
-                        <ImageView fx:id="img3" fitHeight="220.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img3" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
                         <Label />
                         <Label fx:id="lb3" alignment="CENTER" prefHeight="18.0" prefWidth="202.0" style="-fx-font-weight: bold;" />
                      </children>
                   </VBox>
                   <VBox fx:id="vbox4" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
-                        <ImageView fx:id="img4" fitHeight="220.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img4" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
                         <Label />
                         <Label fx:id="lb4" alignment="CENTER" prefHeight="18.0" prefWidth="198.0" style="-fx-font-weight: bold;" />
                      </children>
                   </VBox>
                   <VBox fx:id="vbox5" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
-                        <ImageView fx:id="img5" fitHeight="223.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img5" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
                         <Label />
                         <Label fx:id="lb5" alignment="CENTER" prefHeight="18.0" prefWidth="200.0" style="-fx-font-weight: bold;" />
                      </children>
                   </VBox>
-                  <VBox fx:id="vbox6" alignment="CENTER" prefHeight="255.0" prefWidth="210.0">
+                  <VBox fx:id="vbox6" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
-                        <ImageView fx:id="img6" fitHeight="223.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="img6" fitHeight="192.0" fitWidth="182.1" pickOnBounds="true" preserveRatio="true" />
                         <Label />
                         <Label fx:id="lb6" alignment="CENTER" prefHeight="18.0" prefWidth="198.0" style="-fx-font-weight: bold;" />
                      </children>
                   </VBox>
                </children></HBox>
-                <Label alignment="CENTER" layoutX="494.0" layoutY="14.0" prefHeight="60.0" prefWidth="260.0" style="-fx-font-size: 30px;               -fx-font-weight: bold;               -fx-text-fill: linear-gradient(to right, #ff8a00, #ff416c);               -fx-effect: dropshadow(three-pass-box, rgba(255, 50, 50, 0.3), 5, 0.3, 0, 0);               -fx-background-color: transparent;" text="🔥 TOP RATE 🔥">
+                <Label alignment="CENTER" layoutX="420.0" layoutY="4.0" prefHeight="60.0" prefWidth="373.0" style="-fx-font-size: 30px;               -fx-font-weight: bold;               -fx-text-fill: linear-gradient(to right, #ff8a00, #ff416c);               -fx-effect: dropshadow(three-pass-box, rgba(255, 50, 50, 0.3), 5, 0.3, 0, 0);               -fx-background-color: transparent;" text="🔥 TOP - RATED BOOKS 🔥">
                     <font>
                         <Font name="System Bold" size="30.0" />
                     </font>
                 </Label>
+                <Label alignment="CENTER" layoutX="426.0" layoutY="350.0" prefHeight="60.0" prefWidth="361.0" style="-fx-font-size: 30px;               -fx-font-weight: bold;               -fx-text-fill: #0d47a1;               -fx-effect: dropshadow(three-pass-box, rgba(13, 71, 161, 0.2), 2, 0.2, 0, 0);               -fx-background-color: transparent;" text="📈 TRENDING BOOKS 📈">
+                    <font>
+                        <Font name="System Bold" size="30.0" />
+                    </font>
+                </Label>
+            <HBox fx:id="hbox" layoutY="410.0" prefHeight="260.0" prefWidth="1201.0" styleClass="Hbox1" stylesheets="@Css/Home.css">
+                <children>
+                    <VBox fx:id="vbox7" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
+                        <children>
+                            <ImageView fx:id="img7" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
+                            <Label />
+                            <Label fx:id="lb7" alignment="CENTER" prefHeight="18.0" prefWidth="234.0" style="-fx-font-weight: bold;" />
+                        </children>
+                    </VBox>
+                    <VBox fx:id="vbox8" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
+                        <children>
+                            <ImageView fx:id="img8" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
+                            <Label />
+                            <Label fx:id="lb8" alignment="CENTER" prefHeight="18.0" prefWidth="214.0" style="-fx-font-weight: bold;" />
+                        </children>
+                    </VBox>
+                    <VBox fx:id="vbox9" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
+                        <children>
+                            <ImageView fx:id="img9" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
+                            <Label />
+                            <Label fx:id="lb9" alignment="CENTER" prefHeight="18.0" prefWidth="202.0" style="-fx-font-weight: bold;" />
+                        </children>
+                    </VBox>
+                    <VBox fx:id="vbox10" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
+                        <children>
+                            <ImageView fx:id="img10" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
+                            <Label />
+                            <Label fx:id="lb10" alignment="CENTER" prefHeight="18.0" prefWidth="198.0" style="-fx-font-weight: bold;" />
+                        </children>
+                    </VBox>
+                    <VBox fx:id="vbox11" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
+                        <children>
+                            <ImageView fx:id="img11" fitHeight="192.0" fitWidth="182.0" pickOnBounds="true" preserveRatio="true" />
+                            <Label />
+                            <Label fx:id="lb11" alignment="CENTER" prefHeight="18.0" prefWidth="200.0" style="-fx-font-weight: bold;" />
+                        </children>
+                    </VBox>
+                    <VBox fx:id="vbox12" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
+                        <children>
+                            <ImageView fx:id="img12" fitHeight="192.0" fitWidth="182.1" pickOnBounds="true" preserveRatio="true" />
+                            <Label />
+                            <Label fx:id="lb12" alignment="CENTER" prefHeight="18.0" prefWidth="198.0" style="-fx-font-weight: bold;" />
+                        </children>
+                    </VBox>
+                </children></HBox>
             </children>
         </Pane>
     </center>

@@ -1,15 +1,14 @@
 package Controller;
 
 import Database.LogReDatabase;
+import Utils.EmailSender;
+import Utils.VerificationCodeGenerator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -60,6 +59,7 @@ public class LogReController implements Initializable {
         String email = txtUsername.getText().trim();
         String password = txtPassword.getText().trim();
         String role = roleComboBox.getValue();
+
         if (role == null) {
             showCustomAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng chọn vai trò!", "/View/images/ErrorLogo.png");
             return;
@@ -72,16 +72,44 @@ public class LogReController implements Initializable {
             showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email không hợp lệ! Vui lòng nhập đúng định dạng.", "/View/images/ErrorLogo.png");
             return;
         }
-        if (LogReDatabase.registerUser(email, password, role)) {
-            showCustomAlert(Alert.AlertType.INFORMATION, "Thành công",
-                    "Đăng ký thành công với vai trò " + role + "!", "/View/images/TickLogo.png");
-        } else {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email đã được sử dụng", "/View/images/ErrorLogo.png");
+        if (LogReDatabase.emailExists(email, role)) {
+            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email đã được sử dụng!", "/View/images/ErrorLogo.png");
+            return;
         }
+
+        String verificationCode = VerificationCodeGenerator.generateCode();
+
+        new Thread(() -> {
+            EmailSender.sendVerificationEmail(email, verificationCode);
+
+            javafx.application.Platform.runLater(() -> {
+                TextInputDialog dialog = new TextInputDialog();
+                dialog.setTitle("Xác thực Email");
+                dialog.setHeaderText("Nhập mã xác thực đã gửi tới email của bạn:");
+                dialog.setContentText("Mã xác thực:");
+
+                Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+                stage.getIcons().add(new Image(getClass().getResourceAsStream("/View/images/EmailLogo.png")));
+
+                dialog.showAndWait().ifPresent(userInputCode -> {
+                    if (userInputCode.equals(verificationCode)) {
+                        if (LogReDatabase.registerUser(email, password, role)) {
+                            showCustomAlert(Alert.AlertType.INFORMATION, "Thành công",
+                                    "Đăng ký thành công với vai trò " + role + "!", "/View/images/TickLogo.png");
+                        } else {
+                            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Đăng ký thất bại!", "/View/images/ErrorLogo.png");
+                        }
+                    } else {
+                        showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Mã xác thực không đúng!", "/View/images/ErrorLogo.png");
+                    }
+                });
+            });
+        }).start();
     }
 
+
     private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9._%+-]+@gmail\\.com$";
+        String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         Matcher m = Pattern.compile(emailRegex).matcher(email);
         return m.matches();
     }

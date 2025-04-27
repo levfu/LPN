@@ -21,19 +21,19 @@
             <Button fx:id="searchButton" layoutX="220.0" layoutY="101.0" mnemonicParsing="false" onAction="#searchBooks" text="Search" />
             <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="190.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
-                  <Image url="@images/kinhlup.png" />
+                  <Image url="@images/MicroScopeLogo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="190.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
-                  <Image url="@images/kinhlup.png" />
+                  <Image url="@images/MicroScopeLogo.png" />
                </image>
             </ImageView>
             <TextField fx:id="titleSearchField" layoutX="17.0" layoutY="135.0" prefHeight="30.0" prefWidth="198.0" promptText="Nhập tên sách..." />
             <ListView fx:id="bookListView" layoutY="235.0" prefHeight="271.0" prefWidth="242.0" />
             <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="190.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
-                  <Image url="@images/kinhlup.png" />
+                  <Image url="@images/MicroScopeLogo.png" />
                </image>
             </ImageView>
             <TextField fx:id="selectedBookTextField" layoutX="17.0" layoutY="196.0" prefHeight="30.0" prefWidth="198.0" />

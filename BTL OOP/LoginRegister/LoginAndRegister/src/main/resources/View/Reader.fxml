@@ -8,7 +8,7 @@
 
 <AnchorPane id="panecontentreader" prefHeight="704.0" prefWidth="1200.0" styleClass="panecontentreader" stylesheets="@Css/Reader.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReaderController">
    <children>
-      <TableView fx:id="userTable" layoutX="33.0" layoutY="87.0" prefHeight="632.0" prefWidth="1158.0" stylesheets="@Css/Reader.css">
+      <TableView fx:id="userTable" layoutX="20.0" layoutY="87.0" prefHeight="632.0" prefWidth="1158.0" stylesheets="@Css/Reader.css">
          <columns>
             <TableColumn fx:id="ID" prefWidth="59.200010776519775" text="ID" />
             <TableColumn fx:id="Name" prefWidth="137.60003662109375" text="Name" />
@@ -20,7 +20,7 @@
             <TableColumn fx:id="Action" maxWidth="392.00006103515625" prefWidth="184.800048828125" text="Action" />
          </columns>
       </TableView>
-      <Label layoutX="415.0" prefHeight="74.0" prefWidth="370.0" styleClass="LabelReader" stylesheets="@Css/Reader.css" text="Reader manager">
+      <Label layoutX="415.0" prefHeight="74.0" prefWidth="370.0" styleClass="LabelReader" stylesheets="@Css/Reader.css" text="Reader Manager">
          <font>
             <Font size="46.0" />
          </font>

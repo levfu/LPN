@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper {
-    private static final String DB_URL = "jdbc:sqlite:borrowed_books.db";
+    private static final String DB_URL = "jdbc:sqlite:D:\\LPN\\BTL OOP\\borrowed_books.db";
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(DB_URL);
@@ -199,6 +199,34 @@ public class DatabaseHelper {
             System.out.println("Lỗi khi lấy sách top-rated: " + e.getMessage());
         }
         return topRatedBooks;
+    }
+
+
+    public static List<Book> getTrendingBooks() {
+        List<Book> trendingBooks = new ArrayList<>();
+        String sql = "SELECT b.isbn, b.title, b.author, b.thumbnail, " +
+                "AVG(r.rating) as avgRating, COUNT(r.id) as ratingCount " +
+                "FROM borrowed_books b " +
+                "JOIN book_ratings r ON b.isbn = r.isbn " +
+                "GROUP BY b.isbn " +
+                "ORDER BY ratingCount DESC, avgRating DESC " +
+                "LIMIT 6";
+
+        try (Connection connection = connect();
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                String isbn = rs.getString("isbn");
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                String thumbnail = rs.getString("thumbnail");
+                trendingBooks.add(new Book(title, List.of(author), new ArrayList<>(), "No description", isbn, thumbnail));
+            }
+        } catch (SQLException e) {
+            System.out.println("Lỗi khi lấy sách trending: " + e.getMessage());
+        }
+        return trendingBooks;
     }
 
 }  

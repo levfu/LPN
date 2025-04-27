@@ -33,13 +33,13 @@ import java.util.List;
 public class HomeUserController {
 
     @FXML
-    private VBox vBox1, vBox2, vBox3, vBox4, vBox5, vBox6;
+    private VBox vBox1, vBox2, vBox3, vBox4, vBox5, vBox6, vBox7, vBox8, vBox9, vBox10, vBox11, vBox12;
 
     @FXML
-    private ImageView imgBook1, imgBook2, imgBook3, imgBook4, imgBook5, imgBook6;
+    private ImageView imgBook1, imgBook2, imgBook3, imgBook4, imgBook5, imgBook6, imgBook7, imgBook8, imgBook9, imgBook10, imgBook11, imgBook12;
 
     @FXML
-    private Label label1, label2, label3, label4, label5, label6;
+    private Label label1, label2, label3, label4, label5, label6, label7, label8, label9, label10, label11, label12;
 
     @FXML
     private Button Setting;
@@ -135,7 +135,7 @@ public class HomeUserController {
             controller.setUser(currentUser);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Trang chính - User");
+            stage.setTitle("Home User");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -160,6 +160,7 @@ public class HomeUserController {
         searchinguser.setOnMouseClicked(event -> listViewuser.setVisible(!listViewuser.isVisible()));
         searchinguser.setOnKeyReleased(event -> filterList());
         updateTopRatedBooks();
+        updateTrendingBooks();
         imgBook1.setOnMouseEntered(event -> scaleImage(imgBook1, 1.1));
         imgBook1.setOnMouseExited(event -> scaleImage(imgBook1, 1));
 
@@ -177,6 +178,24 @@ public class HomeUserController {
 
         imgBook6.setOnMouseEntered(event -> scaleImage(imgBook6, 1.1));
         imgBook6.setOnMouseExited(event -> scaleImage(imgBook6, 1));
+
+        imgBook7.setOnMouseEntered(event -> scaleImage(imgBook7, 1.1));
+        imgBook7.setOnMouseExited(event -> scaleImage(imgBook7, 1));
+
+        imgBook8.setOnMouseEntered(event -> scaleImage(imgBook8, 1.1));
+        imgBook8.setOnMouseExited(event -> scaleImage(imgBook8, 1));
+
+        imgBook9.setOnMouseEntered(event -> scaleImage(imgBook9, 1.1));
+        imgBook9.setOnMouseExited(event -> scaleImage(imgBook9, 1));
+
+        imgBook10.setOnMouseEntered(event -> scaleImage(imgBook10, 1.1));
+        imgBook10.setOnMouseExited(event -> scaleImage(imgBook10, 1));
+
+        imgBook11.setOnMouseEntered(event -> scaleImage(imgBook11, 1.1));
+        imgBook11.setOnMouseExited(event -> scaleImage(imgBook11, 1));
+
+        imgBook12.setOnMouseEntered(event -> scaleImage(imgBook12, 1.1));
+        imgBook12.setOnMouseExited(event -> scaleImage(imgBook12, 1));
     }
 
 
@@ -289,6 +308,60 @@ public class HomeUserController {
             }
         }
     }
+
+    public void updateTrendingBooks() {
+        List<Book> trendingBooks = DatabaseHelper.getTrendingBooks();
+
+        for (int i = 0; i < 6 && i < trendingBooks.size(); i++) {
+            Book book = trendingBooks.get(i);
+            String thumbnailUrl = book.getThumbnail();
+
+            if (thumbnailUrl == null || thumbnailUrl.isEmpty()) {
+                thumbnailUrl = "/path/to/default/image.png";
+            }
+
+            try {
+                Image image = new Image(thumbnailUrl);
+                switch (i) {
+                    case 0:
+                        imgBook7.setImage(image);
+                        label7.setText(book.getTitle());
+                        imgBook7.setOnMouseClicked(event -> handleBookClick(event, book));
+                        break;
+                    case 1:
+                        imgBook8.setImage(image);
+                        label8.setText(book.getTitle());
+                        imgBook8.setOnMouseClicked(event -> handleBookClick(event, book));
+                        break;
+                    case 2:
+                        imgBook9.setImage(image);
+                        label9.setText(book.getTitle());
+                        imgBook9.setOnMouseClicked(event -> handleBookClick(event, book));
+                        break;
+                    case 3:
+                        imgBook10.setImage(image);
+                        label10.setText(book.getTitle());
+                        imgBook10.setOnMouseClicked(event -> handleBookClick(event, book));
+                        break;
+                    case 4:
+                        imgBook11.setImage(image);
+                        label11.setText(book.getTitle());
+                        imgBook11.setOnMouseClicked(event -> handleBookClick(event, book));
+                        break;
+                    case 5:
+                        imgBook12.setImage(image);
+                        label12.setText(book.getTitle());
+                        imgBook12.setOnMouseClicked(event -> handleBookClick(event, book));
+                        break;
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
     private void scaleImage(ImageView imageView, double scale) {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), imageView);
         scaleTransition.setToX(scale);
