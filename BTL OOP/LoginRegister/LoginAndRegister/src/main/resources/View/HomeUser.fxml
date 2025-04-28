@@ -117,7 +117,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="426.0" layoutY="350.0" prefHeight="60.0" prefWidth="361.0" style="-fx-font-size: 30px;               -fx-font-weight: bold;               -fx-text-fill: #0d47a1;               -fx-effect: dropshadow(three-pass-box, rgba(13, 71, 161, 0.2), 2, 0.2, 0, 0);               -fx-background-color: transparent;" text="📈 TRENDING BOOKS 📈">
+            <Label alignment="CENTER" layoutX="426.0" layoutY="350.0" prefHeight="60.0" prefWidth="361.0" styleClass="labeltrendiing" text="📈 TRENDING BOOKS 📈">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
@@ -171,4 +171,3 @@
       </Pane>
    </center>
 </BorderPane>
-

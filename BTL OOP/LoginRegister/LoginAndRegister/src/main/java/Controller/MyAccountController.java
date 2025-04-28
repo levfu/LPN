@@ -79,9 +79,18 @@ public class MyAccountController {
         );
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
+            if (selectedFile.length() > 5 * 1024 * 1024) {
+                showAlert("Ảnh quá lớn! Vui lòng chọn ảnh nhỏ hơn 5MB.");
+                return;
+            }
+            if (!selectedFile.getName().matches(".*\\.(jpg|jpeg|png)$")) {
+                showAlert("Định dạng ảnh không hợp lệ. Vui lòng chọn ảnh JPG hoặc PNG.");
+                return;
+            }
             avatarFile = selectedFile;
             Image image = new Image(selectedFile.toURI().toString());
             avatar.setImage(image);
+
         }
     }
 
