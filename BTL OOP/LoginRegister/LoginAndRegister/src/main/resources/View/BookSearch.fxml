@@ -42,10 +42,10 @@
       </AnchorPane>
       <TableView fx:id="borrowBookTable" layoutX="325.0" layoutY="138.0" prefHeight="503.0" prefWidth="782.0" style="-fx-background-color: #e0f7fa;">
          <columns>
-            <TableColumn fx:id="isbnColumn" prefWidth="136.79998779296875" text="ID" />
-            <TableColumn fx:id="titleColumn" minWidth="0.0" prefWidth="209.59994506835938" text="Title" />
-            <TableColumn fx:id="authorColumn" prefWidth="224.800048828125" text="Author" />
-            <TableColumn fx:id="dueDateColumn" prefWidth="206.39996337890625" text="DueDate" />
+            <TableColumn fx:id="isbnColumn" prefWidth="136.79998779296875" style="-fx-alignment: CENTER;" text="ID" />
+            <TableColumn fx:id="titleColumn" minWidth="0.0" prefWidth="209.59994506835938" style="-fx-alignment: CENTER;" text="Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="224.800048828125" style="-fx-alignment: CENTER;" text="Author" />
+            <TableColumn fx:id="dueDateColumn" prefWidth="206.39996337890625" style="-fx-alignment: CENTER;" text="DueDate" />
          </columns>
       </TableView>
       <Button fx:id="returnButton" layoutX="566.0" layoutY="643.0" mnemonicParsing="false" onAction="#returnBook" text="Return" />

@@ -107,7 +107,6 @@ public class BookManagementController {
                               if (empty || item == null) {
                                    setText(null);
                               } else {
-                                   // Hiển thị Title - Authors
                                    setText(item.getTitle() + " - " + String.join(", ", item.getAuthor()));
                               }
                          }
