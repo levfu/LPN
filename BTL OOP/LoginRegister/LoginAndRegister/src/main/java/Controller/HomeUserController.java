@@ -4,7 +4,7 @@ import Books.Book;
 import Books.BookManagementController;
 import Books.DatabaseHelper;
 import Books.RatingBookController;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +22,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 import javafx.scene.input.MouseEvent;
@@ -157,6 +159,7 @@ public class HomeUserController {
     @FXML
     public void initialize() {
         showInitialItems();
+        createSnowEffect();
         searchinguser.setOnMouseClicked(event -> listViewuser.setVisible(!listViewuser.isVisible()));
         searchinguser.setOnKeyReleased(event -> filterList());
         updateTopRatedBooks();
@@ -367,5 +370,35 @@ public class HomeUserController {
         scaleTransition.setToX(scale);
         scaleTransition.setToY(scale);
         scaleTransition.play();
+    }
+
+    private void createSnowEffect() {
+        double snowWidth = 1200;
+        double snowHeight = 700;
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), e -> {
+            Circle snowflake = new Circle(2 + Math.random() * 3, Color.WHITE);
+            snowflake.setOpacity(Math.random());
+            snowflake.setLayoutX(Math.random() * snowWidth);
+            snowflake.setLayoutY(-100);
+            PaneContent.getChildren().add(snowflake);
+            TranslateTransition fall = new TranslateTransition();
+            fall.setNode(snowflake);
+            fall.setDuration(Duration.seconds(10 + Math.random() * 10));
+            fall.setFromY(-100);
+            fall.setToY(snowHeight + 100);
+            fall.setCycleCount(TranslateTransition.INDEFINITE);
+            fall.setInterpolator(Interpolator.LINEAR);
+            TranslateTransition sway = new TranslateTransition();
+            sway.setNode(snowflake);
+            sway.setDuration(Duration.seconds(2 + Math.random() * 2));
+            sway.setFromX(0);
+            sway.setByX(30 - Math.random() * 60);
+            sway.setCycleCount(TranslateTransition.INDEFINITE);
+            sway.setAutoReverse(true);
+            ParallelTransition animation = new ParallelTransition(fall, sway);
+            animation.play();
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 }

@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import Controller.User;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
 
@@ -59,7 +58,7 @@ public class BookManagementController {
      @FXML
      private Button returnButton;
      @FXML
-     private ListView<Book> bookListView;
+     private ListView<String> bookListView;
      private final ObservableList<String> bookItems = FXCollections.observableArrayList();
      private final ObservableList<BookData> borrowedBooks = FXCollections.observableArrayList();
      private final List<Book> books = new ArrayList<>();
@@ -83,7 +82,7 @@ public class BookManagementController {
 
           DatabaseHelper.createTable();
           DatabaseHelper.createTable();
-          bookListView.setItems(FXCollections.observableList(books));
+          bookListView.setItems(bookItems);
           bookListView.setVisible(false);
           titleSearchField.setPromptText("Nhập tên sách...");
           authorSearchField.setPromptText("Nhập tên tác giả...");
@@ -96,23 +95,6 @@ public class BookManagementController {
           dueDateColumn.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
 
           borrowBookTable.setItems(borrowedBooks);
-
-          bookListView.setCellFactory(new Callback<ListView<Book>, ListCell<Book>>() {
-               @Override
-               public ListCell<Book> call(ListView<Book> param) {
-                    return new ListCell<Book>() {
-                         @Override
-                         protected void updateItem(Book item, boolean empty) {
-                              super.updateItem(item, empty);
-                              if (empty || item == null) {
-                                   setText(null);
-                              } else {
-                                   setText(item.getTitle() + " - " + String.join(", ", item.getAuthor()));
-                              }
-                         }
-                    };
-               }
-          });
 
           titleSearchField.setOnKeyPressed(keyEvent -> {
                if (keyEvent.getCode() == KeyCode.ENTER) {
@@ -130,15 +112,25 @@ public class BookManagementController {
                }
           });
           bookListView.setOnMouseClicked(mouseEvent -> {
-               Book selectedBook = bookListView.getSelectionModel().getSelectedItem();
+               String selectedBook = bookListView.getSelectionModel().getSelectedItem();
                if (selectedBook != null) {
-                    String bookInfo = selectedBook.getTitle() + " - " + String.join(", ", selectedBook.getAuthor());
-                    selectedBookTextField.setText(bookInfo);
-
-                    showBookDetail(selectedBook);
+                    selectedBookTextField.setText(selectedBook);
+                    bookListView.setVisible(false);
                }
           });
 
+          selectedBookTextField.setOnMouseClicked(mouseEvent -> {
+               if (!bookItems.isEmpty()) {
+                    bookListView.setVisible(true);
+               }
+          });
+
+          // Enter để chọn nếu dùng bàn phím
+          selectedBookTextField.setOnKeyPressed(keyEvent -> {
+               if (keyEvent.getCode() == KeyCode.ENTER) {
+                    bookListView.setVisible(false);
+               }
+          });
 
           borrowBookTable.setOnMouseClicked(mouseEvent -> {
                if (mouseEvent.getClickCount() == 2) {
@@ -179,9 +171,7 @@ public class BookManagementController {
                String jsonResponse = GoogleBookAPI.searchBooks(title, author, "", isbn);
                List<Book> bookList = BookParser.parseBooks(jsonResponse);
                books.clear();
-
                if (bookList.isEmpty()) {
-                    bookItems.clear();
                     bookItems.add("Khong tim thay sach");
                } else {
                     for (Book book : bookList) {
@@ -189,11 +179,10 @@ public class BookManagementController {
                          books.add(book);
                     }
                }
-               bookListView.setItems(FXCollections.observableList(books));
+
                bookListView.setVisible(true);
           } catch (Exception e) {
                e.printStackTrace();
-               bookItems.clear();
                bookItems.add("Lỗi khi lấy dữ liệu từ API");
                bookListView.setVisible(true);
           }
@@ -210,19 +199,25 @@ public class BookManagementController {
                     String authorNames = String.join(", ", selectedBook.getAuthor());
                     String dueDate = LocalDate.now().plusDays(15).toString();
                     String thumbnail = selectedBook.getThumbnail();
-
                     if (borrowedBooks.size() >= MAX_BOOKS) {
                          borrowedBooks.remove(0);
                     }
-
                     BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate, thumbnail);
 
                     borrowedBooks.add(data);
-                    DatabaseHelper.saveToDatabase(currentUser.getId(), data);
+                    DatabaseHelper.saveToDatabase( currentUser.getId() ,data);
                } else {
                     showAlert("Không tìm thấy sách!", "Không thể mượn vì không tìm thấy sách tương ứng.");
                }
           }
+     }
+
+     private void showAlert(String title, String content) {
+          Alert alert = new Alert(Alert.AlertType.WARNING);
+          alert.setTitle(title);
+          alert.setHeaderText(null);
+          alert.setContentText(content);
+          alert.showAndWait();
      }
 
      private Book getBookFromText(String displayText) {
@@ -234,15 +229,6 @@ public class BookManagementController {
           }
           return null;
      }
-
-     private void showAlert(String title, String content) {
-          Alert alert = new Alert(Alert.AlertType.WARNING);
-          alert.setTitle(title);
-          alert.setHeaderText(null);
-          alert.setContentText(content);
-          alert.showAndWait();
-     }
-
      private Book getBookByIsbn(String isbn) {
           for (Book book : books) {
                if (book.getIsbn().equals(isbn)) {

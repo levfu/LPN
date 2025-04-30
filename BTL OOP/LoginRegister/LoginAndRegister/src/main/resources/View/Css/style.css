@@ -91,3 +91,14 @@
     -fx-font-family: "Comic Sans MS", "Nunito", "Segoe UI";
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0.3, 2, 2);
 }
+
+.book-title1 {
+    -fx-font-size: 45px;
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to right, #3b4bf6, #6075fa);
+
+    -fx-font-family: "Comic Sans MS", "Nunito", "Segoe UI";
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 4, 0.3, 2, 2);
+}
+
+

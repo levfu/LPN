@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -13,51 +14,59 @@
 
 <AnchorPane fx:id="catGif" prefHeight="704.0" prefWidth="1200.0" stylesheets="@Css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.BookManagementController">
    <children>
-      <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="285.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
-      <AnchorPane layoutX="31.0" layoutY="137.0" prefHeight="503.0" prefWidth="294.0" style="-fx-background-color: #bae8e4; -fx-background-radius: 15;">
+      <AnchorPane layoutX="28.0" layoutY="97.0" prefHeight="534.0" prefWidth="294.0" style="-fx-background-color: #bae8e4; -fx-background-radius: 15;">
          <children>
-            <TextField fx:id="authorSearchField" layoutX="19.0" layoutY="18.0" prefHeight="26.0" prefWidth="198.0" promptText="Nhập tên tác giả..." />
-            <TextField fx:id="isbnSearchField" layoutX="17.0" layoutY="76.0" prefHeight="30.0" prefWidth="197.0" promptText="Nhập mã sách..." />
-            <Button fx:id="searchButton" layoutX="220.0" layoutY="101.0" mnemonicParsing="false" onAction="#searchBooks" text="Search" />
-            <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="190.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
+            <TextField fx:id="authorSearchField" layoutX="6.0" layoutY="116.0" prefHeight="47.0" prefWidth="284.0" promptText="Nhập tên tác giả..." />
+            <TextField fx:id="isbnSearchField" layoutX="6.0" layoutY="173.0" prefHeight="47.0" prefWidth="284.0" promptText="Nhập mã sách..." />
+            <Button fx:id="searchButton" layoutX="50.0" layoutY="286.0" mnemonicParsing="false" onAction="#searchBooks" prefHeight="47.0" prefWidth="80.0" text="Search" />
+            <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="255.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
                   <Image url="@images/MicroScopeLogo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="190.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
+            <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="255.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
                   <Image url="@images/MicroScopeLogo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="titleSearchField" layoutX="17.0" layoutY="135.0" prefHeight="30.0" prefWidth="198.0" promptText="Nhập tên sách..." />
-            <ListView fx:id="bookListView" layoutY="235.0" prefHeight="271.0" prefWidth="242.0" />
-            <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="190.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
+            <TextField fx:id="titleSearchField" layoutX="6.0" layoutY="230.0" prefHeight="47.0" prefWidth="284.0" promptText="Nhập tên sách..." />
+            <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="252.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
                   <Image url="@images/MicroScopeLogo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="selectedBookTextField" layoutX="17.0" layoutY="196.0" prefHeight="30.0" prefWidth="198.0" />
-            <Button fx:id="borrowButton" layoutX="217.0" layoutY="194.0" mnemonicParsing="false" onAction="#borrowBook" prefHeight="34.0" prefWidth="74.0" text="Borrow" />
+            <TextField fx:id="selectedBookTextField" editable="false" layoutX="6.0" layoutY="343.0" prefHeight="47.0" prefWidth="284.0">
+               <rotationAxis>
+                  <Point3D x="-2.0" z="1.0" />
+               </rotationAxis></TextField>
+            <Button fx:id="borrowButton" layoutX="174.0" layoutY="286.0" mnemonicParsing="false" onAction="#borrowBook" prefHeight="47.0" prefWidth="80.0" text="Borrow" />
+            <ListView fx:id="bookListView" layoutX="1.0" layoutY="392.0" prefHeight="150.0" prefWidth="294.0" />
+            <Label alignment="CENTER" layoutX="-1.0" layoutY="24.0" prefHeight="73.0" prefWidth="294.0" styleClass="book-title1" text="Book Search"> </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="borrowBookTable" layoutX="325.0" layoutY="138.0" prefHeight="503.0" prefWidth="782.0" style="-fx-background-color: #e0f7fa;">
+      <TableView fx:id="borrowBookTable" layoutX="324.0" layoutY="97.0" prefHeight="542.0" prefWidth="847.0" style="-fx-background-color: #e0f7fa;">
          <columns>
-            <TableColumn fx:id="isbnColumn" prefWidth="136.79998779296875" style="-fx-alignment: CENTER;" text="ID" />
-            <TableColumn fx:id="titleColumn" minWidth="0.0" prefWidth="209.59994506835938" style="-fx-alignment: CENTER;" text="Title" />
-            <TableColumn fx:id="authorColumn" prefWidth="224.800048828125" style="-fx-alignment: CENTER;" text="Author" />
-            <TableColumn fx:id="dueDateColumn" prefWidth="206.39996337890625" style="-fx-alignment: CENTER;" text="DueDate" />
+            <TableColumn fx:id="isbnColumn" editable="false" prefWidth="181.0" resizable="false" text="ID" />
+            <TableColumn fx:id="titleColumn" editable="false" minWidth="0.0" prefWidth="239.0" text="Title" />
+            <TableColumn fx:id="authorColumn" editable="false" prefWidth="216.0" text="Author" />
+            <TableColumn fx:id="dueDateColumn" editable="false" prefWidth="210.0" text="DueDate" />
          </columns>
       </TableView>
-      <Button fx:id="returnButton" layoutX="566.0" layoutY="643.0" mnemonicParsing="false" onAction="#returnBook" text="Return" />
-      <ImageView fitHeight="95.0" fitWidth="102.0" layoutX="109.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
-         <image>
-            <Image url="@images/hinhcute.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="khosachLabel" alignment="CENTER" layoutX="432.0" layoutY="42.0" prefHeight="53.0" prefWidth="283.0" styleClass="book-title" text="Kho Sách">
+      <Button fx:id="returnButton" layoutX="510.0" layoutY="648.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="47.0" prefWidth="179.0" text="Return selected book" />
+      <Label fx:id="khosachLabel" alignment="CENTER" layoutX="323.0" layoutY="1.0" prefHeight="95.0" prefWidth="555.0" styleClass="book-title" text="Book Storage">
          <font>
-            <Font size="36.0" />
+            <Font size="35.0" />
          </font>
       </Label>
+      <ImageView fitHeight="157.0" fitWidth="120.0" layoutX="768.0" layoutY="-34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Book.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="102.0" layoutX="341.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Book1.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

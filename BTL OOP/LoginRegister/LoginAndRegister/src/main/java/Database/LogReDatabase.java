@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import Controller.User;
 
 public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\library.db";
+    private static final String URL = "jdbc:sqlite:D:\\LPN\\LPN\\BTL OOP\\LoginRegister\\library.db";
 
     public static Connection connect() {
         try {
