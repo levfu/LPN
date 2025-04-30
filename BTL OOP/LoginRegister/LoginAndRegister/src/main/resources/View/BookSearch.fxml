@@ -46,10 +46,10 @@
       </AnchorPane>
       <TableView fx:id="borrowBookTable" layoutX="324.0" layoutY="97.0" prefHeight="542.0" prefWidth="847.0" style="-fx-background-color: #e0f7fa;">
          <columns>
-            <TableColumn fx:id="isbnColumn" editable="false" prefWidth="181.0" resizable="false" text="ID" />
-            <TableColumn fx:id="titleColumn" editable="false" minWidth="0.0" prefWidth="239.0" text="Title" />
-            <TableColumn fx:id="authorColumn" editable="false" prefWidth="216.0" text="Author" />
-            <TableColumn fx:id="dueDateColumn" editable="false" prefWidth="210.0" text="DueDate" />
+            <TableColumn fx:id="isbnColumn" editable="false" prefWidth="181.0" resizable="false" style="-fx-alignment: CENTER;" text="ID" />
+            <TableColumn fx:id="titleColumn" editable="false" minWidth="0.0" prefWidth="239.0" style="-fx-alignment: CENTER;" text="Title" />
+            <TableColumn fx:id="authorColumn" editable="false" prefWidth="216.0" style="-fx-alignment: CENTER;" text="Author" />
+            <TableColumn fx:id="dueDateColumn" editable="false" prefWidth="210.0" style="-fx-alignment: CENTER;" text="DueDate" />
          </columns>
       </TableView>
       <Button fx:id="returnButton" layoutX="510.0" layoutY="648.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="47.0" prefWidth="179.0" text="Return selected book" />
