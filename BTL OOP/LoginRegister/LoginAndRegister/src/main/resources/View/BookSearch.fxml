@@ -16,8 +16,8 @@
       <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="285.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" />
       <AnchorPane layoutX="31.0" layoutY="137.0" prefHeight="503.0" prefWidth="294.0" style="-fx-background-color: #bae8e4; -fx-background-radius: 15;">
          <children>
-            <TextField fx:id="authorSearchField" layoutX="19.0" layoutY="14.0" prefHeight="30.0" prefWidth="203.0" promptText="Nhập tên tác giả..." />
-            <TextField fx:id="isbnSearchField" layoutX="22.0" layoutY="76.0" prefHeight="30.0" prefWidth="197.0" promptText="Nhập mã sách..." />
+            <TextField fx:id="authorSearchField" layoutX="19.0" layoutY="18.0" prefHeight="26.0" prefWidth="198.0" promptText="Nhập tên tác giả..." />
+            <TextField fx:id="isbnSearchField" layoutX="17.0" layoutY="76.0" prefHeight="30.0" prefWidth="197.0" promptText="Nhập mã sách..." />
             <Button fx:id="searchButton" layoutX="220.0" layoutY="101.0" mnemonicParsing="false" onAction="#searchBooks" text="Search" />
             <ImageView fitHeight="26.0" fitWidth="22.0" layoutX="190.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
@@ -43,9 +43,9 @@
       <TableView fx:id="borrowBookTable" layoutX="325.0" layoutY="138.0" prefHeight="503.0" prefWidth="782.0" style="-fx-background-color: #e0f7fa;">
          <columns>
             <TableColumn fx:id="isbnColumn" prefWidth="136.79998779296875" text="ID" />
-            <TableColumn fx:id="titleColumn" minWidth="0.0" prefWidth="197.59994506835938" text="Title" />
-            <TableColumn fx:id="authorColumn" prefWidth="204.79998779296875" text="Author" />
-            <TableColumn fx:id="dueDateColumn" prefWidth="124.0" text="DueDate" />
+            <TableColumn fx:id="titleColumn" minWidth="0.0" prefWidth="209.59994506835938" text="Title" />
+            <TableColumn fx:id="authorColumn" prefWidth="224.800048828125" text="Author" />
+            <TableColumn fx:id="dueDateColumn" prefWidth="206.39996337890625" text="DueDate" />
          </columns>
       </TableView>
       <Button fx:id="returnButton" layoutX="566.0" layoutY="643.0" mnemonicParsing="false" onAction="#returnBook" text="Return" />
