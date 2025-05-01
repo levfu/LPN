@@ -5,12 +5,13 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.RatingBookController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="687.0" stylesheets="@Css/BorrowRate.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.RatingBookController">
     <center>
         <VBox prefHeight="580.0" prefWidth="481.0" BorderPane.alignment="CENTER">
             <children>
@@ -60,7 +61,9 @@
                     </font>
                 </Label>
                 <TextArea fx:id="commentTextArea" prefHeight="93.0" prefWidth="485.0" />
-                <Button fx:id="submitRatingButton" mnemonicParsing="false" onAction="#handleSubmitRating" text="Gửi Đánh Giá" />
+            <Label prefHeight="18.0" prefWidth="494.0" />
+                <Button fx:id="submitRatingButton" mnemonicParsing="false" onAction="#handleSubmitRating" prefHeight="36.0" prefWidth="127.0" text="Gửi Đánh Giá" />
+            <Label />
             </children>
         </VBox>
     </center>
@@ -68,6 +71,11 @@
         <VBox prefHeight="506.0" prefWidth="202.0" BorderPane.alignment="CENTER">
             <children>
                 <ImageView fx:id="coverImage" fitHeight="358.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <AnchorPane fx:id="acP" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="borrowBk" layoutX="58.0" layoutY="31.0" mnemonicParsing="false" onAction="#handleBorrow" prefHeight="36.0" prefWidth="86.0" text="Borrow" />
+               </children>
+            </AnchorPane>
             </children>
         </VBox>
     </left>

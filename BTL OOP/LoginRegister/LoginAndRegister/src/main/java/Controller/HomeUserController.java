@@ -80,6 +80,16 @@ public class HomeUserController {
     @FXML
     private TextField searchinguser;
 
+    private BookManagementController bookManagementController;
+
+    public HomeUserController() {
+        this.bookManagementController = new BookManagementController();
+    }
+
+    public BookManagementController getBookManagementController() {
+        return this.bookManagementController;
+    }
+
     @FXML
     void Booksuser(ActionEvent event) {
         try {
@@ -102,6 +112,9 @@ public class HomeUserController {
             RatingBookController ratingController = loader.getController();
             ratingController.setBookInfo(selectedBook);
             ratingController.setUser(currentUser);
+            ratingController.setHomeUserController(this);
+            ratingController.setBookManagementController(bookManagementController);
+
 
             Stage ratingStage = new Stage();
             ratingStage.setScene(new Scene(root));
@@ -112,7 +125,6 @@ public class HomeUserController {
             e.printStackTrace();
         }
     }
-
     @FXML
     void ComMU(ActionEvent event) {
         try {
@@ -201,6 +213,12 @@ public class HomeUserController {
         imgBook12.setOnMouseExited(event -> scaleImage(imgBook12, 1));
     }
 
+    private User currentUser;
+
+    public void setUser(User user) {
+        this.currentUser = user;
+    }
+
 
     private void filterList() {
         String keyword = searchinguser.getText().toLowerCase();
@@ -238,11 +256,6 @@ public class HomeUserController {
         }
     }
 
-    private User currentUser;
-
-    public void setUser(User user) {
-        this.currentUser = user;
-    }
 
     @FXML
     void myaccount(ActionEvent event) {

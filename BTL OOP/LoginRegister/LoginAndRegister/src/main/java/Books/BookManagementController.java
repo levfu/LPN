@@ -284,6 +284,7 @@ public class BookManagementController {
                RatingBookController ratingBookController = loader.getController();
                ratingBookController.setBookInfo(book);
                ratingBookController.setUser(currentUser);
+               ratingBookController.setBookManagementController(this);
 
                Stage detailStage = new Stage();
                detailStage.setTitle("Đánh giá sách");
@@ -291,6 +292,26 @@ public class BookManagementController {
                detailStage.show();
           } catch (IOException e) {
                e.printStackTrace();
+          }
+     }
+
+     @FXML
+     public void borrowBk(Book selectedBook) {
+          if (selectedBook != null) {
+               String authorNames = String.join(", ", selectedBook.getAuthor());
+               String dueDate = LocalDate.now().plusDays(15).toString();
+               String thumbnail = selectedBook.getThumbnail();
+
+               if (borrowedBooks.size() >= MAX_BOOKS) {
+                    borrowedBooks.remove(0);
+               }
+
+               BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate, thumbnail);
+
+               borrowedBooks.add(data);
+               DatabaseHelper.saveToDatabase(currentUser.getId(), data);
+          } else {
+               showAlert("Không tìm thấy sách!", "Không thể mượn vì không tìm thấy sách tương ứng.");
           }
      }
 }

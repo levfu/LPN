@@ -1,5 +1,6 @@
 package Books;
 
+import Controller.HomeUserController;
 import Controller.User;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
@@ -13,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 import java.security.PublicKey;
+import java.time.LocalDate;
 import java.util.List;
 
 public class RatingBookController {
@@ -46,6 +48,12 @@ public class RatingBookController {
     @FXML
     private VBox commentListVBox;
 
+    @FXML
+    private AnchorPane acP;
+
+    @FXML
+    private Button borrowBk;
+
     private BookManagementController bookManagementController;
     private int rating = 0;
     private Book currentBook;
@@ -53,6 +61,15 @@ public class RatingBookController {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setBookManagementController(BookManagementController controller) {
+        this.bookManagementController = controller;
+        this.bookManagementController.setUser(user);
+    }
+
+    public void setHomeUserController(HomeUserController controller) {
+        this.bookManagementController = controller.getBookManagementController(); // Lấy BookManagementController từ HomeUserController
     }
 
     public void setBookInfo(Book book) {
@@ -155,5 +172,10 @@ public class RatingBookController {
             box.setStyle("-fx-padding: 10; -fx-background-color: #f4f4f4; -fx-background-radius: 10;");
             commentListVBox.getChildren().add(box);
         }
+    }
+
+    @FXML
+    public void handleBorrow() {
+        bookManagementController.borrowBk(currentBook);
     }
 }
