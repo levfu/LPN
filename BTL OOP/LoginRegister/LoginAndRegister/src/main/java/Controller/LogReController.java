@@ -21,17 +21,35 @@ public class LogReController implements Initializable {
     @FXML private TextField txtUsername;
     @FXML private PasswordField txtPassword;
     @FXML private ComboBox<String> roleComboBox;
+    @FXML private TextField txtPasswordVisible;
+    @FXML private CheckBox checkboxPassword;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         roleComboBox.getItems().addAll("User", "Manager");
         roleComboBox.setEditable(false);
+        checkboxPassword.setOnAction(e -> {
+            if (checkboxPassword.isSelected()) {
+                txtPasswordVisible.setText(txtPassword.getText());
+                txtPasswordVisible.setVisible(true);
+                txtPasswordVisible.setManaged(true);
+                txtPassword.setVisible(false);
+                txtPassword.setManaged(false);
+            } else {
+                txtPassword.setText(txtPasswordVisible.getText());
+                txtPassword.setVisible(true);
+                txtPassword.setManaged(true);
+                txtPasswordVisible.setVisible(false);
+                txtPasswordVisible.setManaged(false);
+            }
+        });
+
     }
 
     @FXML
     private void handleLogin() {
         String email = txtUsername.getText().trim();
-        String password = txtPassword.getText().trim();
+        String password = checkboxPassword.isSelected() ? txtPasswordVisible.getText().trim() : txtPassword.getText().trim();
         String role  = roleComboBox.getValue();
         if (role == null) {
             showCustomAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng chọn vai trò!", "/View/images/ErrorLogo.png");
@@ -57,7 +75,7 @@ public class LogReController implements Initializable {
     @FXML
     private void handleRegister() {
         String email = txtUsername.getText().trim();
-        String password = txtPassword.getText().trim();
+        String password = checkboxPassword.isSelected() ? txtPasswordVisible.getText().trim() : txtPassword.getText().trim();
         String role = roleComboBox.getValue();
 
         if (role == null) {
@@ -138,7 +156,7 @@ public class LogReController implements Initializable {
     private void switchToHome(String role) {
         try {
             String email    = txtUsername.getText().trim();
-            String password = txtPassword.getText().trim();
+            String password = checkboxPassword.isSelected() ? txtPasswordVisible.getText().trim() : txtPassword.getText().trim();
             Controller.User user = LogReDatabase.getUser(email, password, role);
             if (user == null) {
                 showCustomAlert(Alert.AlertType.ERROR,

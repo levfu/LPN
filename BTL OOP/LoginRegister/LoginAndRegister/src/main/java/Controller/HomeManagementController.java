@@ -53,8 +53,6 @@ public class HomeManagementController extends HomeBaseController {
     private VBox menuBox;
     @FXML
     private HBox ramdomhot;
-    @FXML
-    private TextField searching;
 
     private User currentUser;
 
@@ -130,7 +128,6 @@ public class HomeManagementController extends HomeBaseController {
     }
     @FXML
     public void initialize() {
-        searching.setOnMouseClicked(event -> listView.setVisible(!listView.isVisible()));
         updateTopRatedBooks();
         updateTrendingBooks();
         img1.setOnMouseEntered(event -> super.scaleImage(img1, 1.1));

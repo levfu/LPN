@@ -77,8 +77,6 @@ public class HomeUserController extends HomeBaseController {
     @FXML
     private HBox randomhotuser;
 
-    @FXML
-    private TextField searchinguser;
 
     private BookManagementController bookManagementController;
 
@@ -163,7 +161,6 @@ public class HomeUserController extends HomeBaseController {
     @FXML
     public void initialize() {
         super.createSnowEffect(PaneContent);
-        searchinguser.setOnMouseClicked(event -> listViewuser.setVisible(!listViewuser.isVisible()));
         updateTopRatedBooks();
         updateTrendingBooks();
         imgBook1.setOnMouseEntered(event -> super.scaleImage(imgBook1, 1.1));
