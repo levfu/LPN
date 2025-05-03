@@ -138,7 +138,7 @@ public class ReaderController {
 
     private void openBookSearch(User user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/BookSearch.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FXML/BookSearch.fxml"));
             Parent BookSearch = loader.load();
 
             BookManagementController controller = loader.getController();

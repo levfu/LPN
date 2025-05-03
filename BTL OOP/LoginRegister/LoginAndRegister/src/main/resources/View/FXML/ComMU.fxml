@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="704.0" prefWidth="1185.6" styleClass="viewport" stylesheets="@Css/chat.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CommunityChatController">
+<AnchorPane prefHeight="704.0" prefWidth="1185.6" styleClass="viewport" stylesheets="@../Css/chat.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CommunityChatController">
 
-    <ScrollPane fitToWidth="true" layoutX="11.2" prefHeight="622.0" prefWidth="878.0" stylesheets="@Css/chat.css" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="10.0">
+    <ScrollPane fitToWidth="true" layoutX="11.2" prefHeight="622.0" prefWidth="878.0" stylesheets="@../Css/chat.css" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="10.0">
         <VBox fx:id="messageBox" alignment="TOP_CENTER" spacing="5.0">
         </VBox>
     </ScrollPane>

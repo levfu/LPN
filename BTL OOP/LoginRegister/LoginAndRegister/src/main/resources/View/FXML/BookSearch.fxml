@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="catGif" prefHeight="704.0" prefWidth="1200.0" stylesheets="@Css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.BookManagementController">
+<AnchorPane fx:id="catGif" prefHeight="704.0" prefWidth="1200.0" stylesheets="@../Css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.BookManagementController">
    <children>
       <AnchorPane layoutX="28.0" layoutY="97.0" prefHeight="534.0" prefWidth="294.0" style="-fx-background-color: #bae8e4; -fx-background-radius: 15;">
          <children>
@@ -21,18 +21,18 @@
             <Button fx:id="searchButton" layoutX="50.0" layoutY="286.0" mnemonicParsing="false" onAction="#searchBooks" prefHeight="47.0" prefWidth="80.0" text="Search" />
             <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="255.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
-                  <Image url="@images/MicroScopeLogo.png" />
+                  <Image url="@../images/MicroScopeLogo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="255.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
-                  <Image url="@images/MicroScopeLogo.png" />
+                  <Image url="@../images/MicroScopeLogo.png" />
                </image>
             </ImageView>
             <TextField fx:id="titleSearchField" layoutX="6.0" layoutY="230.0" prefHeight="47.0" prefWidth="284.0" promptText="Nhập tên sách..." />
             <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="252.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
-                  <Image url="@images/MicroScopeLogo.png" />
+                  <Image url="@../images/MicroScopeLogo.png" />
                </image>
             </ImageView>
             <TextField fx:id="selectedBookTextField" editable="false" layoutX="6.0" layoutY="343.0" prefHeight="47.0" prefWidth="284.0">
@@ -60,12 +60,12 @@
       </Label>
       <ImageView fitHeight="157.0" fitWidth="120.0" layoutX="768.0" layoutY="-34.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/Book.png" />
+            <Image url="@../images/Book.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="95.0" fitWidth="102.0" layoutX="341.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/Book1.png" />
+            <Image url="@../images/Book1.png" />
          </image>
       </ImageView>
    </children>

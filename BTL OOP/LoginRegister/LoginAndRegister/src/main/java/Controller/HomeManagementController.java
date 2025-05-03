@@ -1,7 +1,6 @@
 package Controller;
 
 import Books.*;
-import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,67 +19,54 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 import java.io.IOException;
 import java.util.List;
 
-public class HomeManagementController {
-
+public class HomeManagementController extends HomeBaseController {
     @FXML
     private VBox vbox1, vbox2, vbox3, vbox4, vbox5, vbox6, vbox7, vbox8, vbox9, vbox10, vbox11, vbox12;
-
-
     @FXML
     private ImageView img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12;
-
     @FXML
     private Label lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lb11, lb12;
-
     @FXML
     private Pane PaneContent;
-
     @FXML
     private Button Setting;
-
     @FXML
     private Button myaccount;
-
     @FXML
     private Button logout;
-
     @FXML
     private Button button2;
-
     @FXML
     private Button buttonhome;
-
     @FXML
     private Button button4;
-
-
     @FXML
     private Button buttonbooks;
-
     @FXML
     private ListView<String> listView;
-
     @FXML
     private VBox menuBox;
-
     @FXML
     private HBox ramdomhot;
-
     @FXML
     private TextField searching;
+
+    private User currentUser;
+
+    public void setUser(User user) {
+        this.currentUser = user;
+    }
 
     @FXML
     void Homemanger(ActionEvent event) {
         try {
             FXMLLoader loader;
-            loader = new FXMLLoader(getClass().getResource("/View/HomeManager.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/View/FXML/HomeManager.fxml"));
             Parent root = loader.load();
             HomeManagementController controller = loader.getController();
             controller.setUser(currentUser);
@@ -91,12 +77,11 @@ public class HomeManagementController {
             e.printStackTrace();
         }
     }
-
     @FXML
     void Books(ActionEvent event) {
         try {
             FXMLLoader loader;
-            loader = new FXMLLoader(getClass().getResource("/View/BookSearchManager.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/View/FXML/BookSearchManager.fxml"));
             Parent BookView = loader.load();
             BookSearchManagerController controller = loader.getController();
             controller.setUser(currentUser);
@@ -106,12 +91,11 @@ public class HomeManagementController {
         }
 
     }
-
     @FXML
     void Readers(ActionEvent event) {
         try {
             FXMLLoader loader;
-            loader = new FXMLLoader(getClass().getResource("/View/Reader.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/View/FXML/Reader.fxml"));
             Parent readerView = loader.load();
             ReaderController controller = loader.getController();
             controller.setUser(currentUser);
@@ -122,20 +106,14 @@ public class HomeManagementController {
             e.printStackTrace();
         }
     }
-
     @FXML
     void Settings(ActionEvent event) {
         menuBox.setVisible(!menuBox.isVisible());
     }
-
-    private final ObservableList<String> data = FXCollections.observableArrayList(
-            "Java", "JavaFX", "Python", "C++", "Kotlin", "JavaScript"
-    );
-
     @FXML
-    private void handleBookClick(MouseEvent event, Book selectedBook) {
+    public void handleBookClick(MouseEvent event, Book selectedBook) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/RatingBook.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FXML/RatingBook.fxml"));
             Parent root = loader.load();
             RatingBookController ratingController = loader.getController();
             ratingController.setBookInfo(selectedBook);
@@ -150,138 +128,57 @@ public class HomeManagementController {
             e.printStackTrace();
         }
     }
-
-    private void createSnowEffect() {
-        double snowWidth = 1200;
-        double snowHeight = 700;
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.1), e -> {
-            Circle snowflake = new Circle(2 + Math.random() * 3, Color.WHITE);
-            snowflake.setOpacity(Math.random());
-            snowflake.setLayoutX(Math.random() * snowWidth);
-            snowflake.setLayoutY(-100);
-            PaneContent.getChildren().add(snowflake);
-            TranslateTransition fall = new TranslateTransition();
-            fall.setNode(snowflake);
-            fall.setDuration(Duration.seconds(10 + Math.random() * 10));
-            fall.setFromY(-100);
-            fall.setToY(snowHeight + 100);
-            fall.setCycleCount(TranslateTransition.INDEFINITE);
-            fall.setInterpolator(Interpolator.LINEAR);
-            TranslateTransition sway = new TranslateTransition();
-            sway.setNode(snowflake);
-            sway.setDuration(Duration.seconds(2 + Math.random() * 2));
-            sway.setFromX(0);
-            sway.setByX(30 - Math.random() * 60);
-            sway.setCycleCount(TranslateTransition.INDEFINITE);
-            sway.setAutoReverse(true);
-            ParallelTransition animation = new ParallelTransition(fall, sway);
-            animation.play();
-        }));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
-
     @FXML
     public void initialize() {
-        showInitialItems();
         searching.setOnMouseClicked(event -> listView.setVisible(!listView.isVisible()));
-        searching.setOnKeyReleased(event -> filterList());
         updateTopRatedBooks();
         updateTrendingBooks();
-        img1.setOnMouseEntered(event -> scaleImage(img1, 1.1));
-        img1.setOnMouseExited(event -> scaleImage(img1, 1));
+        img1.setOnMouseEntered(event -> super.scaleImage(img1, 1.1));
+        img1.setOnMouseExited(event -> super.scaleImage(img1, 1));
 
-        img2.setOnMouseEntered(event -> scaleImage(img2, 1.1));
-        img2.setOnMouseExited(event -> scaleImage(img2, 1));
+        img2.setOnMouseEntered(event -> super.scaleImage(img2, 1.1));
+        img2.setOnMouseExited(event -> super.scaleImage(img2, 1));
 
-        img3.setOnMouseEntered(event -> scaleImage(img3, 1.1));
-        img3.setOnMouseExited(event -> scaleImage(img3, 1));
+        img3.setOnMouseEntered(event -> super.scaleImage(img3, 1.1));
+        img3.setOnMouseExited(event -> super.scaleImage(img3, 1));
 
-        img4.setOnMouseEntered(event -> scaleImage(img4, 1.1));
-        img4.setOnMouseExited(event -> scaleImage(img4, 1));
+        img4.setOnMouseEntered(event -> super.scaleImage(img4, 1.1));
+        img4.setOnMouseExited(event -> super.scaleImage(img4, 1));
 
-        img5.setOnMouseEntered(event -> scaleImage(img5, 1.1));
-        img5.setOnMouseExited(event -> scaleImage(img5, 1));
+        img5.setOnMouseEntered(event -> super.scaleImage(img5, 1.1));
+        img5.setOnMouseExited(event -> super.scaleImage(img5, 1));
 
-        img6.setOnMouseEntered(event -> scaleImage(img6, 1.1));
-        img6.setOnMouseExited(event -> scaleImage(img6, 1));
+        img6.setOnMouseEntered(event -> super.scaleImage(img6, 1.1));
+        img6.setOnMouseExited(event -> super.scaleImage(img6, 1));
 
-        img7.setOnMouseEntered(event -> scaleImage(img7, 1.1));
-        img7.setOnMouseExited(event -> scaleImage(img7, 1));
+        img7.setOnMouseEntered(event -> super.scaleImage(img7, 1.1));
+        img7.setOnMouseExited(event -> super.scaleImage(img7, 1));
 
-        img8.setOnMouseEntered(event -> scaleImage(img8, 1.1));
-        img8.setOnMouseExited(event -> scaleImage(img8, 1));
+        img8.setOnMouseEntered(event -> super.scaleImage(img8, 1.1));
+        img8.setOnMouseExited(event -> super.scaleImage(img8, 1));
 
-        img9.setOnMouseEntered(event -> scaleImage(img9, 1.1));
-        img9.setOnMouseExited(event -> scaleImage(img9, 1));
+        img9.setOnMouseEntered(event -> super.scaleImage(img9, 1.1));
+        img9.setOnMouseExited(event -> super.scaleImage(img9, 1));
 
-        img10.setOnMouseEntered(event -> scaleImage(img10, 1.1));
-        img10.setOnMouseExited(event -> scaleImage(img10, 1));
+        img10.setOnMouseEntered(event -> super.scaleImage(img10, 1.1));
+        img10.setOnMouseExited(event -> super.scaleImage(img10, 1));
 
-        img11.setOnMouseEntered(event -> scaleImage(img11, 1.1));
-        img11.setOnMouseExited(event -> scaleImage(img11, 1));
+        img11.setOnMouseEntered(event -> super.scaleImage(img11, 1.1));
+        img11.setOnMouseExited(event -> super.scaleImage(img11, 1));
 
-        img12.setOnMouseEntered(event -> scaleImage(img12, 1.1));
-        img12.setOnMouseExited(event -> scaleImage(img12, 1));
+        img12.setOnMouseEntered(event -> super.scaleImage(img12, 1.1));
+        img12.setOnMouseExited(event -> super.scaleImage(img12, 1));
 
-        createSnowEffect();
+        super.createSnowEffect(PaneContent);
     }
-
-
-    private void showInitialItems() {
-        listView.setItems(FXCollections.observableArrayList(data.subList(0, 3)));
-    }
-
-    private void filterList() {
-        String keyword = searching.getText().toLowerCase();
-        ObservableList<String> filteredList = FXCollections.observableArrayList();
-
-        for (String item : data) {
-            if (item.toLowerCase().contains(keyword)) {
-                filteredList.add(item);
-            }
-        }
-
-        if (keyword.isEmpty()) {
-            showInitialItems();
-        } else if (filteredList.isEmpty()) {
-            listView.setVisible(false);
-        } else {
-            listView.setItems(filteredList);
-            listView.setVisible(true);
-        }
-    }
-
     @FXML
     void logout(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
-            Parent loginRoot = loader.load();
-            Stage stage = (Stage) logout.getScene().getWindow();
-            Scene scene = new Scene(loginRoot);
-            stage.setScene(scene);
-            stage.setTitle("Login & Register for Library Management System");
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        super.logout((Node) event.getSource());
     }
-
-    private User currentUser;
-
-    public void setUser(User user) {
-        this.currentUser = user;
-    }
-
     @FXML
     void myaccount(ActionEvent event) {
-        if (currentUser == null) {
-            System.out.println("User is not set");
-            return;
-        }
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MyAccount.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FXML/MyAccount.fxml"));
             Parent MyAccount = loader.load();
             MyAccountController controller = loader.getController();
             controller.setUser(currentUser);
@@ -290,12 +187,11 @@ public class HomeManagementController {
             e.printStackTrace();
         }
     }
-
     @FXML
     void ComMU(ActionEvent event) {
         try {
             FXMLLoader loader;
-            loader = new FXMLLoader(getClass().getResource("/View/ComMu.fxml"));
+            loader = new FXMLLoader(getClass().getResource("/View/FXML/ComMU.fxml"));
             Parent readerView = loader.load();
             CommunityChatController controller = loader.getController();
             controller.setUser(currentUser);
@@ -305,7 +201,7 @@ public class HomeManagementController {
         }
     }
 
-
+    @Override
     public void updateTopRatedBooks() {
         List<Book> topRatedBooks = DatabaseHelper.getTopRatedBooks();
 
@@ -357,8 +253,7 @@ public class HomeManagementController {
         }
     }
 
-
-
+    @Override
     public void updateTrendingBooks() {
         List<Book> trendingBooks = DatabaseHelper.getTrendingBooks();
 
@@ -408,15 +303,5 @@ public class HomeManagementController {
                 e.printStackTrace();
             }
         }
-    }
-
-
-
-
-    private void scaleImage(ImageView imageView, double scale) {
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), imageView);
-        scaleTransition.setToX(scale);
-        scaleTransition.setToY(scale);
-        scaleTransition.play();
     }
 }

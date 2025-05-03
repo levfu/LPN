@@ -5,16 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import Controller.User;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 public class BookSearchManagerController {
@@ -92,7 +89,7 @@ public class BookSearchManagerController {
 
     private void openRatingView(Book book) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/RatingBook.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FXML/RatingBook.fxml"));
             Parent ratingView = loader.load();
             RatingBookController ratingCtrl = loader.getController();
             ratingCtrl.setBookInfo(book);

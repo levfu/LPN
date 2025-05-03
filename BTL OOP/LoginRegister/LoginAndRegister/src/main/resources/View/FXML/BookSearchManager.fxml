@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="704.0" prefWidth="1200.0" styleClass="AnchorPane" stylesheets="@Css/BookSearchManager.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.BookSearchManagerController">
+<AnchorPane prefHeight="704.0" prefWidth="1200.0" styleClass="AnchorPane" stylesheets="@../Css/BookSearchManager.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.BookSearchManagerController">
    <children>
       <TableView fx:id="BookTable" layoutX="14.0" layoutY="39.0" prefHeight="975.0" prefWidth="466.0">
         <columns>

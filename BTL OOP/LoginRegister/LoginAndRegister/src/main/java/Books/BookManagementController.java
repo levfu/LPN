@@ -1,10 +1,5 @@
 package Books;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import javafx.animation.Animation;
-import javafx.animation.RotateTransition;
-import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,8 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
@@ -25,10 +18,9 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
 import Controller.User;
 import javafx.util.Callback;
-import javafx.util.Duration;
 
 
 public class BookManagementController {
@@ -275,7 +267,7 @@ public class BookManagementController {
      }
      private void showBookDetail(Book book) {
           try {
-               URL fxmlurl = getClass().getResource("/View/RatingBook.fxml");
+               URL fxmlurl = getClass().getResource("/View/FXML/RatingBook.fxml");
                if (fxmlurl == null) {
                     throw new IOException("Không tìm thấy file");
                }

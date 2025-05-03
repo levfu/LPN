@@ -148,8 +148,8 @@ public class LogReController implements Initializable {
                 return;
             }
             String fxmlPath = role.equals("Manager")
-                    ? "/View/HomeManager.fxml"
-                    : "/View/HomeUser.fxml";
+                    ? "/View/FXML/HomeManager.fxml"
+                    : "/View/FXML/HomeUser.fxml";
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             Parent root = loader.load();
             if (role.equals("Manager")) {
