@@ -1,15 +1,14 @@
 package Database;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
 import Controller.User;
 
 public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
+    private static final String URL = "jdbc:sqlite:D:\\LPN\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
+
+
 
     public static Connection connect() {
         try {
@@ -28,6 +27,8 @@ public class LogReDatabase {
 
     }
 
+
+
     public static boolean checkLogin(String email, String password, String role) {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND role = ?";
         try (Connection conn = connect();
@@ -43,6 +44,8 @@ public class LogReDatabase {
         }
     }
 
+
+
     public static boolean emailExists(String email, String role) {
         String sql = "SELECT * FROM users WHERE email = ? AND role = ?";
         try (Connection conn = connect();
@@ -56,6 +59,8 @@ public class LogReDatabase {
             return false;
         }
     }
+
+
 
     public static boolean registerUser(String email, String password, String role) {
         if (emailExists(email, role)) {
@@ -77,6 +82,9 @@ public class LogReDatabase {
             return false;
         }
     }
+
+
+
 
     public static User getUser(String email, String password, String role) {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND role = ?";
@@ -108,6 +116,8 @@ public class LogReDatabase {
         return null;
     }
 
+
+
     public static boolean updateUser(User user) {
         String sql = "UPDATE users SET name = ?, phone = ?, birthday = ?, address = ?, avatarPath = ?, password = ? WHERE id = ?";
         try (Connection conn = connect();
@@ -121,7 +131,7 @@ public class LogReDatabase {
             pstmt.setString(6, user.getPassword());
             pstmt.setInt(7, user.getId());
 
-            // In log ra để debug
+
             System.out.println("Updating user:");
             System.out.println("Name: " + user.getName());
             System.out.println("Phone: " + user.getPhone());
@@ -138,6 +148,9 @@ public class LogReDatabase {
             return false;
         }
     }
+
+
+
     public static List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
         String sql = "SELECT * FROM users";
@@ -161,7 +174,7 @@ public class LogReDatabase {
                 if (birthStr != null && !birthStr.isBlank()) {
                     user.setBirthday(LocalDate.parse(birthStr));
                 } else {
-                    user.setBirthday(null); // hoặc LocalDate.now()
+                    user.setBirthday(null);
                 }
 
                 userList.add(user);
@@ -172,6 +185,9 @@ public class LogReDatabase {
 
         return userList;
     }
+
+
+
     public static boolean deleteUserById(int id) {
         String sql = "DELETE FROM users WHERE id = ?";
         try (Connection conn = connect();
@@ -184,4 +200,51 @@ public class LogReDatabase {
             return false;
         }
     }
+
+
+
+    public static boolean updatePasswordByEmail(String email, String newPassword) {
+        String sql = "UPDATE users SET password = ? WHERE email = ?";
+        try (Connection conn = connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, newPassword);
+            pstmt.setString(2, email);
+            int affected = pstmt.executeUpdate();
+            return affected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+    public static boolean checkEmailExists(String email) {
+        String sql = "SELECT * FROM users WHERE email = ?";
+        try (Connection conn = connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
+
+    public static void updatePassword(String email, String newPassword) {
+        String sql = "UPDATE users SET password = ? WHERE email = ?";
+        try (Connection conn = connect(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, newPassword);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }

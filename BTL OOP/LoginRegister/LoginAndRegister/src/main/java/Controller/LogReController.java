@@ -3,6 +3,7 @@ package Controller;
 import Database.LogReDatabase;
 import Utils.EmailSender;
 import Utils.VerificationCodeGenerator;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -23,6 +26,9 @@ public class LogReController implements Initializable {
     @FXML private ComboBox<String> roleComboBox;
     @FXML private TextField txtPasswordVisible;
     @FXML private CheckBox checkboxPassword;
+    @FXML private Hyperlink forgotPassword;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -43,8 +49,12 @@ public class LogReController implements Initializable {
                 txtPasswordVisible.setManaged(false);
             }
         });
+        forgotPassword.setOnAction(event -> openForgotPasswordWindow());
 
     }
+
+
+
 
     @FXML
     private void handleLogin() {
@@ -71,6 +81,8 @@ public class LogReController implements Initializable {
             showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Sai Email hoặc mật khẩu!", "/View/images/ErrorLogo.png");
         }
     }
+
+
 
     @FXML
     private void handleRegister() {
@@ -126,11 +138,15 @@ public class LogReController implements Initializable {
     }
 
 
+
     private boolean isValidEmail(String email) {
         String emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
         Matcher m = Pattern.compile(emailRegex).matcher(email);
         return m.matches();
     }
+
+
+
 
     private void showCustomAlert(Alert.AlertType type, String title, String message, String imagePath) {
         Alert alert = new Alert(type);
@@ -152,6 +168,9 @@ public class LogReController implements Initializable {
         }
         alert.showAndWait();
     }
+
+
+
 
     private void switchToHome(String role) {
         try {
@@ -192,5 +211,43 @@ public class LogReController implements Initializable {
         }
     }
 
+
+
+    @FXML
+    void handleForgotPassword(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FXML/ForgotPasswordView.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Forgot Password");
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/View/images/UETLogo.png")));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Lỗi");
+            alert.setHeaderText(null);
+            alert.setContentText("Không thể mở giao diện đặt lại mật khẩu.");
+            alert.showAndWait();
+        }
+    }
+
+
+
+    private void openForgotPasswordWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FXML/ForgotPasswordView.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Forgot Password");
+            stage.setScene(new Scene(root));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/View/images/UETLogo.png")));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
