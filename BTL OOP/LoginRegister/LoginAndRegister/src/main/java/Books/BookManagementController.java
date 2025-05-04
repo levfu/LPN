@@ -203,12 +203,14 @@ public class BookManagementController {
                     String authorNames = String.join(", ", selectedBook.getAuthor());
                     String dueDate = LocalDate.now().plusDays(15).toString();
                     String thumbnail = selectedBook.getThumbnail();
+                    String description = selectedBook.getDescription();
+                    String tags = String.join(" ,", selectedBook.getCategory());
 
                     if (borrowedBooks.size() >= MAX_BOOKS) {
                          borrowedBooks.remove(0);
                     }
 
-                    BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate, thumbnail);
+                    BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate, thumbnail, description, tags);
 
                     borrowedBooks.add(data);
                     DatabaseHelper.saveToDatabase(currentUser.getId(), data);
@@ -293,12 +295,14 @@ public class BookManagementController {
                String authorNames = String.join(", ", selectedBook.getAuthor());
                String dueDate = LocalDate.now().plusDays(15).toString();
                String thumbnail = selectedBook.getThumbnail();
+               String tags = String.join(" ,", selectedBook.getCategory());
+               String description = selectedBook.getDescription();
 
                if (borrowedBooks.size() >= MAX_BOOKS) {
                     borrowedBooks.remove(0);
                }
 
-               BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate, thumbnail);
+               BookData data = new BookData(selectedBook.getTitle(), authorNames, selectedBook.getIsbn(), dueDate, thumbnail, description, tags);
 
                borrowedBooks.add(data);
                DatabaseHelper.saveToDatabase(currentUser.getId(), data);

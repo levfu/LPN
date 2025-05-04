@@ -4,9 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper {
-    private static final String DB_URL = "jdbc:sqlite:D:\\LPN\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\borrowed_books.db";
+    private static final String DB_URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\borrowed_books.db";
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(DB_URL);
+    }
+
+    public static void addMissingColumns() {
+        try (Connection connection = connect();
+             Statement stmt = connection.createStatement()) {
+
+            // Thêm cột description nếu chưa có
+            stmt.execute("ALTER TABLE borrowed_books ADD COLUMN description TEXT");
+
+        } catch (SQLException e) {
+            if (!e.getMessage().contains("duplicate column")) {
+                System.out.println("Lỗi khi thêm cột description: " + e.getMessage());
+            }
+        }
+
+        try (Connection connection = connect();
+             Statement stmt = connection.createStatement()) {
+
+            // Thêm cột tags nếu chưa có
+            stmt.execute("ALTER TABLE borrowed_books ADD COLUMN tags TEXT");
+
+        } catch (SQLException e) {
+            if (!e.getMessage().contains("duplicate column")) {
+                System.out.println("Lỗi khi thêm cột tags: " + e.getMessage());
+            }
+        }
     }
 
     public static void createTable() {
@@ -17,7 +43,9 @@ public class DatabaseHelper {
                 + "title TEXT, "
                 + "author TEXT, "
                 + "dueDate TEXT, "
-                + "thumbnail TEXT"
+                + "thumbnail TEXT, "
+                + "description TEXT, "
+                + "tags TEXT"
                 + ");";
 
         String ratingsql = "CREATE TABLE IF NOT EXISTS book_ratings ("
@@ -31,14 +59,16 @@ public class DatabaseHelper {
 
         try (Connection connection = connect();
              Statement stmt = connection.createStatement()) {
-            stmt.execute(sql);
-            stmt.execute(ratingsql);
+            stmt.execute(sql);      // Tạo bảng borrowed_books với các cột mới
+            stmt.execute(ratingsql); // Tạo bảng book_ratings
+            addMissingColumns();
         } catch (SQLException e) {
             System.out.println("Lỗi khi tạo bảng: " + e.getMessage());
         }
     }
+
     public static void saveToDatabase(int userId, BookData book) {
-        String sql = "INSERT INTO borrowed_books(userId, title, author, isbn, dueDate, thumbnail) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO borrowed_books(userId, title, author, isbn, dueDate, thumbnail, description, tags) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection connection = connect();
              PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, userId);
@@ -47,6 +77,8 @@ public class DatabaseHelper {
             pstmt.setString(4, book.getIsbn());
             pstmt.setString(5, book.getDueDate());
             pstmt.setString(6, book.getThumbnail());
+            pstmt.setString(7, book.getDescription());
+            pstmt.setString(8, book.getTags());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println("Lỗi khi lưu dữ liệu: ");
@@ -104,7 +136,9 @@ public class DatabaseHelper {
                 String author = rs.getString("author");
                 String dueDate = rs.getString("dueDate");
                 String thumbnail = rs.getString("thumbnail");
-                books.add(new BookData(title, author, isbn, dueDate, thumbnail));
+                String description = rs.getString("description");
+                String tags = rs.getString("tags");
+                books.add(new BookData(title, author, isbn, dueDate, thumbnail, description, tags));
             }
         } catch (SQLException e) {
             System.out.println("Loi khi tai du lieu: " + e.getMessage());
@@ -177,7 +211,7 @@ public class DatabaseHelper {
 
     public static List<Book> getTopRatedBooks() {
         List<Book> topRatedBooks = new ArrayList<>();
-        String sql = "SELECT b.isbn, b.title, b.author, b.thumbnail, AVG(r.rating) as avgRating " +
+        String sql = "SELECT b.isbn, b.title, b.author, b.thumbnail, b.description, b.tags, AVG(r.rating) as avgRating " +
                 "FROM borrowed_books b " +
                 "JOIN book_ratings r ON b.isbn = r.isbn " +
                 "GROUP BY b.isbn " +
@@ -192,7 +226,9 @@ public class DatabaseHelper {
                 String title = rs.getString("title");
                 String author = rs.getString("author");
                 String thumbnail = rs.getString("thumbnail");
-                topRatedBooks.add(new Book(title, List.of(author), new ArrayList<>(), "No description", isbn, thumbnail));
+                String desrciption = rs.getString("description");
+                String tags = rs.getString("tags");
+                topRatedBooks.add(new Book(title, List.of(author), List.of(tags), desrciption, isbn, thumbnail));
             }
         } catch (SQLException e) {
             System.out.println("Lỗi khi lấy sách top-rated: " + e.getMessage());
@@ -227,5 +263,4 @@ public class DatabaseHelper {
         }
         return trendingBooks;
     }
-
 }  

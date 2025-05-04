@@ -8,13 +8,17 @@ public class BookData {
     private final SimpleStringProperty author;
     private final SimpleStringProperty dueDate;
     private final SimpleStringProperty thumbnail;
+    private final SimpleStringProperty description;
+    private final SimpleStringProperty tags;
 
-    public BookData(String title, String author, String isbn, String dueDate, String thumbnail) {
+    public BookData(String title, String author, String isbn, String dueDate, String thumbnail, String description, String tags) {
         this.title = new SimpleStringProperty(title);
         this.author = new SimpleStringProperty(author);
         this.isbn = new SimpleStringProperty(isbn);
         this.dueDate = new SimpleStringProperty(dueDate);
         this.thumbnail = new SimpleStringProperty(thumbnail);
+        this.description = new SimpleStringProperty(description);
+        this.tags = new SimpleStringProperty(tags);
     }
 
     public String getTitle() {
@@ -55,5 +59,21 @@ public class BookData {
 
     public void setThumbnail(String value) {
         thumbnail.set(value);
+    }
+
+    public String getDescription() {
+        return description.get();
+    }
+
+    public void setDescription(String value) {
+        description.set(value);
+    }
+
+    public String getTags() {
+        return tags.get();
+    }
+
+    public void setTags(String value) {
+        tags.set(value);
     }
 }
