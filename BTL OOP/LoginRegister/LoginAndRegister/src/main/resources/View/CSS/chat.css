@@ -1,0 +1,59 @@
+.panecontentchat {
+    -fx-background-color: rgba(255, 255, 255, 0.3); /* Nền mờ 30% */
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(0, 0, 0, 0.1);
+    -fx-border-radius: 10px;
+    -fx-padding: 10;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.text-field {
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+    -fx-background-radius: 8px;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+    -fx-prompt-text-fill: #888;
+    -fx-padding: 6 10;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #00bfff, #00a2e8);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 6 16;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 2, 0.5, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #00a2e8, #008acb);
+}
+
+.label-message-sent {
+    -fx-background-color: #daf1ff;
+    -fx-text-fill: #003366;
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 12px;
+    -fx-font-size: 14px;
+    -fx-alignment: center-right;
+}
+
+.label-message-received {
+    -fx-background-color: #eeeeee;
+    -fx-text-fill: #222;
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 12px;
+    -fx-font-size: 14px;
+    -fx-alignment: center-left;
+}
