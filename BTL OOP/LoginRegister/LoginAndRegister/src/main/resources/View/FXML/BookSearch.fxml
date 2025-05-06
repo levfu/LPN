@@ -16,8 +16,8 @@
    <children>
       <AnchorPane layoutX="28.0" layoutY="97.0" prefHeight="534.0" prefWidth="294.0" style="-fx-background-color: #bae8e4; -fx-background-radius: 15;">
          <children>
-            <TextField fx:id="authorSearchField" layoutX="6.0" layoutY="116.0" prefHeight="47.0" prefWidth="284.0" promptText="Nhập tên tác giả..." />
-            <TextField fx:id="isbnSearchField" layoutX="6.0" layoutY="173.0" prefHeight="47.0" prefWidth="284.0" promptText="Nhập mã sách..." />
+            <TextField fx:id="authorSearchField" layoutX="6.0" layoutY="116.0" prefHeight="47.0" prefWidth="284.0" promptText="Enter author's name..." />
+            <TextField fx:id="isbnSearchField" layoutX="6.0" layoutY="173.0" prefHeight="47.0" prefWidth="284.0" promptText="Enter ISBN..." />
             <Button fx:id="searchButton" layoutX="50.0" layoutY="286.0" mnemonicParsing="false" onAction="#searchBooks" prefHeight="47.0" prefWidth="80.0" text="Search" />
             <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="255.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
@@ -29,7 +29,7 @@
                   <Image url="@../images/MicroScopeLogo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="titleSearchField" layoutX="6.0" layoutY="230.0" prefHeight="47.0" prefWidth="284.0" promptText="Nhập tên sách..." />
+            <TextField fx:id="titleSearchField" layoutX="6.0" layoutY="230.0" prefHeight="47.0" prefWidth="284.0" promptText="Enter book's title..." />
             <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="252.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: multiply;">
                <image>
                   <Image url="@../images/MicroScopeLogo.png" />
