@@ -126,5 +126,4 @@ public class MyAccountController {
             showAlert("Update detail failed !");
         }
     }
-
 }
