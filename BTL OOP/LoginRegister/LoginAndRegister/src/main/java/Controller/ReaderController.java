@@ -104,7 +104,7 @@ public class ReaderController {
                 return new TableCell<>() {
 
                     private final Button btnDelete = new Button("Delete");
-                    private final Button btnBorrow = new Button("Borrow book");
+                    private final Button btnBorrow = new Button("Borrow");
                     private final HBox pane = new HBox(5, btnDelete, btnBorrow);
 
                     {

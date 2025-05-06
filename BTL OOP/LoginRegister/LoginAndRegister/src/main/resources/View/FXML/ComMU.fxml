@@ -16,12 +16,12 @@
     </ScrollPane>
 
     <HBox alignment="CENTER" layoutX="10.0" layoutY="634.0" spacing="10.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.799999999999955">
-        <TextField fx:id="inputField" prefHeight="52.0" prefWidth="784.0" promptText="Nhập tin nhắn..." styleClass="text-field">
+        <TextField fx:id="inputField" prefHeight="52.0" prefWidth="784.0" promptText="Enter message..." styleClass="text-field">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-        <Button fx:id="sendButton" onAction="#sendMessage" prefHeight="26.0" prefWidth="91.0" text="Gửi" />
+        <Button fx:id="sendButton" onAction="#sendMessage" prefHeight="26.0" prefWidth="91.0" text="Send" />
     </HBox>
 
 </AnchorPane>
