@@ -46,7 +46,7 @@ public class GoogleBookAPI {
         Request request = new Request.Builder().url(url).build();
         try (Response response = client.newCall(request).execute()) {
             if (!response.isSuccessful()) {
-                System.out.println("Loi API: " + response.code() + "-" + response.message());
+                System.out.println("API Error: " + response.code() + "-" + response.message());
                 return null;
             }
             return response.body().string();

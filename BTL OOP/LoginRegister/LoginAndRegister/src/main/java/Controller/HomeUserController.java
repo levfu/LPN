@@ -115,6 +115,7 @@ public class HomeUserController extends HomeBaseController {
 
 
             Stage ratingStage = new Stage();
+            ratingStage.getIcons().add(new Image("/View/images/UETLogo.png"));
             ratingStage.setScene(new Scene(root));
             ratingStage.setTitle("Rating Book - " + selectedBook.getTitle());
             ratingStage.show();

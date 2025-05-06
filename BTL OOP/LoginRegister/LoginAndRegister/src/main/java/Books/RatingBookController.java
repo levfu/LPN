@@ -82,7 +82,7 @@ public class RatingBookController {
             Image img = new Image(book.getThumbnail(), true);
             coverImage.setImage(img);
         } catch (Exception e) {
-            System.out.println("Không thể load ảnh: " + e.getMessage());
+            System.out.println("Can't load image: " + e.getMessage());
         }
         double avg = DatabaseHelper.getAverageRating(book.getIsbn());
         ratingLabel.setText("Rating: " + String.format("%.2f", avg));
@@ -128,7 +128,7 @@ public class RatingBookController {
     @FXML
     public void handleSubmitRating(ActionEvent event) {
         if (currentBook == null || rating == 0) {
-            System.out.println("Vui lòng chọn sách và số sao!");
+            System.out.println("Please select book and rate !");
             return;
         }
 
@@ -138,9 +138,9 @@ public class RatingBookController {
         DatabaseHelper.saveRating(userId, isbn, rating, comment);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Cảm ơn bạn!");
+        alert.setTitle("Thank you my bro !!");
         alert.setHeaderText(null);
-        alert.setContentText("Cảm ơn bạn đã phản hồi. Đánh giá của bạn đã được ghi nhận");
+        alert.setContentText("Thank you for your feedback. Your feedback has been recorded !");
         alert.showAndWait();
 
         double avg = DatabaseHelper.getAverageRating(isbn);

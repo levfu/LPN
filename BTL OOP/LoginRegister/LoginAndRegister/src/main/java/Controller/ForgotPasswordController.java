@@ -36,17 +36,17 @@ public class ForgotPasswordController {
         String email = txtEmail.getText().trim();
 
         if (email.isEmpty()) {
-            showCustomAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng nhập email!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.WARNING, "Warning", "Please enter your email !", "/View/images/ErrorLogo.png");
             return;
         }
 
         if (!isValidEmail(email)) {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email không hợp lệ!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Email not found !", "/View/images/ErrorLogo.png");
             return;
         }
 
         if (!LogReDatabase.checkEmailExists(email)) {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email không tồn tại trong hệ thống!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Email not found in database !", "/View/images/ErrorLogo.png");
             return;
         }
 
@@ -58,19 +58,19 @@ public class ForgotPasswordController {
 
             javafx.application.Platform.runLater(() -> {
                 TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Xác thực Email");
-                dialog.setHeaderText("Nhập mã xác thực đã gửi tới email của bạn:");
-                dialog.setContentText("Mã xác thực:");
+                dialog.setTitle("Email verification");
+                dialog.setHeaderText("Enter verification code sent to your email:");
+                dialog.setContentText("Verification code:");
 
                 Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
                 stage.getIcons().add(new Image(getClass().getResourceAsStream("/View/images/EmailLogo.png")));
 
                 dialog.showAndWait().ifPresent(userCode -> {
                     if (userCode.equals(codeToSend)) {
-                        showCustomAlert(Alert.AlertType.INFORMATION, "Xác thực thành công", "Email đã được xác thực!", "/View/images/TickLogo.png");
+                        showCustomAlert(Alert.AlertType.INFORMATION, "Verified successfully !", "Your email has been verified !", "/View/images/TickLogo.png");
                         reset.setDisable(false);
                     } else {
-                        showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Mã xác thực không đúng!", "/View/images/ErrorLogo.png");
+                        showCustomAlert(Alert.AlertType.ERROR, "Error", "Wrong verification code !", "/View/images/ErrorLogo.png");
                     }
                 });
             });
@@ -85,13 +85,13 @@ public class ForgotPasswordController {
 
 
         if (email.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email và mật khẩu không được để trống!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Please enter email and password !", "/View/images/ErrorLogo.png");
             return;
         }
 
 
         if (!newPassword.equals(confirmPassword)) {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Mật khẩu và xác nhận mật khẩu không khớp!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Password and confirm password not match !", "/View/images/ErrorLogo.png");
             return;
         }
 
@@ -101,7 +101,7 @@ public class ForgotPasswordController {
 
         EmailSender.sendNewPasswordEmail(email,newPassword);
 
-        showCustomAlert(Alert.AlertType.INFORMATION, "Thành công", "Mật khẩu mới đã được gửi qua email!", "/View/images/TickLogo.png");
+        showCustomAlert(Alert.AlertType.INFORMATION, "Change password successfully !", "Your new password has been sent your email !", "/View/images/TickLogo.png");
     }
 
 

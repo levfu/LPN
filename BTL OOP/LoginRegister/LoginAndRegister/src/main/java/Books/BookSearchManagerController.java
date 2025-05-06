@@ -65,7 +65,7 @@ public class BookSearchManagerController {
     private void handleSearch() {
         String title = searchField.getText().trim();
         if (title.isEmpty()) {
-            System.out.println("Vui lòng nhập tên sách.");
+            System.out.println("Please enter book title !");
             return;
         }
         loadBooks(title);
@@ -80,7 +80,7 @@ public class BookSearchManagerController {
                 bookObservableList.addAll(books);
                 BookTable.setItems(bookObservableList);
             } else {
-                System.out.println("Không lấy được dữ liệu từ Google Books API.");
+                System.out.println("Can't get data from Google Books API !");
             }
         } catch (Exception e) {
             e.printStackTrace();

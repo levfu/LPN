@@ -41,7 +41,7 @@ public class MyAccountController {
 
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Thông báo");
+        alert.setTitle("Anouncement");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
@@ -73,18 +73,18 @@ public class MyAccountController {
     @FXML
     void chooseavt(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Chọn ảnh đại diện");
+        fileChooser.setTitle("Choose your avatar !");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Ảnh", "*.png", "*.jpg", "*.jpeg")
         );
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             if (selectedFile.length() > 5 * 1024 * 1024) {
-                showAlert("Ảnh quá lớn! Vui lòng chọn ảnh nhỏ hơn 5MB.");
+                showAlert("Please choose avatar with 5MB size smaller.");
                 return;
             }
             if (!selectedFile.getName().matches(".*\\.(jpg|jpeg|png)$")) {
-                showAlert("Định dạng ảnh không hợp lệ. Vui lòng chọn ảnh JPG hoặc PNG.");
+                showAlert("Error image regex !");
                 return;
             }
             avatarFile = selectedFile;
@@ -97,12 +97,12 @@ public class MyAccountController {
     @FXML
     void savecharge(ActionEvent event) {
         if (fullname.getText().isEmpty()|| fullsdt.getText().isEmpty() || fullsdt.getText().isEmpty() || email.getText().isEmpty()) {
-            showAlert("Vui lòng nhập đầy đủ thông tin!");
+            showAlert("Please enter full detail !");
             return;
         }
 
         if (!email.getText().matches("^[A-Za-z0-9._%+-]+@gmail\\.com$")) {
-            showAlert("Email không hợp lệ!");
+            showAlert("Wrong email regex !");
             return;
         }
         currentUser.setName(fullname.getText());
@@ -121,9 +121,9 @@ public class MyAccountController {
 
         boolean updated = LogReDatabase.updateUser(currentUser);
         if (updated) {
-            showAlert("Cập nhật thông tin thành công!");
+            showAlert("Update detail successfully !");
         } else {
-            showAlert("Cập nhật thất bại.");
+            showAlert("Update detail failed !");
         }
     }
 

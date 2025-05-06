@@ -5,6 +5,7 @@ import java.util.List;
 
 public class DatabaseHelper {
     private static final String DB_URL = "jdbc:sqlite:D:\\btl\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\borrowed_books.db";
+
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(DB_URL);
     }
@@ -18,7 +19,7 @@ public class DatabaseHelper {
 
         } catch (SQLException e) {
             if (!e.getMessage().contains("duplicate column")) {
-                System.out.println("Lỗi khi thêm cột description: " + e.getMessage());
+                System.out.println("Error description: " + e.getMessage());
             }
         }
 
@@ -30,7 +31,7 @@ public class DatabaseHelper {
 
         } catch (SQLException e) {
             if (!e.getMessage().contains("duplicate column")) {
-                System.out.println("Lỗi khi thêm cột tags: " + e.getMessage());
+                System.out.println("Error tags: " + e.getMessage());
             }
         }
     }
@@ -63,7 +64,7 @@ public class DatabaseHelper {
             stmt.execute(ratingsql); // Tạo bảng book_ratings
             addMissingColumns();
         } catch (SQLException e) {
-            System.out.println("Lỗi khi tạo bảng: " + e.getMessage());
+            System.out.println("Error while create table: " + e.getMessage());
         }
     }
 
@@ -81,7 +82,7 @@ public class DatabaseHelper {
             pstmt.setString(8, book.getTags());
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Lỗi khi lưu dữ liệu: ");
+            System.err.println("Error while save data: ");
             e.printStackTrace();
         }
     }
@@ -118,7 +119,7 @@ public class DatabaseHelper {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("Lỗi khi lưu đánh giá: ");
+            System.err.println("Error save rating: ");
             e.printStackTrace();
         }
     }
@@ -141,7 +142,7 @@ public class DatabaseHelper {
                 books.add(new BookData(title, author, isbn, dueDate, thumbnail, description, tags));
             }
         } catch (SQLException e) {
-            System.out.println("Loi khi tai du lieu: " + e.getMessage());
+            System.out.println("Error load data: " + e.getMessage());
         }
         return books;
     }
@@ -160,7 +161,7 @@ public class DatabaseHelper {
                 comments.add(new UserComment("User #" + userId, rating, comment)); // hoặc có thể lấy tên nếu có
             }
         } catch (SQLException e) {
-            System.out.println("Lỗi khi lấy comment: " + e.getMessage());
+            System.out.println("Error while get comment: " + e.getMessage());
         }
         return comments;
     }
@@ -172,7 +173,7 @@ public class DatabaseHelper {
             pstmt.setString(1, isbn);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Loi khi xoa sach: " + e.getMessage());
+            System.out.println("Error while delete book: " + e.getMessage());
         }
     }
 
@@ -182,7 +183,7 @@ public class DatabaseHelper {
              Statement stmt = connection.createStatement()) {
             stmt.execute(sql);
         } catch (SQLException e) {
-            System.out.println("Loi khi xoa toan bo du lieu: " + e.getMessage());
+            System.out.println("Error while delete all data: " + e.getMessage());
         }
     }
 
@@ -204,7 +205,7 @@ public class DatabaseHelper {
                 }
             }
         }catch (SQLException e) {
-            System.out.println("Lỗi khi tính toán rating: " + e.getMessage());
+            System.out.println("Error while calculating rating: " + e.getMessage());
         }
         return averageRating;
     }
@@ -231,7 +232,7 @@ public class DatabaseHelper {
                 topRatedBooks.add(new Book(title, List.of(author), List.of(tags), desrciption, isbn, thumbnail));
             }
         } catch (SQLException e) {
-            System.out.println("Lỗi khi lấy sách top-rated: " + e.getMessage());
+            System.out.println("Error get top-rated books: " + e.getMessage());
         }
         return topRatedBooks;
     }
@@ -259,7 +260,7 @@ public class DatabaseHelper {
                 trendingBooks.add(new Book(title, List.of(author), new ArrayList<>(), "No description", isbn, thumbnail));
             }
         } catch (SQLException e) {
-            System.out.println("Lỗi khi lấy sách trending: " + e.getMessage());
+            System.out.println("Error get trending books: " + e.getMessage());
         }
         return trendingBooks;
     }

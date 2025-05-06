@@ -17,7 +17,7 @@ public class  LogReMain extends Application {
             primaryStage.getIcons().add(new Image("View/images/UETLogo.png"));
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Login & Register for Library Management System");
+            primaryStage.setTitle("Login and Register for Library Management System");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

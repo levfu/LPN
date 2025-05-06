@@ -80,7 +80,7 @@ public class CommunityChatController {
                     boolean isCurrentUser = currentUser != null && currentUser.getId() == m.getSenderId();
                     User sender = null;
                     sender = chatDatabase.getUserById(m.getSenderId());
-                    String displayName = isCurrentUser ? "Bạn" : (sender != null && sender.getName() != null && !sender.getName().isEmpty()
+                    String displayName = isCurrentUser ? "You" : (sender != null && sender.getName() != null && !sender.getName().isEmpty()
                             ? sender.getName()
                             : "User " + m.getSenderId());
 

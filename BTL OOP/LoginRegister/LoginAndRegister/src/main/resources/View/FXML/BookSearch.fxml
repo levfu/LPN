@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="catGif" prefHeight="704.0" prefWidth="1200.0" stylesheets="@../Css/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.BookManagementController">
+<AnchorPane fx:id="catGif" prefHeight="704.0" prefWidth="1200.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Books.BookManagementController">
    <children>
       <AnchorPane layoutX="28.0" layoutY="97.0" prefHeight="534.0" prefWidth="294.0" style="-fx-background-color: #bae8e4; -fx-background-radius: 15;">
          <children>

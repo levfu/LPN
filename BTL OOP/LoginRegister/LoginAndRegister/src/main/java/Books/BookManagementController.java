@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
@@ -72,14 +73,12 @@ public class BookManagementController {
 
      @FXML
      public void initialize() {
-
-          DatabaseHelper.createTable();
           DatabaseHelper.createTable();
           bookListView.setItems(FXCollections.observableList(books));
           bookListView.setVisible(false);
-          titleSearchField.setPromptText("Nhập tên sách...");
-          authorSearchField.setPromptText("Nhập tên tác giả...");
-          isbnSearchField.setPromptText("Nhập mã sách...");
+          titleSearchField.setPromptText("Enter book title...");
+          authorSearchField.setPromptText("Enter author name...");
+          isbnSearchField.setPromptText("Enter book ISBN...");
           Platform.runLater(() -> titleSearchField.getParent().requestFocus());
 
           isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
@@ -137,7 +136,7 @@ public class BookManagementController {
                if (mouseEvent.getClickCount() == 2) {
                     BookData selected = borrowBookTable.getSelectionModel().getSelectedItem();
                     if (selected != null) {
-                         System.out.println("Đã chọn sách");
+                         System.out.println("Book selected !");
                          String isbn = selected.getIsbn();
                          try {
                               String jsonResponse = GoogleBookAPI.searchBooks("", "", "", isbn);
@@ -145,11 +144,11 @@ public class BookManagementController {
                               if (!books.isEmpty()) {
                                    showBookDetail(books.get(0));
                               } else {
-                                   showAlert("Không tìm thấy sách", "Không tìm thấy thông tin sách trên Google Books.");
+                                   showAlert("Book not found !", "Can't find book on Google API !");
                               }
                          } catch (Exception e) {
                               e.printStackTrace();
-                              showAlert("Lỗi API", "Không thể lấy dữ liệu từ Google Book API.");
+                              showAlert("API Error !", "Can't get data from Google API !");
                          }
                     }
                }
@@ -163,7 +162,7 @@ public class BookManagementController {
           String isbn = isbnSearchField.getText().trim();
           if (title.isEmpty() && author.isEmpty() && isbn.isEmpty()) {
                bookItems.clear();
-               bookItems.add("Vui lòng nhập ít nhất 1 thông tin để tìm kiếm!");
+               bookItems.add("Please enter at least one search criteria !");
                bookListView.setVisible(true);
                return;
           }
@@ -175,7 +174,7 @@ public class BookManagementController {
 
                if (bookList.isEmpty()) {
                     bookItems.clear();
-                    bookItems.add("Khong tim thay sach");
+                    bookItems.add("Book not found !");
                } else {
                     for (Book book : bookList) {
                          bookItems.add(book.getTitle() + " - " + String.join(", ", book.getAuthor()));
@@ -187,7 +186,7 @@ public class BookManagementController {
           } catch (Exception e) {
                e.printStackTrace();
                bookItems.clear();
-               bookItems.add("Lỗi khi lấy dữ liệu từ API");
+               bookItems.add("Error API data !");
                bookListView.setVisible(true);
           }
      }
@@ -215,7 +214,7 @@ public class BookManagementController {
                     borrowedBooks.add(data);
                     DatabaseHelper.saveToDatabase(currentUser.getId(), data);
                } else {
-                    showAlert("Không tìm thấy sách!", "Không thể mượn vì không tìm thấy sách tương ứng.");
+                    showAlert("Book not found !", "Unable to borrow because no matching book was found.");
                }
           }
      }
@@ -251,9 +250,9 @@ public class BookManagementController {
           BookData selectedRow = borrowBookTable.getSelectionModel().getSelectedItem();
           if (selectedRow != null) {
                Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-               confirmAlert.setTitle("Xác nhận trả sách");
-               confirmAlert.setHeaderText("Bạn có chắc chắn muốn trả sách này");
-               confirmAlert.setContentText("Sách: " + selectedRow.getTitle() + " - " + selectedRow.getAuthor());
+               confirmAlert.setTitle("Confirm return this book ?");
+               confirmAlert.setHeaderText("Are you sure want to return this book ?");
+               confirmAlert.setContentText("Book: " + selectedRow.getTitle() + " - " + selectedRow.getAuthor());
                ButtonType result = confirmAlert.showAndWait().orElse(ButtonType.CANCEL);
                if (result == ButtonType.OK) {
                     borrowedBooks.remove(selectedRow);
@@ -261,17 +260,19 @@ public class BookManagementController {
                }
           } else {
                Alert alert = new Alert(Alert.AlertType.WARNING);
-               alert.setTitle("Cảnh báo");
+               alert.setTitle("Warning");
                alert.setHeaderText(null);
-               alert.setContentText("Vui lòng chọn một sách để trả!");
+               alert.setContentText("Please choose one book to return !");
                alert.showAndWait();
           }
      }
+
+
      private void showBookDetail(Book book) {
           try {
                URL fxmlurl = getClass().getResource("/View/FXML/RatingBook.fxml");
                if (fxmlurl == null) {
-                    throw new IOException("Không tìm thấy file");
+                    throw new IOException("File not found");
                }
                FXMLLoader loader = new FXMLLoader(fxmlurl);
                Parent root = loader.load();
@@ -281,7 +282,8 @@ public class BookManagementController {
                ratingBookController.setBookManagementController(this);
 
                Stage detailStage = new Stage();
-               detailStage.setTitle("Đánh giá sách");
+               detailStage.getIcons().add(new Image("/View/images/UETLogo.png"));
+               detailStage.setTitle("Rating book");
                detailStage.setScene(new Scene(root));
                detailStage.show();
           } catch (IOException e) {
@@ -307,7 +309,7 @@ public class BookManagementController {
                borrowedBooks.add(data);
                DatabaseHelper.saveToDatabase(currentUser.getId(), data);
           } else {
-               showAlert("Không tìm thấy sách!", "Không thể mượn vì không tìm thấy sách tương ứng.");
+               showAlert("Book Not Found !", "Unable to borrow because no matching book was found.");
           }
      }
 }

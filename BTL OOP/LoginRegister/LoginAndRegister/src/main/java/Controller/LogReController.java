@@ -62,23 +62,23 @@ public class LogReController implements Initializable {
         String password = checkboxPassword.isSelected() ? txtPasswordVisible.getText().trim() : txtPassword.getText().trim();
         String role  = roleComboBox.getValue();
         if (role == null) {
-            showCustomAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng chọn vai trò!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.WARNING, "Warning", "Please choose your role !", "/View/images/ErrorLogo.png");
             return;
         }
         if (email.isEmpty() || password.isEmpty()) {
-            showCustomAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng nhập đủ thông tin!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.WARNING, "Warning", "Please enter full detail !", "/View/images/ErrorLogo.png");
             return;
         }
         if (!isValidEmail(email)) {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email không hợp lệ! Vui lòng nhập đúng định dạng.", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Error email syntax !", "/View/images/ErrorLogo.png");
             return;
         }
         if (LogReDatabase.checkLogin(email, password, role)) {
-            showCustomAlert(Alert.AlertType.INFORMATION, "Thành công",
-                    "Đăng nhập thành công với vai trò " + role + "!", "/View/images/TickLogo.png");
+            showCustomAlert(Alert.AlertType.INFORMATION, "Login successfully !",
+                    "Login successfully with role " + role + "!", "/View/images/TickLogo.png");
             switchToHome(role);
         } else {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Sai Email hoặc mật khẩu!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Wrong email or password !", "/View/images/ErrorLogo.png");
         }
     }
 
@@ -91,19 +91,19 @@ public class LogReController implements Initializable {
         String role = roleComboBox.getValue();
 
         if (role == null) {
-            showCustomAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng chọn vai trò!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.WARNING, "Warning", "Please choose your role !", "/View/images/ErrorLogo.png");
             return;
         }
         if (email.isEmpty() || password.isEmpty()) {
-            showCustomAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng nhập đủ thông tin!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.WARNING, "Warning", "Please enter full detail !", "/View/images/ErrorLogo.png");
             return;
         }
         if (!isValidEmail(email)) {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email không hợp lệ! Vui lòng nhập đúng định dạng.", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Error email syntax !", "/View/images/ErrorLogo.png");
             return;
         }
         if (LogReDatabase.emailExists(email, role)) {
-            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Email đã được sử dụng!", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Email has been used !", "/View/images/ErrorLogo.png");
             return;
         }
 
@@ -114,9 +114,9 @@ public class LogReController implements Initializable {
 
             javafx.application.Platform.runLater(() -> {
                 TextInputDialog dialog = new TextInputDialog();
-                dialog.setTitle("Xác thực Email");
-                dialog.setHeaderText("Nhập mã xác thực đã gửi tới email của bạn:");
-                dialog.setContentText("Mã xác thực:");
+                dialog.setTitle("Email verification");
+                dialog.setHeaderText("Please enter verification code sent to your email !");
+                dialog.setContentText("Verification code:");
 
                 Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
                 stage.getIcons().add(new Image(getClass().getResourceAsStream("/View/images/EmailLogo.png")));
@@ -124,13 +124,13 @@ public class LogReController implements Initializable {
                 dialog.showAndWait().ifPresent(userInputCode -> {
                     if (userInputCode.equals(verificationCode)) {
                         if (LogReDatabase.registerUser(email, password, role)) {
-                            showCustomAlert(Alert.AlertType.INFORMATION, "Thành công",
-                                    "Đăng ký thành công với vai trò " + role + "!", "/View/images/TickLogo.png");
+                            showCustomAlert(Alert.AlertType.INFORMATION, "Register successfully !",
+                                    "Register successfully with role " + role + "!", "/View/images/TickLogo.png");
                         } else {
-                            showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Đăng ký thất bại!", "/View/images/ErrorLogo.png");
+                            showCustomAlert(Alert.AlertType.ERROR, "Error", "Register failed !", "/View/images/ErrorLogo.png");
                         }
                     } else {
-                        showCustomAlert(Alert.AlertType.ERROR, "Lỗi", "Mã xác thực không đúng!", "/View/images/ErrorLogo.png");
+                        showCustomAlert(Alert.AlertType.ERROR, "Error", "Wrong verification code !", "/View/images/ErrorLogo.png");
                     }
                 });
             });
@@ -179,8 +179,8 @@ public class LogReController implements Initializable {
             Controller.User user = LogReDatabase.getUser(email, password, role);
             if (user == null) {
                 showCustomAlert(Alert.AlertType.ERROR,
-                        "Lỗi",
-                        "Không tìm thấy thông tin người dùng!",
+                        "Error",
+                        "Can't find user's data !",
                         "/View/images/ErrorLogo.png");
                 return;
             }
@@ -205,8 +205,8 @@ public class LogReController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
             showCustomAlert(Alert.AlertType.ERROR,
-                    "Lỗi",
-                    "Không thể mở giao diện cho " + role + "!",
+                    "Error",
+                    "Can't open home for role " + role + "!",
                     "/View/images/ErrorLogo.png");
         }
     }
@@ -226,9 +226,9 @@ public class LogReController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Lỗi");
+            alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Không thể mở giao diện đặt lại mật khẩu.");
+            alert.setContentText("Can't open forgot password !");
             alert.showAndWait();
         }
     }

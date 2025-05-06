@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import Controller.User;
 
 public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:D:\\LPN\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
+    private static final String URL = "jdbc:sqlite:D:\\btl\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
 
 
 
@@ -64,7 +64,7 @@ public class LogReDatabase {
 
     public static boolean registerUser(String email, String password, String role) {
         if (emailExists(email, role)) {
-            System.out.println("Email đã tồn tại với vai trò này, không thể đăng ký!");
+            System.out.println("Email already exists with this role, registration is not allowed !");
             return false;
         }
 

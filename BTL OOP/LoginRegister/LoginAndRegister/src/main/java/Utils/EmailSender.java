@@ -34,12 +34,12 @@ public class EmailSender {
                     Message.RecipientType.TO,
                     InternetAddress.parse(toEmail)
             );
-            message.setSubject("Mã xác thực đăng ký tài khoản");
-            message.setText("Mã xác thực của bạn là: " + verificationCode);
+            message.setSubject("Register verification code");
+            message.setText("Your verification code: " + verificationCode);
 
             Transport.send(message);
 
-            System.out.println("Gửi email xác thực thành công!");
+            System.out.println("Sent email verification code successfully !");
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
@@ -65,10 +65,10 @@ public class EmailSender {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(FROM_EMAIL));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
-            message.setSubject("Mật khẩu mới của bạn");
-            message.setText("Mật khẩu mới của bạn là: " + newPassword);
+            message.setSubject("Your new password");
+            message.setText("Your new password: " + newPassword);
             Transport.send(message);
-            System.out.println("Gửi email chứa mật khẩu mới thành công!");
+            System.out.println("Sent your new password successfully !");
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }

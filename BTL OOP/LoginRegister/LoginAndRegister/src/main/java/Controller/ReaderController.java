@@ -103,8 +103,8 @@ public class ReaderController {
             public TableCell<User, Void> call(final TableColumn<User, Void> param) {
                 return new TableCell<>() {
 
-                    private final Button btnDelete = new Button("Xoá");
-                    private final Button btnBorrow = new Button("Mượn sách");
+                    private final Button btnDelete = new Button("Delete");
+                    private final Button btnBorrow = new Button("Borrow book");
                     private final HBox pane = new HBox(5, btnDelete, btnBorrow);
 
                     {

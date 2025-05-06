@@ -13,14 +13,14 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HomeUserController">
    <left>
-      <Pane id="pane2" prefHeight="654.0" prefWidth="99.0" styleClass="pane2" stylesheets="@../Css/Home.css" BorderPane.alignment="CENTER">
+      <Pane id="pane2" prefHeight="654.0" prefWidth="99.0" styleClass="pane2" stylesheets="@../CSS/Home.css" BorderPane.alignment="CENTER">
          <children>
             <VBox prefHeight="329.0" prefWidth="98.0">
                <children>
-                  <Button id="Home" fx:id="buttonhomeuser" mnemonicParsing="false" onAction="#Homeuser" prefHeight="54.0" prefWidth="204.0" styleClass="button2" stylesheets="@../Css/Home.css" text="Home" textFill="#fffcfc" />
-                  <Button id="Books" fx:id="buttonbooksuser" mnemonicParsing="false" onAction="#Booksuser" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../Css/Home.css" text="Books" textFill="WHITE" />
-                  <Button id="Issue" fx:id="buttoncomMUuser" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@../Css/Home.css" text="Chat" textFill="WHITE" />
-                  <Button id="buttonother" fx:id="buttonOthersuser" mnemonicParsing="false" prefHeight="54.0" prefWidth="204.0" styleClass="buttonother" stylesheets="@../Css/Home.css" text="Others" textFill="#ebe6e6">
+                  <Button id="Home" fx:id="buttonhomeuser" mnemonicParsing="false" onAction="#Homeuser" prefHeight="54.0" prefWidth="204.0" styleClass="button2" stylesheets="@../CSS/Home.css" text="Home" textFill="#fffcfc" />
+                  <Button id="Books" fx:id="buttonbooksuser" mnemonicParsing="false" onAction="#Booksuser" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE" />
+                  <Button id="Issue" fx:id="buttoncomMUuser" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE" />
+                  <Button id="buttonother" fx:id="buttonOthersuser" mnemonicParsing="false" prefHeight="54.0" prefWidth="204.0" styleClass="buttonother" stylesheets="@../CSS/Home.css" text="Others" textFill="#ebe6e6">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -38,7 +38,7 @@
       </Pane>
    </left>
    <top>
-      <Pane id="pane1" prefHeight="45.0" prefWidth="904.0" styleClass="pane1" stylesheets="@../Css/Home.css" BorderPane.alignment="CENTER">
+      <Pane id="pane1" prefHeight="45.0" prefWidth="904.0" styleClass="pane1" stylesheets="@../CSS/Home.css" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="236.0" layoutY="1.0" prefHeight="41.0" prefWidth="377.0" text="User - Library Management System" textFill="#e1e1e1">
                <font>
@@ -54,10 +54,10 @@
       </Pane>
    </top>
    <center>
-      <Pane fx:id="PaneContent" styleClass="panecontent" stylesheets="@../Css/Home.css" BorderPane.alignment="CENTER">
+      <Pane fx:id="PaneContent" styleClass="panecontent" stylesheets="@../CSS/Home.css" BorderPane.alignment="CENTER">
          <children>
-            <ListView id="listView" fx:id="listViewuser" editable="true" layoutX="401.0" prefHeight="81.0" prefWidth="274.0" styleClass="list-View" stylesheets="@../Css/Home.css" visible="false" />
-            <HBox fx:id="ramdomhot" layoutY="57.0" prefHeight="260.0" prefWidth="1201.0" styleClass="Hbox1" stylesheets="@../Css/Home.css">
+            <ListView id="listView" fx:id="listViewuser" editable="true" layoutX="401.0" prefHeight="81.0" prefWidth="274.0" styleClass="list-View" stylesheets="@../CSS/Home.css" visible="false" />
+            <HBox fx:id="ramdomhot" layoutY="57.0" prefHeight="260.0" prefWidth="1201.0" styleClass="Hbox1" stylesheets="@../CSS/Home.css">
                <children>
                   <VBox fx:id="vBox1" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
@@ -112,7 +112,7 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <HBox fx:id="hbox" layoutY="410.0" prefHeight="260.0" prefWidth="1201.0" styleClass="Hbox1" stylesheets="@../Css/Home.css">
+            <HBox fx:id="hbox" layoutY="410.0" prefHeight="260.0" prefWidth="1201.0" styleClass="Hbox1" stylesheets="@../CSS/Home.css">
                <children>
                   <VBox fx:id="vBox7" alignment="CENTER" prefHeight="260.0" prefWidth="197.0">
                      <children>
