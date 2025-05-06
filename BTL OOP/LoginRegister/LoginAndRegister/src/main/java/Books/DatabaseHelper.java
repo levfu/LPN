@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper {
-    private static final String DB_URL = "jdbc:sqlite:D:\\btl\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\borrowed_books.db";
+    private static final String DB_URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\borrowed_books.db";
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(DB_URL);
@@ -240,7 +240,7 @@ public class DatabaseHelper {
 
     public static List<Book> getTrendingBooks() {
         List<Book> trendingBooks = new ArrayList<>();
-        String sql = "SELECT b.isbn, b.title, b.author, b.thumbnail, " +
+        String sql = "SELECT b.isbn, b.title, b.author, b.thumbnail, b.description, b.tags, " +
                 "AVG(r.rating) as avgRating, COUNT(r.id) as ratingCount " +
                 "FROM borrowed_books b " +
                 "JOIN book_ratings r ON b.isbn = r.isbn " +
@@ -257,7 +257,10 @@ public class DatabaseHelper {
                 String title = rs.getString("title");
                 String author = rs.getString("author");
                 String thumbnail = rs.getString("thumbnail");
-                trendingBooks.add(new Book(title, List.of(author), new ArrayList<>(), "No description", isbn, thumbnail));
+                String description = rs.getString("description");
+                String tags = rs.getString("tags");
+
+                trendingBooks.add(new Book(title, List.of(author), List.of(tags), description, isbn, thumbnail));
             }
         } catch (SQLException e) {
             System.out.println("Error get trending books: " + e.getMessage());
