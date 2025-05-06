@@ -1,0 +1,105 @@
+
+.AnchorPane {
+    -fx-background-color: transparent;
+    -fx-padding: 20px;
+}
+
+#avatar {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-shadow: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+#chooseimage {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-radius: 30px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+    -fx-transition: background-color 0.3s ease-in-out;
+}
+
+#chooseimage:hover {
+    -fx-background-color: #357ab7;
+    -fx-opacity: 0.9;
+}
+
+#savecharge {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-background-radius: 30px;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+}
+
+#savecharge:hover {
+    -fx-background-color: #218838;
+    -fx-opacity: 0.9;
+}
+
+
+#fullname, #fullsdt, #fulladdress, #email, #password {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 15px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 5);
+}
+
+#fullname:focused, #fullsdt:focused, #fulladdress:focused, #email:focused, #password:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #f0f8ff;
+}
+
+#fullbirthday {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 15px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+#fullbirthday:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #f0f8ff;
+}
+
+.text-field.invalid {
+    -fx-border-color: #e74c3c;
+    -fx-background-color: #ffcccc;
+}
+
+.Button, .TextField, .DatePicker {
+    -fx-transition: all 0.3s ease-in-out;
+}
+.labelmyaccount {
+    -fx-font-weight: bold;
+    -fx-text-fill: linear-gradient(to right, #007bff, #00c6ff);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 4, 0.5, 0, 1);
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-padding: 10 0 20 0;
+}
+.labelluuy{
+    -fx-background-color: #fff8e1;
+    -fx-border-color: #ffc107;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 4, 0.3, 0, 2);
+}

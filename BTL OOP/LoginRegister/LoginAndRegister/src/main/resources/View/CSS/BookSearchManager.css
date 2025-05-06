@@ -1,0 +1,93 @@
+.AnchorPane {
+    -fx-background-image:url("../images/book3.jpg");
+    -fx-padding: 20px;
+}
+.text-field {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-border-color: #dcdcdc;
+    -fx-border-width: 1px;
+    -fx-padding: 8px 20px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.text-field:focused {
+    -fx-border-color: #4a90e2;
+    -fx-background-color: #f0f8ff;
+}
+
+.button:hover {
+    -fx-background-color: #357ab7;
+    -fx-opacity: 0.9;
+}
+
+.table-view {
+    -fx-background-color: transparent;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 8px;
+    -fx-table-cell-border-color: transparent;
+    -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5);
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #4a90e2, #357ab7);
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.table-cell {
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-padding: 10px;
+    -fx-alignment: center-left;
+}
+
+.table-row-cell:filled:hover {
+    -fx-background-color: rgba(74, 144, 226, 0.1);
+}
+
+.table-view .table-row-cell:filled:selected {
+    -fx-background-color: #e1effa;
+    -fx-text-fill: #333;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #a8bcd1;
+    -fx-background-radius: 15px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-row-cell:filled:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 3);
+}
+.labelsearch{
+    -fx-background-color: transparent;
+    -fx-text-fill: linear-gradient(to right, #007bff, #00c6ff);
+}
+.buttonsearch{
+    -fx-background-color: linear-gradient(to bottom, rgb(148, 143, 207), rgb(42, 2, 59));
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 6px 12px;
+    -fx-background-radius: 8px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0, 1);
+}

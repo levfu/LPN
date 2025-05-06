@@ -1,0 +1,39 @@
+#borrowBk {
+    -fx-background-color: linear-gradient(to right, #a1c4fd, #c2e9fb); /* xanh lam dịu → xanh lục pastel */
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0.2, 0, 1);
+}
+#borrowBk:hover {
+    -fx-background-color: linear-gradient(to right, #c2e9fb, #a1c4fd); /* đảo nhẹ màu */
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+#borrowBk:pressed {
+    -fx-background-color: #90caf9; /* xanh lam nhẹ hơn */
+}
+
+#submitRatingButton {
+    -fx-background-color: linear-gradient(to right, #a1c4fd, #c2e9fb); /* xanh lam dịu → xanh lục pastel */
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-padding: 8 16;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 4, 0.2, 0, 1);
+}
+#submitRatingButton:hover {
+    -fx-background-color: linear-gradient(to right, #c2e9fb, #a1c4fd); /* đảo nhẹ màu */
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+#submitRatingButton:pressed {
+    -fx-background-color: #90caf9; /* xanh lam nhẹ hơn */
+}
