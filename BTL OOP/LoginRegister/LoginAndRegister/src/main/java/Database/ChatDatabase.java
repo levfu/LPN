@@ -10,12 +10,7 @@ import java.util.List;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-public class ChatDatabase {
-    private static final String URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
-
-    public static Connection connect() throws SQLException {
-        return DriverManager.getConnection(URL);
-    }
+public class ChatDatabase extends BaseDatabase {
 
     public void sendMessage(int senderId, String content) {
         // Lấy giờ hệ thống theo múi giờ Việt Nam

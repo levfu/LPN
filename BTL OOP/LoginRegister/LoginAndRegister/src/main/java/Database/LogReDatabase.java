@@ -5,29 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import Controller.User;
 
-public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
-
-
-
-    public static Connection connect() {
-        try {
-
-            Class.forName("org.sqlite.JDBC");
-
-            return DriverManager.getConnection(URL);
-        } catch (ClassNotFoundException e) {
-            System.out.println("Không tìm thấy JDBC driver!");
-            e.printStackTrace();
-            return null;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-
-    }
-
-
+public class LogReDatabase extends BaseDatabase{
 
     public static boolean checkLogin(String email, String password, String role) {
         String sql = "SELECT * FROM users WHERE email = ? AND password = ? AND role = ?";
