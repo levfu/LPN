@@ -32,9 +32,12 @@
                               <Image url="@../images/reader.png" />
                            </image></ImageView>
                      </graphic></Button>
-                        <Button id="Books" fx:id="buttonbooks" mnemonicParsing="false" onAction="#Books" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE">
+                        <Button id="Books" fx:id="buttonbooks" mnemonicParsing="false" onAction="#Books" prefHeight="54.0" prefWidth="90.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="39.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/bookicon.png" />
+                           </image></ImageView>
                      </graphic></Button>
                         <Button id="ComMU" fx:id="button4" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE">
                      <graphic>
