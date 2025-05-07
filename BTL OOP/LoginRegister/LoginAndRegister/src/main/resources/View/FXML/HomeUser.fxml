@@ -63,7 +63,7 @@
                      </graphic></Button>
                   <Button fx:id="buttonlogout" mnemonicParsing="false" onAction="#logout" prefHeight="37.0" prefWidth="103.0" styleClass="buttonother" text="Logout" textFill="#ea0909">
                      <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="22.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/logout.png" />
                            </image>

@@ -17,11 +17,30 @@
             <children>
                 <VBox prefHeight="273.0" prefWidth="98.0">
                     <children>
-                        <Button id="Home" fx:id="Homemanger" mnemonicParsing="false" onAction="#Homemanger" prefHeight="54.0" prefWidth="204.0" styleClass="button1" stylesheets="@../CSS/Home.css" text="Home" textFill="#fffcfc" />
-                        <Button id="Reader" fx:id="button2" mnemonicParsing="false" onAction="#Readers" prefHeight="54.0" prefWidth="204.0" styleClass="button2" stylesheets="@../CSS/Home.css" text="Readers" textFill="#fffcfc" />
-                        <Button id="Books" fx:id="buttonbooks" mnemonicParsing="false" onAction="#Books" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE" />
-                        <Button id="ComMU" fx:id="button4" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE" />
-                        <Button fx:id="Setting" mnemonicParsing="false" onAction="#Settings" prefHeight="54.0" prefWidth="204.0" styleClass="buttonother" text=" Settings" textFill="#fff7f7" />
+                        <Button id="Home" fx:id="Homemanger" mnemonicParsing="false" onAction="#Homemanger" prefHeight="54.0" prefWidth="204.0" styleClass="button1" stylesheets="@../CSS/Home.css" text="Home" textFill="#fffcfc">
+                     <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                        <Button id="Reader" fx:id="button2" mnemonicParsing="false" onAction="#Readers" prefHeight="54.0" prefWidth="204.0" styleClass="button2" stylesheets="@../CSS/Home.css" text="Readers" textFill="#fffcfc">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></Button>
+                        <Button id="Books" fx:id="buttonbooks" mnemonicParsing="false" onAction="#Books" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></Button>
+                        <Button id="ComMU" fx:id="button4" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></Button>
+                        <Button fx:id="Setting" mnemonicParsing="false" onAction="#Settings" prefHeight="54.0" prefWidth="204.0" styleClass="buttonother" text=" Settings" textFill="#fff7f7">
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic></Button>
                     </children>
                 </VBox>
                 <VBox fx:id="menuBox" layoutY="273.0" prefHeight="97.0" prefWidth="100.0" visible="false">
