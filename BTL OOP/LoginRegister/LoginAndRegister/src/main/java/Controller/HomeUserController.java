@@ -1,7 +1,9 @@
 package Controller;
 
 import Books.Book;
+import Books.BookManagementController;
 import Books.DatabaseHelper;
+import Books.RatingBookController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

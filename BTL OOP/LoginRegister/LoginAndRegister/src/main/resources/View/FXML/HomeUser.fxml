@@ -17,7 +17,14 @@
          <children>
             <VBox prefHeight="329.0" prefWidth="98.0">
                <children>
-                  <Button id="Home" fx:id="buttonhomeuser" mnemonicParsing="false" onAction="#Homeuser" prefHeight="54.0" prefWidth="204.0" styleClass="button2" stylesheets="@../CSS/Home.css" text="Home" textFill="#fffcfc" />
+                  <Button id="Home" fx:id="buttonhomeuser" mnemonicParsing="false" onAction="#Homeuser" prefHeight="54.0" prefWidth="204.0" styleClass="button2" stylesheets="@../CSS/Home.css" text="Home" textFill="#fffcfc">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button id="Books" fx:id="buttonbooksuser" mnemonicParsing="false" onAction="#Booksuser" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE" />
                   <Button id="Issue" fx:id="buttoncomMUuser" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE" />
                   <Button id="buttonother" fx:id="buttonOthersuser" mnemonicParsing="false" prefHeight="54.0" prefWidth="204.0" styleClass="buttonother" stylesheets="@../CSS/Home.css" text="Others" textFill="#ebe6e6">

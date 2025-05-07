@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import Controller.User;
 
 public class LogReDatabase {
-    private static final String URL = "jdbc:sqlite:D:\\HL_OOP\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
+    private static final String URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
 
 
 
