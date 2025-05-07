@@ -25,7 +25,14 @@
                            </image>
                         </ImageView>
                      </graphic></Button>
-                  <Button id="Books" fx:id="buttonbooksuser" mnemonicParsing="false" onAction="#Booksuser" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE" />
+                  <Button id="Books" fx:id="buttonbooksuser" mnemonicParsing="false" onAction="#Booksuser" prefHeight="54.0" prefWidth="204.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/bookicon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                   <Button id="Issue" fx:id="buttoncomMUuser" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="204.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE" />
                   <Button id="buttonother" fx:id="buttonOthersuser" mnemonicParsing="false" prefHeight="54.0" prefWidth="204.0" styleClass="buttonother" stylesheets="@../CSS/Home.css" text="Others" textFill="#ebe6e6">
                      <font>
