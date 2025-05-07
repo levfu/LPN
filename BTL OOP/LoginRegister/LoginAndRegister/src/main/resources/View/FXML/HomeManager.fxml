@@ -39,16 +39,19 @@
                               <Image url="@../images/bookicon.png" />
                            </image></ImageView>
                      </graphic></Button>
-                        <Button id="ComMU" fx:id="button4" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="86.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE">
+                        <Button id="ComMU" fx:id="button4" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="79.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/chat.png" />
                            </image></ImageView>
                      </graphic></Button>
-                        <Button fx:id="Setting" mnemonicParsing="false" onAction="#Settings" prefHeight="54.0" prefWidth="204.0" styleClass="buttonother" text=" Settings" textFill="#fff7f7">
+                        <Button fx:id="Setting" mnemonicParsing="false" onAction="#Settings" prefHeight="54.0" prefWidth="100.0" styleClass="buttonother" text=" Settings" textFill="#fff7f7">
                      <graphic>
-                        <ImageView fitHeight="27.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/setting.png" />
+                           </image></ImageView>
                      </graphic></Button>
                     </children>
                 </VBox>
