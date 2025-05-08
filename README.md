@@ -37,26 +37,25 @@ Cài Đặt
 
 **Sử dụng**
 
-1,Đăng nhập / Đăng ký:
-Người dùng cần đăng nhập tài khoản để sử dụng hệ thống.
-Nếu chưa có tài khoản, nhấn nút Đăng ký để tạo tài khoản mới.
-2,Quản lý sách:
-Xem thông tin sách
-3,Tìm kiếm sách:
-Nhập từ khoá cần tìm vào ô tìm kiếm và nhấn nút Tìm kiếm (biểu tượng kính lúp).
-4,Đánh giá và bình luận sách:
-Chọn một cuốn sách, sau đó nhấn nút Đánh giá để cho điểm và viết bình luận.
-Các đánh giá sẽ hiển thị trong phần Bình luận của sách đó.
-5,Tài khoản cá nhân:
-Nhấn nút Tài khoản của tôi để xem và chỉnh sửa thông tin cá nhân (tên, email, mật khẩu, ảnh đại diện,…).
-Mọi thay đổi cần được Lưu lại (biểu tượng đĩa mềm).
-6,Danh sách người dùng:
-Quản trị viên có thể xem danh sách người dùng đã đăng ký trong mục Người dùng.
-Có thể chỉnh sửa hoặc xoá người dùng nếu cần.
-7,Thoát ứng dụng:
-Để thoát chương trình, nhấn nút Thoát Logout.
+Đăng nhập / Đăng ký tài khoản (Login  / Register).
+
+Nếu bạn chưa có tài khoản : Nhập Email, mật khẩu (Password) và chọn vai trò (role) của bạn.
+        Nhập xong thông tin yêu cầu → ấn Register (Đăng ký) → xác thực Email.
+Nếu bạn đã có tài khoản : Nhập Email, mật khẩu (Password) và chọn vai trò (role) của bạn.
+        Nhập xong thông tin yêu cầu → ấn Login (Đăng nhập).
+Nếu bạn đã có tài khoản nhưng quên mật khẩu (Password), bạn có thể đặt lại mật khẩu mới trong “Forgot password?”.
+Trang chủ (Home).
+Khi bạn đăng nhập / đăng ký thành công, bạn sẽ được chuyển đến trang chủ của phần mềm.
+Trang chủ được có sự khác biệt giữa vai trò (role) của bạn trong hệ thống.
+Nút Home (Home button) : chuyển về giao diện Home. Giao diện Home hiện các sách được đánh giá cao (Top - Rated Books) và các sách đang xu hướng (Trending Books).
+Nút Books (Books button) :  Tra sách (Search) và mượn sách (Borrow), bạn có thể đánh giá (rate)  sách đã mượn. Mỗi sách đều hiện miêu tả (Description) và các nhận xét (Comments) của người khác. Giao diện Books còn hiện danh sách các sách bạn đã mượn và hạn mượn sách (DueDate).
+Nút Chat (Chat button) : Nơi bạn có thể trao đổi, trò chuyện với những người khác.
+Riêng giao diện Manager sẽ có thêm nút Readers (Readers button) : Nơi Manager quản lí người dùng, quản lí các sách mà người dùng đã mượn (Borrow) hoặc xóa tài khoản người dùng (Delete).
+Nút Settings (Settings button) : Hiện thêm 2 nút : nút Account (Account button) - nơi bạn cập nhật thông tin cá nhân, và nút Logout (Logout button) - nơi bạn đăng xuất khỏi phần mềm.
 
 **Demo**
+
+
 ![Screenshot 2025-05-07 211902](https://github.com/user-attachments/assets/c175263a-9358-4893-9eee-1e9435ae5997)
 ![Screenshot 2025-05-07 212034](https://github.com/user-attachments/assets/22e3d8ad-5520-4218-95f9-76a94af1f2a2)
 ![Screenshot 2025-05-07 212000](https://github.com/user-attachments/assets/583c1f86-287f-4cf3-990f-fbb8745f6e92)
