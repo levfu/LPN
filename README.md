@@ -33,7 +33,7 @@ Cài Đặt
 2. Mở dự án trong IDE.
 3. Thay đổi các vùng nhớ cho database
 3. Chạy dự án.
-4. Nếu bạn muốn thay đổi dữ liệu, bạn có thể thay đổi tệp E_V.txt và V_E.txt.
+4. Nếu bạn muốn thay đổi dữ liệu, bạn có thể thay đổi tệp.
 
 **Sử dụng**
 
