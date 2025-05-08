@@ -51,6 +51,7 @@
                      </graphic></Button>
                   <VBox fx:id="menuBox" prefHeight="132.0" prefWidth="98.0" visible="false">
                      <children>
+                        <Button fx:id="sound" mnemonicParsing="false" onAction="#toggleMusic" prefHeight="38.0" prefWidth="98.0" text="Pause Music" textFill="#ec0b0b" />
                         <Button fx:id="myaccount" mnemonicParsing="false" onAction="#myaccount" prefHeight="38.0" prefWidth="98.0" styleClass="buttonother" text="Account" textFill="#ec0b0b">
                            <graphic>
                               <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">

@@ -4,6 +4,7 @@ import Books.Book;
 import Books.BookManagementController;
 import Books.DatabaseHelper;
 import Books.RatingBookController;
+import Utils.MusicApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,10 @@ public class HomeUserController extends HomeBaseController {
 
     @FXML
     private Button Setting;
+
+
+    @FXML
+    private Button sound;
 
     @FXML
     private Button buttonlogout;
@@ -323,6 +328,20 @@ public class HomeUserController extends HomeBaseController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private boolean isMusicPlaying = true;
+
+    @FXML
+    private void toggleMusic() {
+        if (isMusicPlaying) {
+            MusicApp.stopMusic();
+            sound.setText("Play Music");
+        } else {
+            MusicApp.playBackgroundMusic("nhacnen.mp3");
+            sound.setText("Pause Music");
+        }
+        isMusicPlaying = !isMusicPlaying;
     }
 
 }

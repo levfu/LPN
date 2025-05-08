@@ -1,4 +1,5 @@
 package Application;
+import Utils.MusicApp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +20,7 @@ public class  LogReMain extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("Login and Register for Library Management System");
             primaryStage.show();
+            MusicApp.playBackgroundMusic("nhacnen.mp3");
         } catch (Exception e) {
             e.printStackTrace();
         }

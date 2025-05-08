@@ -1,6 +1,7 @@
 package Controller;
 
 import Books.*;
+import Utils.MusicApp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,6 +38,8 @@ public class HomeManagementController extends HomeBaseController {
     private Button Setting;
     @FXML
     private Button myaccount;
+    @FXML
+    private Button music;
     @FXML
     private Button logout;
     @FXML
@@ -302,4 +305,19 @@ public class HomeManagementController extends HomeBaseController {
             }
         }
     }
+
+    private boolean isMusicPlaying = true;
+
+    @FXML
+    private void toggleMusic() {
+        if (isMusicPlaying) {
+            MusicApp.stopMusic();
+            music.setText("Play Music");
+        } else {
+            MusicApp.playBackgroundMusic("nhacnen.mp3");
+            music.setText("Pause Music");
+        }
+        isMusicPlaying = !isMusicPlaying;
+    }
+
 }
