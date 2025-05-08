@@ -338,7 +338,7 @@ public class HomeUserController extends HomeBaseController {
             MusicApp.stopMusic();
             sound.setText("Play Music");
         } else {
-            MusicApp.playBackgroundMusic("nhacnen.mp3");
+            MusicApp.playBackgroundMusic("usermusic.mp3");
             sound.setText("Pause Music");
         }
         isMusicPlaying = !isMusicPlaying;

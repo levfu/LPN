@@ -20,7 +20,6 @@ public class  LogReMain extends Application {
             primaryStage.setScene(scene);
             primaryStage.setTitle("Login and Register for Library Management System");
             primaryStage.show();
-            MusicApp.playBackgroundMusic("nhacnen.mp3");
         } catch (Exception e) {
             e.printStackTrace();
         }

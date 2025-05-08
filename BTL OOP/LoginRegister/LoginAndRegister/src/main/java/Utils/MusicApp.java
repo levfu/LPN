@@ -14,7 +14,7 @@ public class MusicApp {
                 mediaPlayer.stop();
             }
 
-            URL resource = MusicApp.class.getResource("/View/Audio/nhacnen.mp3");
+            URL resource = MusicApp.class.getResource("/View/Audio/" + fileName);
             Media media = new Media(resource.toString());
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);

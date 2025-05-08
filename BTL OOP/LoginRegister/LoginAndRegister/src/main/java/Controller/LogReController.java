@@ -2,6 +2,7 @@ package Controller;
 
 import Database.LogReDatabase;
 import Utils.EmailSender;
+import Utils.MusicApp;
 import Utils.VerificationCodeGenerator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -185,6 +186,13 @@ public class LogReController implements Initializable {
                         "/View/images/ErrorLogo.png");
                 return;
             }
+
+            if (role.equals("Manager")) {
+                MusicApp.playBackgroundMusic("managermusic.mp3");
+            } else {
+                MusicApp.playBackgroundMusic("usermusic.mp3");
+            }
+
             String fxmlPath = role.equals("Manager")
                     ? "/View/FXML/HomeManager.fxml"
                     : "/View/FXML/HomeUser.fxml";

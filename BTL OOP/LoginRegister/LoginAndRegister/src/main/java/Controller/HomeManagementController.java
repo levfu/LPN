@@ -314,7 +314,7 @@ public class HomeManagementController extends HomeBaseController {
             MusicApp.stopMusic();
             music.setText("Play Music");
         } else {
-            MusicApp.playBackgroundMusic("nhacnen.mp3");
+            MusicApp.playBackgroundMusic("managermusic.mp3");
             music.setText("Pause Music");
         }
         isMusicPlaying = !isMusicPlaying;
