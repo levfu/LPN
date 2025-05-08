@@ -41,16 +41,24 @@ Cài Đặt
 
 Nếu bạn chưa có tài khoản : Nhập Email, mật khẩu (Password) và chọn vai trò (role) của bạn.
         Nhập xong thông tin yêu cầu → ấn Register (Đăng ký) → xác thực Email.
+
 Nếu bạn đã có tài khoản : Nhập Email, mật khẩu (Password) và chọn vai trò (role) của bạn.
         Nhập xong thông tin yêu cầu → ấn Login (Đăng nhập).
+
 Nếu bạn đã có tài khoản nhưng quên mật khẩu (Password), bạn có thể đặt lại mật khẩu mới trong “Forgot password?”.
+
 Trang chủ (Home).
 Khi bạn đăng nhập / đăng ký thành công, bạn sẽ được chuyển đến trang chủ của phần mềm.
 Trang chủ được có sự khác biệt giữa vai trò (role) của bạn trong hệ thống.
+
 Nút Home (Home button) : chuyển về giao diện Home. Giao diện Home hiện các sách được đánh giá cao (Top - Rated Books) và các sách đang xu hướng (Trending Books).
+
 Nút Books (Books button) :  Tra sách (Search) và mượn sách (Borrow), bạn có thể đánh giá (rate)  sách đã mượn. Mỗi sách đều hiện miêu tả (Description) và các nhận xét (Comments) của người khác. Giao diện Books còn hiện danh sách các sách bạn đã mượn và hạn mượn sách (DueDate).
+
 Nút Chat (Chat button) : Nơi bạn có thể trao đổi, trò chuyện với những người khác.
+
 Riêng giao diện Manager sẽ có thêm nút Readers (Readers button) : Nơi Manager quản lí người dùng, quản lí các sách mà người dùng đã mượn (Borrow) hoặc xóa tài khoản người dùng (Delete).
+
 Nút Settings (Settings button) : Hiện thêm 2 nút : nút Account (Account button) - nơi bạn cập nhật thông tin cá nhân, và nút Logout (Logout button) - nơi bạn đăng xuất khỏi phần mềm.
 
 **Demo**
