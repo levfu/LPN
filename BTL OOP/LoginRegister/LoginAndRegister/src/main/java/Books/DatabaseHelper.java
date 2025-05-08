@@ -89,8 +89,6 @@ public class DatabaseHelper {
 
     public static void saveRating(int userId, String isbn, int rating, String comment) {
         String checkRatingSql = "SELECT COUNT(*) FROM book_ratings WHERE userId = ? AND isbn = ?";
-
-
         try (Connection connection = connect();
              PreparedStatement pstmt = connection.prepareStatement(checkRatingSql)) {
             pstmt.setInt(1, userId);
@@ -108,7 +106,6 @@ public class DatabaseHelper {
                     updatePstmt.executeUpdate();
                 }
             } else {
-
                 String ratingsql = "INSERT INTO book_ratings(userId, isbn, rating, comment) VALUES (?, ?, ?, ?)";
                 try (PreparedStatement insertPstmt = connection.prepareStatement(ratingsql)) {
                     insertPstmt.setInt(1, userId);

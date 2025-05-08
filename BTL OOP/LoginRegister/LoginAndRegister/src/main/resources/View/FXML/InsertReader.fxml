@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="520.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.InsertReaderController">
+   <children>
+      <VBox layoutX="92.0" layoutY="66.0" prefHeight="306.0" prefWidth="592.0">
+         <children>
+            <TextField fx:id="nameField" prefHeight="50.0" prefWidth="592.0" promptText="Name" />
+            <TextField fx:id="birthdayField" prefHeight="50.0" prefWidth="592.0" promptText="Birthday" />
+            <TextField fx:id="emailField" prefHeight="50.0" prefWidth="592.0" promptText="Email" />
+            <TextField fx:id="phoneField" prefHeight="50.0" prefWidth="592.0" promptText="PassWord" />
+            <TextField fx:id="addressField" prefHeight="50.0" prefWidth="592.0" promptText="Address" />
+            <TextField fx:id="roleField" prefHeight="50.0" prefWidth="592.0" promptText="Phone" />
+            <TextField fx:id="passwordField" prefHeight="47.0" prefWidth="592.0" promptText="Role" />
+         </children>
+      </VBox>
+      <Button fx:id="handleInsert" layoutX="331.0" layoutY="416.0" mnemonicParsing="false" onAction="#Insert" prefHeight="42.0" prefWidth="113.0" text="Insert-Reader" />
+   </children>
+</AnchorPane>

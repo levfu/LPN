@@ -1,6 +1,7 @@
 package Database;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.ArrayList;
 import Controller.User;
@@ -150,7 +151,13 @@ public class LogReDatabase extends BaseDatabase{
 
                 String birthStr = rs.getString("birthday");
                 if (birthStr != null && !birthStr.isBlank()) {
-                    user.setBirthday(LocalDate.parse(birthStr));
+                    try {
+                        // Kiểm tra và chuyển chuỗi ngày tháng thành LocalDate
+                        user.setBirthday(LocalDate.parse(birthStr));
+                    } catch (DateTimeParseException e) {
+                        System.out.println("Lỗi chuyển đổi ngày sinh cho người dùng ID " + user.getId() + ": " + e.getMessage());
+                        user.setBirthday(null); // Gán null nếu ngày tháng không hợp lệ
+                    }
                 } else {
                     user.setBirthday(null);
                 }
@@ -222,7 +229,27 @@ public class LogReDatabase extends BaseDatabase{
         }
     }
 
+    public static boolean insertUser(User user) {
+        if (emailExists(user.getEmail(), user.getRole())) {
+            System.out.println("Tài khoản với email và vai trò này đã tồn tại!");
+            return false;
+        }
 
-
+        String sql = "INSERT INTO users (name, birthday, password, email, address ,phone, role, avatarPath) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getBirthday() != null ? user.getBirthday().toString() : null);
+            pstmt.setString(3, user.getPhone());
+            pstmt.setString(4, user.getEmail());
+            pstmt.setString(5, user.getAddress());
+            pstmt.setString(6, user.getRole());
+            pstmt.setString(7, user.getPassword());
+            pstmt.setString(8, user.getAvatarPath());
+            return pstmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Insert user error: " + e.getMessage());
+            return false;
+        }
+    }
 
 }

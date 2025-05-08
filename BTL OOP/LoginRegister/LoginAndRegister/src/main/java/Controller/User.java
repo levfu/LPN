@@ -7,16 +7,27 @@ import java.util.List;
 
 public class User {
     private int id;
-    private String name;
     private String email;
     private String password;
     private String role;
+    private String name;
     private String phone;
     private LocalDate birthday;
     private String address;
     private String avatarPath;
 
     public User() {
+    }
+
+    public User(int id, String email, String password, String role, String name, String phone, LocalDate birthday, String address) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.name = name;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.address = address;
     }
 
     public int getId() {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -25,5 +26,6 @@
             <Font size="46.0" />
          </font>
       </Label>
+      <Button fx:id="btnAddUser" layoutX="931.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleAddUser" prefHeight="36.0" prefWidth="131.0" text="Insert_Reader" />
    </children>
 </AnchorPane>

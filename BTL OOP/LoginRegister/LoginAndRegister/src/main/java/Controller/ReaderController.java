@@ -4,6 +4,7 @@ import Books.BookManagementController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
@@ -12,9 +13,11 @@ import Database.LogReDatabase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.List;
 
 public class ReaderController {
@@ -54,6 +57,34 @@ public class ReaderController {
     private TableView<User> userTable;
 
     @FXML
+    private Button btnAddUser;
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    @FXML
+    void handleAddUser(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FXML/InsertReader.fxml"));
+            Parent root = loader.load();
+
+            InsertReaderController insertController = loader.getController();
+            insertController.setReaderController(this);
+
+            Stage stage = new Stage();
+            stage.setTitle("Insert New Reader");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     public void initialize() {
         userTable.setEditable(true);
         ID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -78,7 +109,6 @@ public class ReaderController {
             LogReDatabase.updateUser(user);
         });
 
-
         Role.setCellFactory(TextFieldTableCell.forTableColumn());
         Role.setOnEditCommit(event -> {
             User user = event.getRowValue();
@@ -86,16 +116,16 @@ public class ReaderController {
             LogReDatabase.updateUser(user);
         });
 
-
         Action.setCellFactory(getActionCellFactory());
         loadUsers();
     }
 
-    private void loadUsers() {
+    public void loadUsers() {
         List<User> users = LogReDatabase.getAllUsers();
         ObservableList<User> data = FXCollections.observableArrayList(users);
         userTable.setItems(data);
     }
+
 
     private Callback<TableColumn<User, Void>, TableCell<User, Void>> getActionCellFactory() {
         return new Callback<>() {
