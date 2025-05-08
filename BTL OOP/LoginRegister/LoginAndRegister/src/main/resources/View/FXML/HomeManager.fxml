@@ -19,7 +19,7 @@
                     <children>
                         <Button id="Home" fx:id="Homemanger" mnemonicParsing="false" onAction="#Homemanger" prefHeight="54.0" prefWidth="89.0" styleClass="button1" stylesheets="@../CSS/Home.css" text="Home" textFill="#fffcfc">
                      <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/home.png" />
                            </image>
@@ -27,26 +27,26 @@
                      </graphic></Button>
                         <Button id="Reader" fx:id="button2" mnemonicParsing="false" onAction="#Readers" prefHeight="54.0" prefWidth="204.0" styleClass="button2" stylesheets="@../CSS/Home.css" text="Readers" textFill="#fffcfc">
                      <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/reader.png" />
                            </image></ImageView>
                      </graphic></Button>
                         <Button id="Books" fx:id="buttonbooks" mnemonicParsing="false" onAction="#Books" prefHeight="54.0" prefWidth="90.0" styleClass="button3" stylesheets="@../CSS/Home.css" text="Books" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="39.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/bookicon.png" />
                            </image></ImageView>
                      </graphic></Button>
                         <Button id="ComMU" fx:id="button4" mnemonicParsing="false" onAction="#ComMU" prefHeight="54.0" prefWidth="79.0" styleClass="button4" stylesheets="@../CSS/Home.css" text="Chat" textFill="WHITE">
                      <graphic>
-                        <ImageView fitHeight="28.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/chat.png" />
                            </image></ImageView>
                      </graphic></Button>
-                        <Button fx:id="Setting" mnemonicParsing="false" onAction="#Settings" prefHeight="54.0" prefWidth="100.0" styleClass="buttonother" text=" Settings" textFill="#fff7f7">
+                        <Button fx:id="Setting" mnemonicParsing="false" onAction="#Settings" prefHeight="46.0" prefWidth="98.0" styleClass="buttonother" text=" Settings" textFill="#fff7f7">
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -55,18 +55,18 @@
                      </graphic></Button>
                     </children>
                 </VBox>
-                <VBox fx:id="menuBox" layoutY="273.0" prefHeight="97.0" prefWidth="100.0" visible="false">
+                <VBox fx:id="menuBox" layoutY="268.0" prefHeight="102.0" prefWidth="100.0">
                     <children>
                         <Button fx:id="myaccount" mnemonicParsing="false" onAction="#myaccount" prefHeight="38.0" prefWidth="96.0" styleClass="buttonother" text="Account" textFill="#ec0b0b">
                      <graphic>
-                        <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/account.png" />
                            </image></ImageView>
                      </graphic></Button>
-                        <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="91.0" styleClass="buttonother" text="Logout" textFill="#ea0909">
+                        <Button fx:id="logout" mnemonicParsing="false" onAction="#logout" prefHeight="45.0" prefWidth="91.0" styleClass="buttonother" text="Logout" textFill="#ea0909">
                      <graphic>
-                        <ImageView fitHeight="24.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="28.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/logout.png" />
                            </image>
