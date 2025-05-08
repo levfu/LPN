@@ -55,7 +55,7 @@
                      </graphic></Button>
                     </children>
                 </VBox>
-                <VBox fx:id="menuBox" layoutY="268.0" prefHeight="102.0" prefWidth="100.0">
+                <VBox fx:id="menuBox" layoutY="268.0" prefHeight="102.0" prefWidth="100.0" visible="false">
                     <children>
                         <Button fx:id="myaccount" mnemonicParsing="false" onAction="#myaccount" prefHeight="38.0" prefWidth="96.0" styleClass="buttonother" text="Account" textFill="#ec0b0b">
                      <graphic>

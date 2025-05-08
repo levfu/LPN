@@ -39,7 +39,7 @@ public class CommunityChatController {
     private User currentUser;
     private ChatDatabase chatDatabase;
     private Timeline timeline;
-    private static final String URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
+    private static final String URL = "jdbc:sqlite:D:\\HL_OOP\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\library.db";
 
     public void setUser(User user) {
         this.currentUser = user;

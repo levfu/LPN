@@ -55,14 +55,14 @@
                   <VBox fx:id="commentListVBox" prefHeight="190.0" prefWidth="489.0" />
                </content>
             </ScrollPane>
-                <Label prefHeight="42.0" prefWidth="272.0" text="Nhận xét :">
+                <Label prefHeight="42.0" prefWidth="272.0" text="Comments :">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
                 <TextArea fx:id="commentTextArea" prefHeight="93.0" prefWidth="485.0" />
             <Label prefHeight="18.0" prefWidth="494.0" />
-                <Button fx:id="submitRatingButton" mnemonicParsing="false" onAction="#handleSubmitRating" prefHeight="36.0" prefWidth="127.0" text="Gửi Đánh Giá" />
+                <Button fx:id="submitRatingButton" mnemonicParsing="false" onAction="#handleSubmitRating" prefHeight="36.0" prefWidth="138.0" text="Send FeedBack" />
             <Label />
             </children>
         </VBox>

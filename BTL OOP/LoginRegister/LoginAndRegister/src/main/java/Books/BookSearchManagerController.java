@@ -49,9 +49,12 @@ public class BookSearchManagerController {
         isbnBook.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         titleBook.setCellValueFactory(new PropertyValueFactory<>("title"));
         authorsBook.setCellValueFactory(new PropertyValueFactory<>("author"));
-        loadBooks("book");
+
+        loadBooks("");
+
         searchButton.setOnAction(event -> handleSearch());
         searchField.setOnAction(event -> handleSearch());
+
         BookTable.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount() == 2) {
                 Book selectedBook = BookTable.getSelectionModel().getSelectedItem();
@@ -73,15 +76,33 @@ public class BookSearchManagerController {
 
     private void loadBooks(String title) {
         try {
-            String json = GoogleBookAPI.searchBooks(title, "", "", "");
-            if (json != null) {
-                List<Book> books = BookParser.parseBooks(json);
-                bookObservableList.clear();
-                bookObservableList.addAll(books);
-                BookTable.setItems(bookObservableList);
+            List<Book> RatedBooks;
+            if (title.isEmpty()) {
+                RatedBooks = DatabaseHelper.getAllBooksWithRatings();
             } else {
-                System.out.println("Can't get data from Google Books API !");
+                String json = GoogleBookAPI.searchBooks(title, "", "", "");
+                if (json != null) {
+                    RatedBooks = BookParser.parseBooks(json);
+                } else {
+                    System.out.println("Can't get data from Google Books API!");
+                    return;
+                }
             }
+            bookObservableList.clear();
+            for (Book bookData : RatedBooks) {
+                Book book = new Book(
+                        bookData.getTitle(),
+                        bookData.getAuthor(),
+                        bookData.getCategory(),
+                        bookData.getDescription(),
+                        bookData.getIsbn(),
+                        bookData.getThumbnail()
+                );
+
+                bookObservableList.add(book);
+            }
+            BookTable.setItems(bookObservableList);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

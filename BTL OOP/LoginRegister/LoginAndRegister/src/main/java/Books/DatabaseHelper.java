@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper {
-    private static final String DB_URL = "jdbc:sqlite:C:\\Users\\Admin\\Documents\\GitHub\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\borrowed_books.db";
+    private static final String DB_URL = "jdbc:sqlite:D:\\HL_OOP\\LPN\\BTL OOP\\LoginRegister\\LoginAndRegister\\src\\main\\resources\\borrowed_books.db";
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(DB_URL);
@@ -267,4 +267,33 @@ public class DatabaseHelper {
         }
         return trendingBooks;
     }
-}  
+
+    public static List<Book> getAllBooksWithRatings() {
+        List<Book> RatedBooks = new ArrayList<>();
+        String sql = "SELECT b.isbn, b.title, b.author, b.thumbnail, b.description, b.tags " +
+                "FROM borrowed_books b " +
+                "JOIN book_ratings r ON b.isbn = r.isbn " +
+                "GROUP BY b.isbn, b.title, b.author, b.thumbnail, b.description, b.tags";
+
+        try (Connection connection = connect();
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                String isbn = rs.getString("isbn");
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                String thumbnail = rs.getString("thumbnail");
+                String description = rs.getString("description");
+                String tags = rs.getString("tags");
+                List<String> authorList = List.of(author);
+                List<String> tagsList = (tags != null && !tags.isEmpty()) ? List.of(tags.split(",")) : List.of();
+
+                RatedBooks.add(new Book(title, authorList, tagsList, description, isbn, thumbnail));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error while fetching books with ratings: " + e.getMessage());
+        }
+        return RatedBooks;
+    }
+}

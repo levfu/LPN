@@ -74,11 +74,12 @@ public class LogReController implements Initializable {
             return;
         }
         if (LogReDatabase.checkLogin(email, password, role)) {
-            showCustomAlert(Alert.AlertType.INFORMATION, "Login successfully !",
-                    "Login successfully with role " + role + "!", "/View/images/TickLogo.png");
+            String message = "Login successful with role: " + role + "!\n\nPlease update your account information in MyAccount.";
+            showCustomAlert(Alert.AlertType.INFORMATION, "Login Successful!",
+                    message, "/View/images/TickLogo.png");
             switchToHome(role);
         } else {
-            showCustomAlert(Alert.AlertType.ERROR, "Error", "Wrong email or password !", "/View/images/ErrorLogo.png");
+            showCustomAlert(Alert.AlertType.ERROR, "Error", "Wrong email or password!", "/View/images/ErrorLogo.png");
         }
     }
 
