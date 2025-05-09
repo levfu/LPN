@@ -13,14 +13,14 @@ Group LPN:
 - Ứng dụng được viết bằng Java, thư viện JavaFX , SQL cùng với CSS để tạo nên một giao diện đẹp mắt và dễ dàng sử dụng.
 - Ứng dụng sử dụng những quyển sách có sẵn trên Google API để tạo lại mẫu mã sách đa dạng.
 
-**Chức năng chính (Main Function):**:
+**Chức năng chính (Main Function):**
 
 - Quản lý danh mục sách: thêm, sửa, xóa, tìm kiếm sách theo tên, mã ISBN, tác giả...
 - Quản lý người dùng: đăng ký, chỉnh sửa thông tin người đọc, phân quyền (quản trị viên, người dùng thông thường).
 - Quản lý mượn/trả sách: ghi nhận thời gian mượn, trả, tự động tính hạn mượn.
 - Tìm kiếm và lọc dữ liệu nhanh chóng.
 
-**Đối tượng sử dụng (Target User):**:
+**Đối tượng sử dụng (Target User):**
 
 - Nhân viên/thủ thư tại các thư viện trường học, thư viện công cộng hoặc thư viện doanh nghiệp.
 - Người đọc, sinh viên, học sinh cần tra cứu và mượn sách.
