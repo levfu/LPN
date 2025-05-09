@@ -66,12 +66,19 @@ Trang chủ được có sự khác biệt giữa vai trò (role) của bạn tr
 **Demo**
 
 ![Screenshot 2025-05-07 211902](https://github.com/user-attachments/assets/c175263a-9358-4893-9eee-1e9435ae5997)
+
 ![Screenshot 2025-05-07 212034](https://github.com/user-attachments/assets/22e3d8ad-5520-4218-95f9-76a94af1f2a2)
+
 ![Screenshot 2025-05-07 212000](https://github.com/user-attachments/assets/583c1f86-287f-4cf3-990f-fbb8745f6e92)
+
 ![Screenshot 2025-05-07 211944](https://github.com/user-attachments/assets/5236e54c-5581-435a-bd66-52e50af2f68f)
+
 ![Screenshot 2025-05-07 211931](https://github.com/user-attachments/assets/ac914542-5b12-4c5e-b712-82a16a788df2)
+
 ![Screenshot 2025-05-07 212326](https://github.com/user-attachments/assets/f7c505ab-bd5f-4fee-bcb2-3b02e6c5d220)
+
 ![Screenshot 2025-05-07 212337](https://github.com/user-attachments/assets/49e83766-48e6-4d95-953a-57b71d668cea)
+
 
 **Cải tiến trong tương lai (Future Improvements):**
 - Cải tiến chức năng đăng nhập. 
