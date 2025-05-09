@@ -46,7 +46,7 @@ public abstract class HomeBaseController {
             String thumbnailUrl = book.getThumbnail();
 
             if (thumbnailUrl == null || thumbnailUrl.isEmpty()) {
-                thumbnailUrl = "/path/to/default/image.png";
+                thumbnailUrl = "/View/images/avt_default.jpg";
             }
 
             try {
@@ -98,7 +98,7 @@ public abstract class HomeBaseController {
             String thumbnailUrl = book.getThumbnail();
 
             if (thumbnailUrl == null || thumbnailUrl.isEmpty()) {
-                thumbnailUrl = "/path/to/default/image.png";
+                thumbnailUrl = "/View/images/avt_default.jpg";
             }
 
             try {
@@ -197,7 +197,7 @@ public abstract class HomeBaseController {
             Parent loginRoot = loader.load();
             Stage stage = (Stage) sourceNode.getScene().getWindow();
             stage.setScene(new Scene(loginRoot));
-            stage.setTitle("Login & Register for Library Management System");
+            stage.setTitle("Login and Register for Library Management System");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

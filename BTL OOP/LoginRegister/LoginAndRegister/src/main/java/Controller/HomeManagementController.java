@@ -211,7 +211,7 @@ public class HomeManagementController extends HomeBaseController {
             String thumbnailUrl = book.getThumbnail();
 
             if (thumbnailUrl == null || thumbnailUrl.isEmpty()) {
-                thumbnailUrl = "/path/to/default/image.png";
+                thumbnailUrl = "/View/images/avt_default.jpg";
             }
 
             try {
@@ -263,7 +263,7 @@ public class HomeManagementController extends HomeBaseController {
             String thumbnailUrl = book.getThumbnail();
 
             if (thumbnailUrl == null || thumbnailUrl.isEmpty()) {
-                thumbnailUrl = "/path/to/default/image.png";
+                thumbnailUrl = "/View/images/avt_default.jpg";
             }
 
             try {

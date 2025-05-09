@@ -152,7 +152,7 @@ public class LogReDatabase extends BaseDatabase{
                 String birthStr = rs.getString("birthday");
                 if (birthStr != null && !birthStr.isBlank()) {
                     try {
-                        // Kiểm tra và chuyển chuỗi ngày tháng thành LocalDate
+
                         user.setBirthday(LocalDate.parse(birthStr));
                     } catch (DateTimeParseException e) {
                         System.out.println("Lỗi chuyển đổi ngày sinh cho người dùng ID " + user.getId() + ": " + e.getMessage());

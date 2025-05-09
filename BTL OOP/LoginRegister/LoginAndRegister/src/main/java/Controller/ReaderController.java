@@ -3,9 +3,12 @@ package Controller;
 import Books.BookManagementController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,6 +19,8 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.event.ActionEvent;
+
+import java.awt.*;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
@@ -76,6 +81,7 @@ public class ReaderController {
             insertController.setReaderController(this);
 
             Stage stage = new Stage();
+            stage.getIcons().add(new Image("/View/images/UETLogo.png"));
             stage.setTitle("Insert New Reader");
             stage.setScene(new Scene(root));
             stage.show();
@@ -135,9 +141,11 @@ public class ReaderController {
 
                     private final Button btnDelete = new Button("Delete");
                     private final Button btnBorrow = new Button("Borrow");
-                    private final HBox pane = new HBox(5, btnDelete, btnBorrow);
+                    private final HBox pane = new HBox(10, btnDelete, btnBorrow);
 
                     {
+                        pane.setAlignment(Pos.CENTER);
+
                         btnDelete.setOnAction((ActionEvent event) -> {
                             User user = getTableView().getItems().get(getIndex());
                             if (LogReDatabase.deleteUserById(user.getId())) {

@@ -42,7 +42,7 @@ public class GoogleBookAPI {
             query.append("book");
         }
 
-        // ➕ Thêm maxResults=40 vào URL
+
         String url = BASEURL + query.toString() + "&maxResults=40";
 
         Request request = new Request.Builder().url(url).build();
