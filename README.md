@@ -1,9 +1,8 @@
-**ỨNG DỤNG QUẢN LÍ THƯ VIỆN (LIBRARY MANAGEMENT SYSTEM)** 
+### **ỨNG DỤNG QUẢN LÍ THƯ VIỆN (LIBRARY MANAGEMENT SYSTEM)**
 
 **Tác Giả (Authors):**
 
 Group LPN:
-
 1. Hoa Văn Long - 240222390
 2. Nguyễn Hải Nam  - 24022414
 3. Lê Việt Phú - 24022426
