@@ -58,9 +58,9 @@ Trang chủ được có sự khác biệt giữa vai trò (role) của bạn tr
 
 - Nút Chat (Chat button) : Nơi bạn có thể trao đổi, trò chuyện với những người khác.
 
-- Riêng giao diện Manager sẽ có thêm nút Readers (Readers button) : Nơi Manager quản lí người dùng, quản lí các sách mà người dùng đã mượn (Borrow) hoặc xóa tài khoản người dùng (Delete).
+- Riêng giao diện Manager sẽ có thêm nút Readers (Readers button) : Nơi Manager quản lí người dùng, quản lí các sách mà người dùng đã mượn (Borrow) hoặc xóa tài khoản người dùng (Delete), cũng như thêm tài khoản mới (Insert Reader).
 
-- Nút Settings (Settings button) : Hiện thêm 2 nút : nút Account (Account button) - nơi bạn cập nhật thông tin cá nhân, và nút Logout (Logout button) - nơi bạn đăng xuất khỏi phần mềm.
+- Nút Settings (Settings button) : Hiện thêm 3 nút : nút Pause Music (Pause Music button) - nơi bạn tắt nhạc của phần mềm, nút Account (Account button) - nơi bạn cập nhật thông tin cá nhân, và nút Logout (Logout button) - nơi bạn đăng xuất khỏi phần mềm.
 
 **Demo**
 
