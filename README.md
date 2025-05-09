@@ -10,7 +10,7 @@ Group LPN:
 **Miêu Tả (Description):**
 
 - Quản lí thư viện là ứng dụng giúp người dùng quản lí thư viện.
-- Ứng dụng được viết bằng Java, thư viện JavaFX , SQL cùng với CSS để tạo nên một giao diện đẹp mắt và dễ dàng sử dụng.
+- Ứng dụng được viết bằng Java, thư viện JavaFX, SQL cùng với CSS để tạo nên một giao diện đẹp mắt và dễ dàng sử dụng.
 - Ứng dụng sử dụng những quyển sách có sẵn trên Google API để tạo lại mẫu mã sách đa dạng.
 
 **Chức năng chính (Main Function):**
