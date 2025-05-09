@@ -16,18 +16,21 @@ public class GoogleBookAPI {
         if (!isbn.isEmpty()) {
             query.append("isbn:").append(isbn);
         }
+
         if (!title.isEmpty()) {
             if (query.length() > 0) {
                 query.append("+");
             }
             query.append("intitle:").append(title.replace(" ", "+"));
         }
+
         if (!author.isEmpty()) {
             if (query.length() > 0) {
                 query.append("+");
             }
             query.append("inauthor:").append(author.replace(" ", "+"));
         }
+
         if (!categories.isEmpty()) {
             if (query.length() > 0) {
                 query.append("+");
@@ -35,7 +38,6 @@ public class GoogleBookAPI {
             query.append("subject:").append(categories.replace(" ", "+"));
         }
 
-        // Nếu không có gì, dùng từ khoá mặc định là "book"
         if (query.length() == 0) {
             query.append("book");
         }
