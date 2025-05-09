@@ -70,7 +70,7 @@ Trang chủ được có sự khác biệt giữa vai trò (role) của bạn tr
 
 ![Screenshot 2025-05-07 212000](https://github.com/user-attachments/assets/583c1f86-287f-4cf3-990f-fbb8745f6e92)
 
-![Screenshot 2025-05-07 211944](https://github.com/user-attachments/assets/5236e54c-5581-435a-bd66-52e50af2f68f)
+![image](https://github.com/user-attachments/assets/3e11802b-aa14-4289-aff0-fb77144d3868)
 
 ![Screenshot 2025-05-07 211931](https://github.com/user-attachments/assets/ac914542-5b12-4c5e-b712-82a16a788df2)
 
