@@ -20,6 +20,8 @@ import java.util.List;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
+import static Utils.MusicApp.stopMusic;
+
 public abstract class HomeBaseController {
 
     protected User currentUser;
@@ -198,10 +200,13 @@ public abstract class HomeBaseController {
             Stage stage = (Stage) sourceNode.getScene().getWindow();
             stage.setScene(new Scene(loginRoot));
             stage.setTitle("Login and Register for Library Management System");
+            stage.centerOnScreen();
             stage.show();
+            stopMusic();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
 }

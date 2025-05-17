@@ -237,7 +237,7 @@ public class LogReController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
-            alert.setContentText("Can't open forgot password !");
+            alert.setContentText("Can't open Forgot Password !");
             alert.showAndWait();
         }
     }

@@ -15,7 +15,7 @@ public class  LogReMain extends Application {
             AnchorPane root = loader.load();
             Scene scene = new Scene(root);
 
-            primaryStage.getIcons().add(new Image("View/images/UETLogo.png"));
+            primaryStage.getIcons().add(new Image("/View/images/UETLogo.png"));
 
             primaryStage.setScene(scene);
             primaryStage.setTitle("Login and Register for Library Management System");

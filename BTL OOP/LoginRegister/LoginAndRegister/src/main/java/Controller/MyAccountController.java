@@ -97,7 +97,7 @@ public class MyAccountController {
     @FXML
     void savecharge(ActionEvent event) {
         if (fullname.getText().isEmpty()|| fullsdt.getText().isEmpty() || fullsdt.getText().isEmpty() || email.getText().isEmpty()) {
-            showAlert("Please enter full detail !");
+            showAlert("Please enter full details !");
             return;
         }
 
@@ -121,9 +121,9 @@ public class MyAccountController {
 
         boolean updated = LogReDatabase.updateUser(currentUser);
         if (updated) {
-            showAlert("Update detail successfully !");
+            showAlert("Update details successfully !");
         } else {
-            showAlert("Update detail failed !");
+            showAlert("Update details failed !");
         }
     }
 }

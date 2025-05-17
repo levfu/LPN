@@ -172,10 +172,14 @@ public class HomeManagementController extends HomeBaseController {
 
         super.createSnowEffect(PaneContent);
     }
+
+
     @FXML
     void logout(ActionEvent event) {
         super.logout((Node) event.getSource());
     }
+
+
     @FXML
     void myaccount(ActionEvent event) {
         try {
@@ -188,6 +192,8 @@ public class HomeManagementController extends HomeBaseController {
             e.printStackTrace();
         }
     }
+
+
     @FXML
     void ComMU(ActionEvent event) {
         try {
@@ -201,6 +207,7 @@ public class HomeManagementController extends HomeBaseController {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void updateTopRatedBooks() {
@@ -253,6 +260,7 @@ public class HomeManagementController extends HomeBaseController {
             }
         }
     }
+
 
     @Override
     public void updateTrendingBooks() {
@@ -307,6 +315,7 @@ public class HomeManagementController extends HomeBaseController {
     }
 
     private boolean isMusicPlaying = true;
+
 
     @FXML
     private void toggleMusic() {

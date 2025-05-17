@@ -38,7 +38,7 @@ public class BookData {
     }
 
     public String getThumbnail() {
-        return thumbnail.get();  // Getter cho thumbnail
+        return thumbnail.get();
     }
 
     public void setTitle(String value) {

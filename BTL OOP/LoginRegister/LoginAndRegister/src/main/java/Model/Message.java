@@ -71,7 +71,6 @@ public class Message {
         return zonedDateTime.format(formatter);
     }
 
-    @Override
     public String toString() {
         return "Message{" +
                 "id=" + id +

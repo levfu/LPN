@@ -1,5 +1,6 @@
 package Books;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import Controller.User;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookSearchManagerController {
@@ -45,6 +47,9 @@ public class BookSearchManagerController {
 
     @FXML
     public void initialize() {
+        bookObservableList = FXCollections.observableArrayList(); // ❗ Bắt buộc
+        BookTable.setItems(bookObservableList); // ❗ Bắt buộc
+
         isbnBook.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         titleBook.setCellValueFactory(new PropertyValueFactory<>("title"));
         authorsBook.setCellValueFactory(new PropertyValueFactory<>("author"));
@@ -74,37 +79,35 @@ public class BookSearchManagerController {
     }
 
     private void loadBooks(String title) {
-        try {
-            List<Book> RatedBooks;
-            if (title.isEmpty()) {
-                RatedBooks = DatabaseHelper.getAllBooksWithRatings();
-            } else {
-                String json = GoogleBookAPI.searchBooks(title, "", "", "");
-                if (json != null) {
-                    RatedBooks = BookParser.parseBooks(json);
+        // Hiển thị loading indicator
+        ProgressIndicator progress = new ProgressIndicator();
+        Platform.runLater(() -> Apanecontent.getChildren().add(progress)); // luồng UI
+
+        new Thread(() -> {
+            try {
+                List<Book> ratedBooks;
+
+                if (title.isEmpty()) {
+                    ratedBooks = DatabaseHelper.getAllBooksWithRatings();
                 } else {
-                    System.out.println("Can't get data from Google Books API!");
-                    return;
+                    String json = GoogleBookAPI.searchBooks(title, "", "", ""); //API
+                    ratedBooks = (json != null) ? BookParser.parseBooks(json) : new ArrayList<>();
                 }
-            }
-            bookObservableList.clear();
-            for (Book bookData : RatedBooks) {
-                Book book = new Book(
-                        bookData.getTitle(),
-                        bookData.getAuthor(),
-                        bookData.getCategory(),
-                        bookData.getDescription(),
-                        bookData.getIsbn(),
-                        bookData.getThumbnail()
-                );
+                // update UI
+                Platform.runLater(() -> {
+                    bookObservableList.setAll(ratedBooks);
+                    BookTable.refresh();
+                    Apanecontent.getChildren().remove(progress);
+                });
 
-                bookObservableList.add(book);
+            } catch (Exception e) {
+                e.printStackTrace();
+                Platform.runLater(() -> {
+                    new Alert(Alert.AlertType.ERROR, "Lỗi tải dữ liệu: " + e.getMessage()).show();
+                    Apanecontent.getChildren().remove(progress);
+                });
             }
-            BookTable.setItems(bookObservableList);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        }).start();
     }
 
     private void openRatingView(Book book) {

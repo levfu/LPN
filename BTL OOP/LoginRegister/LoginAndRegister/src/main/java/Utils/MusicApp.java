@@ -18,7 +18,7 @@ public class MusicApp {
             Media media = new Media(resource.toString());
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            mediaPlayer.setVolume(0.3);
+            mediaPlayer.setVolume(35);
             mediaPlayer.play();
         } catch (Exception e) {
             e.printStackTrace();

@@ -89,6 +89,7 @@ public class RatingBookController {
         loadComments(currentBook.getIsbn());
     }
 
+
     private void colorStars(int count) {
         Button[] stars = {star1, star2, star3, star4, star5};
         for (int i = 0; i < count; i++) {
@@ -96,12 +97,14 @@ public class RatingBookController {
         }
     }
 
+
     private void resetStarColors() {
         Button[] stars = {star1, star2, star3, star4, star5};
         for (Button star : stars) {
             star.setStyle("-fx-font-size: 30px; -fx-background-color: white;-fx-text-fill: gray;");
         }
     }
+
 
     public void handleStarSelection(ActionEvent event) {
         resetStarColors();
@@ -124,6 +127,7 @@ public class RatingBookController {
             colorStars(5);
         }
     }
+
 
     @FXML
     public void handleSubmitRating(ActionEvent event) {
@@ -151,6 +155,7 @@ public class RatingBookController {
         resetStarColors();
         rating = 0;
     }
+
 
     private void loadComments(String isbn) {
         commentListVBox.getChildren().clear();

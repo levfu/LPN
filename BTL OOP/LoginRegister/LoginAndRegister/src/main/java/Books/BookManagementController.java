@@ -155,6 +155,7 @@ public class BookManagementController {
           });
      }
 
+
      @FXML
      private void searchBooks(ActionEvent event) {
           String title = titleSearchField.getText().trim().toLowerCase();
@@ -191,6 +192,7 @@ public class BookManagementController {
           }
      }
 
+
      @FXML
      public void borrowBook() {
           String selectedText = selectedBookTextField.getText();
@@ -219,6 +221,7 @@ public class BookManagementController {
           }
      }
 
+
      private Book getBookFromText(String displayText) {
           for (Book book : books) {
                String display = book.getTitle() + " - " + String.join(", ", book.getAuthor());
@@ -228,6 +231,7 @@ public class BookManagementController {
           }
           return null;
      }
+
 
      private void showAlert(String title, String content) {
           Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -245,6 +249,8 @@ public class BookManagementController {
           }
           return null;
      }
+
+
      @FXML
      private void returnBook() {
           BookData selectedRow = borrowBookTable.getSelectionModel().getSelectedItem();
@@ -290,6 +296,7 @@ public class BookManagementController {
                e.printStackTrace();
           }
      }
+
 
      @FXML
      public void borrowBk(Book selectedBook) {

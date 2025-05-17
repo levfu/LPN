@@ -86,6 +86,7 @@ public class HomeUserController extends HomeBaseController {
         return this.bookManagementController;
     }
 
+
     @FXML
     void Booksuser(ActionEvent event) {
         try {
@@ -99,6 +100,7 @@ public class HomeUserController extends HomeBaseController {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     public void handleBookClick(MouseEvent event, Book selectedBook) {
@@ -122,6 +124,8 @@ public class HomeUserController extends HomeBaseController {
             e.printStackTrace();
         }
     }
+
+
     @FXML
     void ComMU(ActionEvent event) {
         try {
@@ -135,6 +139,7 @@ public class HomeUserController extends HomeBaseController {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     void Homeuser(ActionEvent event) {
@@ -152,10 +157,13 @@ public class HomeUserController extends HomeBaseController {
         }
     }
 
+
     @FXML
     void Settings(ActionEvent event) {
         menuBox.setVisible(!menuBox.isVisible());
     }
+
+
 
     @FXML
     public void initialize() {
@@ -213,6 +221,7 @@ public class HomeUserController extends HomeBaseController {
     }
 
 
+
     @FXML
     void myaccount(ActionEvent event) {
         try {
@@ -225,6 +234,8 @@ public class HomeUserController extends HomeBaseController {
             e.printStackTrace();
         }
     }
+
+
 
     @Override
     public void updateTopRatedBooks() {
@@ -277,6 +288,8 @@ public class HomeUserController extends HomeBaseController {
             }
         }
     }
+
+
 
     @Override
     public void updateTrendingBooks() {
@@ -331,6 +344,7 @@ public class HomeUserController extends HomeBaseController {
     }
 
     private boolean isMusicPlaying = true;
+
 
     @FXML
     private void toggleMusic() {
